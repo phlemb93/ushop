@@ -1,25 +1,34 @@
 import { NavBar } from './components/NavBar'
 import { Home } from './components/Home'
 import { Footer } from './components/Footer'
+import { ItemsContainer } from './components/ItemsContainer'
+import { ItemDetails } from './components/ItemDetails'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 
 function App() {
   return (
-    <div className="App">
+    <Router>
+     <div className="App">
 
-      <nav>
-        <NavBar />
-      </nav>
-
-      <main>
-        <Home />
-      </main>
+        <nav>
+          <NavBar />
+        </nav>
       
-      <footer>
-        <Footer />
-      </footer>
+       <main>
+        <Routes>
+          <Route exact path='/' element={ <Home /> } />
+          <Route exact path='/products' element={ <ItemsContainer /> } />
+          <Route path='/products/:id' element={ <ItemDetails /> } />
+         </Routes>
+       </main>
+      
+       <footer>
+         <Footer />
+        </footer>
 
-    </div>
+      </div>
+    </Router>
   );
 }
 
