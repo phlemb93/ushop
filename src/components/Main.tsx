@@ -21,11 +21,10 @@ function Main() {
                     <p>Plus get an</p>
                     <h3>EXTRA 10% at checkout</h3>
                     <div className="code">
-                        <small>WITH CODE</small>
+                        <small>SHOP WITH</small>
                         <p>"EXTRA10"</p>
                     </div>
                 </div> 
-                <button>Shop Sale</button>
             </div>
 
             <div className="lower">

@@ -28,16 +28,16 @@ function Footer() {
 
             <div className="icons">
 
-                <div className="github">
-                    <GitHubIcon style={{fontSize: '28px'}} />
+                <div  className="github">
+                    <GitHubIcon className="github-icon" style={{fontSize: '24px'}} />
                     <p>Github</p>
                 </div>
                 <div className="linkedin">
-                    <LinkedInIcon style={{fontSize: '28px'}} />
+                    <LinkedInIcon className="linkedin-icon" style={{fontSize: '24px'}} />
                     <p>LinkedIn</p>
                 </div>
                 <div className="twitter">
-                    <TwitterIcon style={{fontSize: '28px'}} />
+                    <TwitterIcon className="twitter-icon" style={{fontSize: '24px'}} />
                     <p>Twitter</p>
                 </div>
             </div>

@@ -1,6 +1,10 @@
 .main-section {
     margin-top: 110px;
 
+    * {
+        transition: all 0.5s ease-in;
+    }
+
     .first{
         display: flex;
         flex-direction: column;
@@ -24,12 +28,13 @@
                 border-radius: 20px;
                 height: 250px;
                 width: 350px;
-                background-color: rgba(128, 0, 128, 0.465);
+                background-color:  rgba(0, 48, 0, 0.654); // rgba(128, 0, 128, 0.465);
                 color: #fff;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                cursor: pointer;
 
                 h4{
                     font-size: 16px;
@@ -51,7 +56,7 @@
                     justify-content: center;
                     align-items: center;
                     background: #fff;
-                    color: #000;
+                    color: rgb(0, 48, 0);
                     border-radius: 30px;
                     width: 200px;
                     height: 58px;
@@ -60,22 +65,10 @@
                         font-size: 12px;
                     }
                     p{
-                        font-size: 22px;
-                        font-weight: bold;
+                        font-size: 24px;
+                        // font-weight: bold;
                     }
                 }
-            }
-
-            button{
-                padding: 10px;
-                width: 120px;
-                border-radius: 20px;
-                border: none;
-                position: absolute;
-                bottom: 10px;
-                left: 50%;
-                background: rgb(0, 48, 0);
-                color: #fff;
             }
         }
 

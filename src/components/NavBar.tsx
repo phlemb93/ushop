@@ -29,6 +29,7 @@ function NavBar() {
                 <div className="icon">
                     <LocalMallOutlinedIcon style={{fontSize: 28}}/>
                 </div>
+                <small>Basket</small>
                 <span style={{fontSize: 11}} className="number">
                     10
                 </span>
