@@ -1,19 +1,16 @@
 .burger-menu {
 
-    * {
-        transition: all 0.2s ease-in-out;
-    }
-
 
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: #fff;
     z-index: 10;
+    transition: all 1s ease-in-out;
     transform: translateX(-100%);
 
     .close-btn {
@@ -62,6 +59,11 @@
                 margin-bottom: 14px;
                 padding: 4px 16px;
                 cursor: pointer;
+
+
+                img {
+                    transition: all 0.2s ease-in-out;
+                }
 
                 &:hover {
 

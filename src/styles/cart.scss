@@ -1,0 +1,116 @@
+.cart-container {
+    display: flex;
+    height: 100vh;
+    width: 470px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 38px;
+    border-left: 1px solid $secondary-color;
+    transition: all 1s ease-in-out;
+    background-color: #fff;
+    transform: translateX(100%);
+
+
+
+    .top {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        color: $primary-color;
+
+        p:first-child {
+            font-size: 24px;
+
+        }
+
+        div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+
+            p{
+                margin-left: 14px;
+            }
+        }
+    }
+
+    .center{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 18px;
+
+        p {
+            margin: 20px 0;
+        }
+        div{
+            padding: 10px 16px;
+            background-color: $primary-color;
+            color: #fff;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+    }
+
+    .bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        width: 80%;
+        height: 20vh;
+        background-color: $secondary-color;
+        padding: 20px;
+
+        p:first-child {
+            margin-bottom: 20px;
+            font-size: 24px;
+
+            span {
+                color: black;
+                font-size: 16px;
+            }
+        }
+
+        small {
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.671);
+            padding: 14px 0;
+        }
+        span {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: $primary-color;
+        }
+        .btn {
+            width: 80%;
+            border-radius: 30px;
+            background-color: $primary-color;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 0;
+
+            p {
+                margin-left: 10px;
+            }
+
+        }
+    }
+
+}
+
+@media (max-width: 580px) {
+
+    .cart-container{
+        width: 380px;
+    }
+}
