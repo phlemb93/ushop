@@ -3,12 +3,10 @@ import MeetingRoomOutlinedIcon from '@mui/icons-material/MeetingRoomOutlined';
 import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
 import ChairOutlinedIcon from '@mui/icons-material/ChairOutlined';
 import EastOutlinedIcon from '@mui/icons-material/EastOutlined';
-import vid from '../videos/chair.mp4';
+import vid from '../assets/videos/chair.mp4'
 
 
 function Main() {
-
-    const vidYT = "https://youtu.be/IpS-hRq1kVY";
 
   return (
     <div className="main-section">

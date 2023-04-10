@@ -15,7 +15,7 @@
 
 
         .upper{
-            background: url("public/assets/images/img1.jpg");
+            background: url("./assets/images/img1.jpg");
             background-size: cover;
             background-position: center;
             flex: 3;
@@ -235,44 +235,44 @@
 
                 div:nth-child(1) {
                     grid-area: 1 / 1 / span 1 / span 2;
-                    background-image: url('public/assets/images/img2.jpg');
+                    background-image: url('./assets/images/img2.jpg');
 
                 }
                 div:nth-child(2) {
                     grid-area: 1 / 3 / span 1 / span 3;
-                    background-image: url('public/assets/images/img3.jpg');
+                    background-image: url('./assets/images/img3.jpg');
                     background-position: left top;
 
                 }
                 div:nth-child(3) {
                     grid-area: 1 / 6 / span 1 / span 1;
-                    background-image: url('public/assets/images/img4.jpg');
+                    background-image: url('./assets/images/img4.jpg');
 
 
                 }
                 div:nth-child(4) {
                     grid-area: 2 / 1 / span 1 / span 1;
-                    background-image: url('public/assets/images/img5.jpg');
+                    background-image: url('./assets/images/img5.jpg');
 
                 }
                 div:nth-child(5) {
                     grid-area: 2 / 2 / span 1 / span 4;
-                    background-image: url('public/assets/images/img6.jpg');
+                    background-image: url('./assets/images/img6.jpg');
 
                 }
                 div:nth-child(6) {
                     grid-area: 2 / 6 / span 1 / span 1;
-                    background-image: url('public/assets/images/img7.jpg');
+                    background-image: url('./assets/images/img7.jpg');
 
                 }
                 div:nth-child(7) {
                     grid-area: 3 / 1 / span 1 / span 3;
-                    background-image: url('public/assets/images/img8.jpg');
+                    background-image: url('./assets/images/img8.jpg');
 
                 }
                 div:nth-child(8) {
                     grid-area: 3 / 4 / span 1 / span 3;
-                    background-image: url('public/assets/images/img9.jpg');
+                    background-image: url('./assets/images/img9.jpg');
 
                 }
         }
