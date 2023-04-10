@@ -27,7 +27,7 @@
             .menu{
                 margin: 0 20px 0 12px;
                 color: $primary-color;
-    
+                display: none;
             }
     
             .logo{
@@ -176,6 +176,11 @@
 
         .upper {
             .left {
+
+                .menu {
+                    display: inline-block;
+                }
+                
                 .search {
                     display: none;
             }   }

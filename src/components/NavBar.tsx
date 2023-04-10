@@ -2,6 +2,11 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import CloseIcon from '@mui/icons-material/Close';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowUp';
+
+
 
 function NavBar() {
   return (
@@ -50,7 +55,6 @@ function NavBar() {
                 <a href="">Accessories</a>
             </div>
         </div>
-
     </div>
   )
 }
