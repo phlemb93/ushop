@@ -1,11 +1,9 @@
+import { Link } from 'react-router-dom';
+
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import CloseIcon from '@mui/icons-material/Close';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowUp';
-
 
 
 function NavBar() {
@@ -13,33 +11,38 @@ function NavBar() {
     <div className="navbar">
 
         <div className="upper">
-        <div className="left">
-            <div className="menu">
-                <MenuOutlinedIcon style={{fontSize: 40}} />
-            </div>
-            <div className="logo">
-                <h2>USHOP</h2>
-            </div>  
-            <div className="search">
-                <input type="text" placeholder="Find your Snug"/>
-                <SearchOutlinedIcon className="search-icon" style={{fontSize: 28}} />
-            </div>
-        </div>
-
-        <div className="right">
-            <div className="profile">
-                <PersonOutlineOutlinedIcon style={{fontSize: 40}} />
-            </div>
-            <div className="cart">
-                <div className="icon">
-                    <LocalMallOutlinedIcon style={{fontSize: 28}}/>
+            <div className="left">
+                <div className="menu">
+                    <MenuOutlinedIcon style={{fontSize: 40}} />
                 </div>
-                <small>Basket</small>
-                <span style={{fontSize: 11}} className="number">
-                    10
-                </span>
+                <Link to='/'>
+                    <div className="logo">
+                        <h2>USHOP</h2>
+                    </div> 
+                </Link>
+                <div className="search">
+                    <input type="text" placeholder="Find your Snug"/>
+                    <SearchOutlinedIcon className="search-icon" style={{fontSize: 28}} />
+                </div>
             </div>
-        </div>
+
+            <div className="right">
+                <Link to='/login'>
+                    <div className="profile">
+                        <PersonOutlineOutlinedIcon style={{fontSize: 40}} />
+                    </div>
+                </Link>
+                
+                <div className="cart">
+                    <div className="icon">
+                        <LocalMallOutlinedIcon style={{fontSize: 28}}/>
+                    </div>
+                    <small>Basket</small>
+                    <span style={{fontSize: 11}} className="number">
+                        10
+                    </span>
+                </div>
+            </div>
         </div>
 
 

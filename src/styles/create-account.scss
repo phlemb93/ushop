@@ -1,5 +1,5 @@
-.login {
-    margin: 110px auto 0 auto;
+.create-account {
+    margin: 140px auto;
     height: 70vh;
     width: 80%;
     display: flex;
@@ -23,60 +23,57 @@
 
 
         input {
-            // width: 100%;
             margin-bottom: 20px;
             border: none;
             border-bottom: 1px solid gray;
             padding: 16px 20px;
             font-size: 14px;
     
-    
-    
             &:focus {
                 outline-color: $primary-color;
             }
-        
-    
         }
     }
     
 
     .buttons {
         width: 100%;
-        padding: 0px 20px;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
 
 
         button {
             font-size: 16px;
             border: none;
-            padding: 12px;
+            padding: 16px 0px;
             background-color: transparent;
             cursor: pointer;
             opacity: 0.8;
             transition: all 0.2s ease-in-out;    
-    
+
         }
 
         .btn-one {
             border-radius: 20px;
-            padding: 12px 20px;
+            width: 120px;
+            margin-right: 50px;
             background-color: #E85D50;
             color: #fff;
 
+
             &:hover {
-            opacity: 1;
-            }
+                opacity: 1;
+                }
         }
-    
+
         a {
             text-align: center;
 
+                    
             &:hover {
                 opacity: 0.5;
-            }
 
+            }
         }
     }
     
@@ -84,7 +81,7 @@
 
 @media (max-width: 780px) {
 
-    .login {
+    .create-account {
         width: 90%;
         padding: 0;
 
@@ -92,30 +89,22 @@
 
 }
         .buttons {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin: 0 auto;
-            width: 100%;
+            justify-content: space-between;
 
-
-            .btn-one {                
-                margin-right: 0;
-                width: 100%;
-                margin-bottom: 30px;
+            .btn-one {               
+                flex: 1;
+                // margin-right: 150px;
             }
-                
-                a {
-                    margin-right: 0;
-
-                }
+            a {
+                flex: 1;
+            }
         }
     }
 }
 
 @media (min-width: 1100px) {
 
-    .login {
-        width: 50%;
+    .create-account {
+        width: 60%;
     }
 }
