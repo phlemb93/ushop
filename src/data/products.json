@@ -1,0 +1,99 @@
+
+[
+    {
+        "id": 1,
+        "title": "the rebel",
+        "category": "armchair",
+        "brief": "1.5 Seater Snuggler",
+        "color": "Mid Grey",
+        "images": [
+            "../assets/images/img1", 
+            "../assets/images/img1", 
+            "../assets/images/img1"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "the white",
+        "category": "accessories",
+        "brief": "1.5 Seater Snuggler",
+        "color": "Mid Grey",
+        "images": [
+            "../assets/images/img1", 
+            "../assets/images/img1", 
+            "../assets/images/img1"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "the green",
+        "category": "bundle",
+        "brief": "1.5 Seater Snuggler",
+        "color": "Mid Grey",
+        "images": [
+            "../assets/images/img1", 
+            "../assets/images/img1", 
+            "../assets/images/img1"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "the blue",
+        "category": "armchair",
+        "brief": "1.5 Seater Snuggler",
+        "color": "Mid Grey",
+        "images": [
+            "../assets/images/img1", 
+            "../assets/images/img1", 
+            "../assets/images/img1"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "the red",
+        "category": "sofa",
+        "brief": "1.5 Seater Snuggler",
+        "color": "Mid Grey",
+        "images": [
+            "../assets/images/img1", 
+            "../assets/images/img1", 
+            "../assets/images/img1"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "the purple",
+        "category": "sofa",
+        "brief": "1.5 Seater Snuggler",
+        "color": "Mid Grey",
+        "images": [
+            "../assets/images/img1", 
+            "../assets/images/img1", 
+            "../assets/images/img1"
+        ]
+    },
+    {
+        "id": 7,
+        "title": "the orange",
+        "category": "bundle",
+        "brief": "1.5 Seater Snuggler",
+        "color": "Mid Grey",
+        "images": [
+            "../assets/images/img1", 
+            "../assets/images/img1", 
+            "../assets/images/img1"
+        ]
+    },
+    {
+        "id": 8,
+        "title": "the indigo",
+        "category": "accessories",
+        "brief": "1.5 Seater Snuggler",
+        "color": "Mid Grey",
+        "images": [
+            "../assets/images/img1", 
+            "../assets/images/img1", 
+            "../assets/images/img1"
+        ]
+    }
+]
