@@ -12,7 +12,7 @@ function Login() {
           </div>
           
           <div className="buttons">
-            <button>Submit</button>
+            <button className='btn-one'>Submit</button>
 
             <Link to='/login'>
                 <button>Cancel</button>
