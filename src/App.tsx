@@ -8,6 +8,7 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import BurgerMenu from './components/BurgerMenu'
 import Cart from './components/Cart'
+import Store from './pages/Store';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path='/' element={<Home /> } />
+          <Route path='/store' element={<Store /> } />
           <Route path='/login' element={<Login /> } />
           <Route path='/create-account' element={<CreateAccount /> } />
           <Route path='/forget-password' element={<ForgetPassword /> } />
