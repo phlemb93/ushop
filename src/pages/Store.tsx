@@ -1,48 +1,81 @@
-import Products from '../components/Products'
+import Products from '../components/ProductsList'
+import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
+import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 function Store() {
   return (
     <div className="store">
-        <h1>STORE</h1>
-
+        <div className="top">
+            <small>Showing <span>530</span> results</small>
+            <div className="filter">
+                <p>Filters</p>
+                <div className="filter-icon">
+                    <TuneOutlinedIcon />
+                </div>
+            </div>
+        </div>
         <div className="content">
             <div className="left">
                 <div className="color">
                     <div className="head">
                         <p>Colour</p>
-                        <span>-</span>
+                        <span>
+                            <RemoveOutlinedIcon className="remove" />
+                            <AddOutlinedIcon className="add" />
+                        </span>
                     </div>
                     <div className="body">
-                        <div>red</div>
-                        <div>blue</div>
-                        <div>green</div>
-                        <div>gray</div>
+                        <div className="red"></div>
+                        <div className="blue"></div>
+                        <div className="green"></div>
+                        <div className="gray"></div>
                     </div>
                 </div>
                 <div className="collection">
                     <div className="head">
                         <p>Collections</p>
-                        <span>-</span>
+                        <span>
+                            <RemoveOutlinedIcon className="remove" />
+                            <AddOutlinedIcon className="add" />
+                        </span>
                     </div>
                     <div className="body">
-                        <input type="checkbox" name="armchair" id="" />
-                        <input type="checkbox" name="sofa" id="" />
-                        <input type="checkbox" name="bundle" id="" />
-                        <input type="checkbox" name="accessories" id="" />
+                        <div>
+                            <input type="checkbox" name="armchair" id="" />
+                            <label>Armchair</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="sofa" id="" />
+                            <label>Sofa</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="bundle" id="" />
+                            <label>Bundle</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="accessories" id="" />
+                            <label>Accessories</label>
+                        </div>
                     </div>
                 </div>
+
                 <div className="price">
                     <div className="head">
                         <p>Price</p>
-                        <span>-</span>
+                        <span>
+                            <RemoveOutlinedIcon className="remove" />
+                            <AddOutlinedIcon className="add" />
+                        </span>
                     </div>
+
                     <div className="body">
-                        <div className="top">
-                            <input type="number" name="" id="from" />
-                            <span>-</span>
-                            <input type="number" name="" id="to" />
+                        <div className="up">
+                            <div className="low">700</div>
+                            <RemoveOutlinedIcon />
+                            <div className="high">5000</div>
                         </div>
-                        <div className="bottom">
+                        <div className="down">
                             <input type="range" name="" id="" />
                         </div>
                     </div>

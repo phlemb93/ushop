@@ -1,6 +1,6 @@
 import { useEffect, useState }  from 'react';
 
-import Product from './Product';
+import Product from './ProductDetails';
 
 type Item = {
   id: number
@@ -17,7 +17,7 @@ function Products() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
 
-  const url = "http://localhost:3000/products";
+  const url = "http://127.0.0.1:3000/products";
 
   useEffect(() => {
     fetch(url)
@@ -25,6 +25,7 @@ function Products() {
     .then(items => {
       setData(items)
       setIsLoading(false)
+      console.log(items)
     })
     .catch(err => {
       setData([])
