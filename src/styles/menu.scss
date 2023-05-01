@@ -61,22 +61,33 @@
                 cursor: pointer;
 
 
-                img {
-                    transition: all 0.2s ease-in-out;
-                }
-
                 &:hover {
-
-                    img {
+                    .image {
                         transform: scale(1.2, 1.2);
                     }
                 }
 
-
-                img {
+                .image {
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    transition: all 0.2s ease-in-out;
                     width: 40px;
                     height: 25px;
                     margin-right: 20px;
+
+                }
+                .img1 {
+                    background-image: url('assets/images/sofa.jpg');
+                }
+                .img2 {
+                    background-image: url('assets/images/armchair.jpg');
+                }
+                .img3{
+                    background-image: url('assets/images/bundles.jpg');
+                }
+                .img4 {
+                    background-image: url('assets/images/accessories.jpg');
                 }
             }
         }

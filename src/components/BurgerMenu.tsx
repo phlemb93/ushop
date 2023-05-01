@@ -23,19 +23,23 @@ function BurgerMenu() {
                 </div>
                 <div className="items">
                     <div>
-                        <img src="./assets/images/sofa.jpg" alt="" />
+                        <div className="image img1"></div>
+                        {/* <img src='../assets/images/img1.jpg' alt="sofa" /> */}
                         <a>Sofas</a>
                     </div>
                     <div>
-                        <img src="./assets/images/armchair.jpg" alt="" />
+                        <div className="image img2"></div>
+                        {/* <img src="./assets/images/armchair.jpg" alt="armchair" /> */}
                         <a>Armchairs</a>
                     </div>
                     <div>
-                        <img src="./assets/images/bundles.jpg" alt="" />
+                        <div className="image img3"></div>
+                        {/* <img src="../assets/images/bundles.jpg" alt="bundles" /> */}
                         <a>Bundles</a>
                     </div>
                     <div>
-                        <img src="./assets/images/accessories.jpg" alt="" />
+                        <div className="image img4"></div>
+                        {/* <img src="../assets/images/accessories.jpg" alt="accessories" /> */}
                         <a>Accessories</a>
                     </div>
                 </div>
