@@ -68,8 +68,9 @@ function Main() {
                         <EastOutlinedIcon />
                 </div>
             </div>
-            
+            <div className="video">
                 <video src={vid} style={{objectFit: 'cover'}} autoPlay loop muted  />
+            </div>
         </div>
 
         <div className="third">

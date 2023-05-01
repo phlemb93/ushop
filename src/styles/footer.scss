@@ -103,8 +103,6 @@
         padding: 20px;
         height: 250px;
 
-
-
         p:first-child{
             width: 80%;
             font-size: 24px;
@@ -163,7 +161,6 @@
         align-items: center;
         padding: 20px 0;
 
-
         .form{
             width: 100%;
 
@@ -175,7 +172,7 @@
             width: 100%;
         }
         .connect{
-            padding: 10px;
+            padding: 5px;
             width: 100%;
             position: sticky;
             bottom: 0;
@@ -183,15 +180,28 @@
             align-items: center;
             background-color: gray;
             color: #fff;
-
+            
             p:first-child {
                 margin-top: 0;
                 padding: 5px 0;
-                font-size: 22px;
+                font-size: 20px;
+
             }
             .icons {
                 flex-direction: row;
-          
+                align-items: center;
+                justify-content: center;
+                width: 300px;
+                
+                .icon {
+                    display: flex;
+                    justify-content: center;
+                    height: 100%;
+                    margin: 0;    
+                }
+                p {
+                    display: none;
+                }
             }
 
         }
