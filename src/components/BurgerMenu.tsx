@@ -1,12 +1,20 @@
+import { useIsOpenContext } from '../utilities/contexts/useIsOpenContext';
+
 import CloseIcon from '@mui/icons-material/Close';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 
+
+
 function BurgerMenu() {
+
+const { isOpen, handleClose } = useIsOpenContext();
+
+
   return (
-        <div className="burger-menu">
-            <div className="close-btn">
+        <div className="burger-menu" style={{ transform: isOpen ? 'translateX(0%)' : 'translateX(-100%)'}}>
+            <div className="close-btn" onClick={handleClose}>
                 <CloseIcon style={{ fontSize:'38px', cursor:'pointer'}}/>
             </div>
             <div className="content">

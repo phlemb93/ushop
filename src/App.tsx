@@ -9,11 +9,13 @@ import Footer from './components/Footer'
 import BurgerMenu from './components/BurgerMenu'
 import Cart from './components/Cart'
 import Store from './pages/Store';
+import { IsOpenProvider } from './utilities/contexts/useIsOpenContext';
 
 function App() {
 
   return (
       <>
+      <IsOpenProvider>
         <BurgerMenu />
         <Cart />
         <NavBar />
@@ -25,6 +27,7 @@ function App() {
           <Route path='/forget-password' element={<ForgetPassword /> } />
         </Routes>
         <Footer />
+      </IsOpenProvider>
       </>
   )
 }

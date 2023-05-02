@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useIsOpenContext } from '../utilities/contexts/useIsOpenContext';
 
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
@@ -6,13 +7,17 @@ import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 
+
 function NavBar() {
+
+const { handleOpen } = useIsOpenContext();
+
   return (
     <div className="navbar">
 
         <div className="upper">
             <div className="left">
-                <div className="menu">
+                <div className="menu" onClick={handleOpen}>
                     <MenuOutlinedIcon style={{fontSize: 40}} />
                 </div>
                 <Link to='/'>
