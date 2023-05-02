@@ -16,8 +16,6 @@
     border-left: 1px solid $secondary-color;
     transition: all 1s ease-in-out;
     background-color: #fff;
-    transform: translateX(100%);
-
 
 
     .top {
@@ -33,11 +31,12 @@
             font-size: 24px;
         }
 
-        div {
+        .close-menu {
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 16px;
+            cursor: pointer;
 
             p {
                 margin-left: 14px;

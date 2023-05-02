@@ -1,6 +1,4 @@
 .burger-menu {
-
-
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -11,7 +9,6 @@
     background-color: #fff;
     z-index: 10;
     transition: all 1s ease-in-out;
-    // transform: translateX(0%);
 
     .close-btn {
         width: 100%;
@@ -22,7 +19,6 @@
         justify-content: flex-end;
         align-items: center;
         margin-bottom: 50px;
-        cursor: pointer;
     }
     
     .content {

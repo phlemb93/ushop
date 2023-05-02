@@ -9,13 +9,13 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 function BurgerMenu() {
 
-const { isOpen, handleClose } = useIsOpenContext();
+const { isMenuOpen, handleMenuClose } = useIsOpenContext();
 
 
   return (
-        <div className="burger-menu" style={{ transform: isOpen ? 'translateX(0%)' : 'translateX(-100%)'}}>
-            <div className="close-btn" onClick={handleClose}>
-                <CloseIcon style={{ fontSize:'38px', cursor:'pointer'}}/>
+        <div className="burger-menu" style={{ transform: isMenuOpen ? 'translateX(0%)' : 'translateX(-100%)'}}>
+            <div className="close-btn">
+                <CloseIcon  onClick={handleMenuClose} style={{ fontSize:'38px', cursor:'pointer'}}/>
             </div>
             <div className="content">
                 <div className="title">

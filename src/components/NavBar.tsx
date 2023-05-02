@@ -10,14 +10,14 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 function NavBar() {
 
-const { handleOpen } = useIsOpenContext();
+const { handleMenuOpen, handleCartOpen} = useIsOpenContext();
 
   return (
     <div className="navbar">
 
         <div className="upper">
             <div className="left">
-                <div className="menu" onClick={handleOpen}>
+                <div className="menu" onClick={ handleMenuOpen }>
                     <MenuOutlinedIcon style={{fontSize: 40}} />
                 </div>
                 <Link to='/'>
@@ -32,13 +32,15 @@ const { handleOpen } = useIsOpenContext();
             </div>
 
             <div className="right">
-                <Link to='/login'>
+               
                     <div className="profile">
-                        <PersonOutlineOutlinedIcon style={{fontSize: 40}} />
+                        <Link to='/login'>
+                            <PersonOutlineOutlinedIcon className="profile-icon" style={{fontSize: 40}} />
+                        </Link>
                     </div>
-                </Link>
+             
                 
-                <div className="cart">
+                <div className="cart" onClick={ handleCartOpen }>
                     <div className="icon">
                         <LocalMallOutlinedIcon style={{fontSize: 28}}/>
                     </div>

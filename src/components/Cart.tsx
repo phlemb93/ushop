@@ -2,13 +2,17 @@ import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Badge } from '@mui/material';
+
 import { Link } from 'react-router-dom';
 import { useState }  from 'react';
 import CartItems from './CartItems';
 import { Item } from '../utilities/types/types'
+import { useIsOpenContext } from '../utilities/contexts/useIsOpenContext';
 
 
 function Cart() {
+
+    const { isCartOpen, handleCartClose } = useIsOpenContext();
 
   const [cartItems, setCartItems] = useState<null | Item[]>(
     [
@@ -171,12 +175,15 @@ function Cart() {
     ]
   );
 
+//   transform: translateX(100%);
+// transform: isCartOpen ? 'translate(0%)' : 'translate(100%)'
+
 
   return (
-        <div className="cart-container">
+        <div className="cart-container" style={{ transform: isCartOpen ? 'translate(0%)' : 'translate(100%)' }}>
                 <div className="top">
                     <p>Basket</p>
-                    <div>
+                    <div className="close-menu" onClick={handleCartClose}>
                         <ArrowBackIcon />
                         <p>Continue shopping</p>
                     </div>

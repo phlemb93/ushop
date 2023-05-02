@@ -21,22 +21,27 @@ a {
         padding: 2px 8px;
         border-bottom: 1px solid $secondary-color;
 
-        .left{
+        .left {
             display: flex;
             justify-content: flex-start;
             align-items: center;
     
-            .menu{
+            .menu {
                 margin: 0 20px 0 12px;
                 color: $primary-color;
                 display: none;
+                cursor: pointer;
             }
     
-            .logo{
+            .logo {
                 font-family: "Rubik Pixels";
                 color: $primary-color;
                 font-size: 22px;
                 letter-spacing: 3px;
+
+                &:hover {
+                    color: $text-color;
+                }
             }
 
             .search {
@@ -67,17 +72,26 @@ a {
                 }
             }
         }
-        .right{
+        .right {
             display: flex;
             justify-content: flex-end;
             align-items: center;
+
     
-            .profile{
+            .profile {
                 color: $primary-color;
                 margin-right: 20px;
+
+                .profile-icon {
+                    color: $primary-color;
+
+                &:hover {
+                    opacity: 0.5;
+                }
+                }
             }
     
-            .cart{
+            .cart {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -86,9 +100,21 @@ a {
                 height: 30px;
                 border-radius: 20px;
                 background: $secondary-color;
+                cursor: pointer;
 
+
+                &:hover {
+                    background: $primary-color;
+
+                    .icon {
+                        color: #FFF;
+                    }
+                    .number {
+                        background: $text-color;
+                    }
+                }
     
-                .icon{
+                .icon {
                     color: $primary-color;
                 }
 
@@ -96,7 +122,7 @@ a {
                     margin: 0 6px;
                     color: $primary-color;
                 }
-                .number{
+                .number {
                     background: $primary-color;
                     color: #FFF;
                     font-weight: bold;

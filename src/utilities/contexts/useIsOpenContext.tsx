@@ -2,10 +2,12 @@ import { useContext, createContext, useState } from 'react';
 
 
 type valuesType = {
-    isOpen: boolean,
-    handleOpen: () => void
-    handleClose: () => void
-    handleToggle: () => void
+    isMenuOpen: boolean,
+    isCartOpen: boolean,
+    handleMenuOpen: () => void
+    handleMenuClose: () => void
+    handleCartOpen: () => void
+    handleCartClose: () => void
 
 }
 type isOpenProviderProps = {
@@ -20,26 +22,30 @@ export const useIsOpenContext = () => {
 
 export const IsOpenProvider = ({ children }: isOpenProviderProps) => {
 
-const [isOpen, setIsOpen] = useState(false);
+const [isMenuOpen, setIsMenuOpen] = useState(false);
+const [isCartOpen, setIsCartOpen] = useState(false);
 
-const handleToggle = () => {
-    setIsOpen((isOpen) => !isOpen);
+const handleMenuOpen = () => {
+    setIsMenuOpen(true);
+    console.log('menu is OPEN')
 }
-const handleOpen = () => {
-    setIsOpen(true);
-    console.log('its open')
-    console.log(isOpen)
+const handleMenuClose = () => {
+    setIsMenuOpen(false);
+    console.log('menu is CLOSE')
+}
+const handleCartOpen = () => {
+    setIsCartOpen(true);
+    console.log('cart is open')
 
 }
-const handleClose = () => {
-    setIsOpen(false);
-    console.log('its close')
-    console.log(isOpen)
+const handleCartClose = () => {
+    setIsCartOpen(false);
+    console.log('cart is close')
 }
 
 return (
 
-    <IsOpenContext.Provider value={{isOpen, handleOpen, handleClose, handleToggle}}>
+    <IsOpenContext.Provider value={{isMenuOpen, isCartOpen, handleMenuOpen, handleMenuClose, handleCartOpen, handleCartClose}}>
 
         { children }
 
