@@ -1,9 +1,15 @@
+import { useState } from 'react'
 import Products from '../components/ProductsList'
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 function Store() {
+
+    const [color, setColor] = useState(true);
+    const [collection, setCollection] = useState(true);
+    const [price, setPrice] = useState(true);
+
   return (
     <div className="store">
         <div className="top">
@@ -21,11 +27,22 @@ function Store() {
                     <div className="head">
                         <p>Colour</p>
                         <span>
-                            <RemoveOutlinedIcon className="remove" />
-                            <AddOutlinedIcon className="add" />
+                            <RemoveOutlinedIcon 
+                            style={{
+                                display: color ? 'flex' : 'none'}}
+                            className="remove" 
+                            onClick={() => setColor(false)}
+                            />
+
+                            <AddOutlinedIcon 
+                            style={{
+                                display: color ? 'none' : 'flex'}} 
+                            className="add" 
+                            onClick={() => setColor(true)}
+                            />
                         </span>
                     </div>
-                    <div className="body">
+                    <div className="body" style={{display: color ? 'flex' : 'none'}}>
                         <div className="red"></div>
                         <div className="blue"></div>
                         <div className="green"></div>
@@ -36,11 +53,22 @@ function Store() {
                     <div className="head">
                         <p>Collections</p>
                         <span>
-                            <RemoveOutlinedIcon className="remove" />
-                            <AddOutlinedIcon className="add" />
+                            <RemoveOutlinedIcon 
+                                style={{
+                                    display: collection ? 'flex' : 'none'}}
+                                className="remove" 
+                                onClick={() => setCollection(false)}
+                                />
+
+                                <AddOutlinedIcon 
+                                style={{
+                                    display: collection ? 'none' : 'flex'}} 
+                                className="add" 
+                                onClick={() => setCollection(true)}
+                            />
                         </span>
                     </div>
-                    <div className="body">
+                    <div className="body" style={{display: collection ? 'flex' : 'none'}}>
                         <div>
                             <input type="checkbox" name="armchair" id="" />
                             <label>Armchair</label>
@@ -64,12 +92,23 @@ function Store() {
                     <div className="head">
                         <p>Price</p>
                         <span>
-                            <RemoveOutlinedIcon className="remove" />
-                            <AddOutlinedIcon className="add" />
+                            <RemoveOutlinedIcon 
+                                style={{
+                                    display: price ? 'flex' : 'none'}}
+                                className="remove" 
+                                onClick={() => setPrice(false)}
+                                />
+
+                                <AddOutlinedIcon 
+                                style={{
+                                    display: price ? 'none' : 'flex'}} 
+                                className="add" 
+                                onClick={() => setPrice(true)}
+                            />
                         </span>
                     </div>
 
-                    <div className="body">
+                    <div className="body" style={{display: price ? 'flex' : 'none'}}>
                         <div className="up">
                             <div className="low">700</div>
                             <RemoveOutlinedIcon />

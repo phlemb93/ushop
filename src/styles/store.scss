@@ -6,7 +6,7 @@
     display: block;
 
     .top {
-        display: flex;
+        display: none;
         justify-content: space-between;
         align-items: center;
         float: inline-end;
@@ -54,7 +54,7 @@
 
             .color {
                 border-bottom: 1px solid $light-gray;
-                padding: 20px 20px 0 20px;
+                padding: 20px;
                 transition: all 0.5s ease-in-out;
 
                 .head {
@@ -65,21 +65,13 @@
                     span {
                         transition: all 2s ease-in-out;
                     }
-
-                    &:hover + .body{
-                        display: none;
-                    }
-                    &:hover {
-                        .remove {
-                            display: none;
-                        }
-                    }
                 }
 
                 .body {
                     display: flex;
                     justify-content: space-between;
                     padding: 20px;
+                    padding-bottom: 0;
                     transition: all 2s ease-in-out;
 
                     div {
@@ -105,35 +97,26 @@
             }
             .collection {
                 border-bottom: 1px solid $light-gray;
-                padding: 20px 20px 0 20px;
+                padding: 20px;
                 transition: all 0.5s ease-in-out;
 
                 .head {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-
-                    &:hover + .body{
-                        display: none;
-                    }
-                    &:hover {
-                        .remove {
-                            display: none;
-                        }
-                    }
                 }
 
                 .body {
                     display: flex;
                     flex-direction: column;
                     padding: 20px;
+                    padding-bottom: 0;
                     transition: all 0.5s ease-in-out;
 
                     div {
                         display: flex;
                         align-items: center;
                         margin-bottom: 10px;
-
 
                         input {
                             border: none;
@@ -151,22 +134,13 @@
             }
             .price {
                 border-bottom: 1px solid $light-gray;
-                padding: 20px 20px 0 20px;
+                padding: 20px;
                 transition: all 0.5s ease-in-out;
 
                 .head {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-
-                    &:hover + .body{
-                        display: none;
-                    }
-                    &:hover {
-                        .remove {
-                            display: none;
-                        }
-                    }
                 }
 
                 .body {
@@ -174,6 +148,7 @@
                     flex-direction: column;
                     align-items: center;
                     padding: 20px;
+                    padding-bottom: 0;
                     transition: all 0.5s ease-in-out;
 
                     .up {
@@ -210,26 +185,15 @@
 @media (max-width: 780px) {
     .store {
 
-        .content {
-            .left {
-                display: flex;
-            }
-        }
         .top {
             display: flex;
         }
-    }
-}
-@media (min-width: 780px) {
-    .store {
-        
-        .top {
-            display: none;
-        }
+
         .content {
             .left {
-                display: flex;
+                display: none;
             }
         }
+     
     }
 }

@@ -24,31 +24,27 @@
     .content {
         padding: 16px 36px;
 
-        .title{
+        .title {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
             margin-bottom: 10px;
-            cursor: pointer;
 
             p {
                 font-size: 18px;
             }
 
-            .icons{
-                display: flex;
-
-                .up {
-                    display: none;
-                }
-                .down {
-                    display: inline-block;
-                }
+            .icon {
+                display: inline-block;
             }
         }
 
         .items {
+            * {
+                text-decoration: none;
+                color: $text-color;
+            }
 
             div {
                 display: flex;
@@ -56,14 +52,7 @@
                 margin-bottom: 14px;
                 padding: 4px 16px;
                 cursor: pointer;
-
-
-                &:hover {
-                    .image {
-                        transform: scale(1.2, 1.2);
-                    }
-                }
-
+                
                 .image {
                     background-size: contain;
                     background-repeat: no-repeat;
@@ -85,6 +74,13 @@
                 }
                 .img4 {
                     background-image: url('assets/images/accessories.jpg');
+                }
+
+
+                &:hover {
+                    .image {
+                        transform: scale(1.2, 1.2);
+                    }
                 }
             }
         }
