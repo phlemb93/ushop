@@ -1,0 +1,63 @@
+.filter-menu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    height: 100vh;
+    width: 470px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #FFF;
+
+
+
+
+
+    .bottom {
+        position: fixed;
+        bottom: 0;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        padding:  0 0 20px 0;
+
+      
+        .buttons {
+            display: flex;
+            margin-top: 20px;
+
+            div {
+                padding: 12px 20px;
+                width: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+
+                p {
+                    margin-right: 5px;
+                    font-size: 14px;
+                }
+
+                .icon  {
+                    font-size: 20px;
+                }
+
+                .done {
+                    color: green;
+                }
+
+                &:first-child {
+                    border: 1px solid $text-color;
+                    margin-right: 20px;
+                }
+                &:nth-child(2) {
+                    background-color: $text-color;
+                    color: #FFF;
+                }
+            }
+        }
+    }
+}

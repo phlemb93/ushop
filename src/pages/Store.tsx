@@ -3,8 +3,11 @@ import Products from '../components/ProductsList'
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import { useIsOpenContext } from '../utilities/contexts/useIsOpenContext';
 
 function Store() {
+    
+    const { handleFilterOpen } = useIsOpenContext();
 
     const [color, setColor] = useState(true);
     const [collection, setCollection] = useState(true);
@@ -16,7 +19,7 @@ function Store() {
             <small>Showing <span>530</span> results</small>
             <div className="filter">
                 <p>Filters</p>
-                <div className="filter-icon">
+                <div className="filter-icon" onClick={ handleFilterOpen }>
                     <TuneOutlinedIcon />
                 </div>
             </div>

@@ -10,12 +10,14 @@ import BurgerMenu from './components/BurgerMenu'
 import Cart from './components/Cart'
 import Store from './pages/Store';
 import { IsOpenProvider } from './utilities/contexts/useIsOpenContext';
+import Filter from './components/Filter';
 
 function App() {
 
   return (
       <>
       <IsOpenProvider>
+        <Filter />
         <BurgerMenu />
         <Cart />
         <NavBar />

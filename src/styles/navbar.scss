@@ -106,7 +106,7 @@ a {
                 &:hover {
                     background: $primary-color;
 
-                    .icon {
+                    .icon, small {
                         color: #FFF;
                     }
                     .number {
