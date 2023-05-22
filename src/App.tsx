@@ -11,12 +11,14 @@ import Cart from './components/Cart'
 import Store from './pages/Store';
 import { IsOpenProvider } from './utilities/contexts/useIsOpenContext';
 import Filter from './components/Filter';
+import Overlay from './components/Overlay';
 
 function App() {
 
   return (
       <>
       <IsOpenProvider>
+        <Overlay />
         <Filter />
         <BurgerMenu />
         <Cart />
