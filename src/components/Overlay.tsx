@@ -3,13 +3,20 @@ import { useIsOpenContext } from "../utilities/contexts/useIsOpenContext"
 
 function Overlay() {
 
-    const { isMenuOpen, isCartOpen } = useIsOpenContext();
+    const { isMenuOpen, isCartOpen, handleMenuClose,handleCartClose } = useIsOpenContext();
+
+    const handleClick = () => {
+
+        handleMenuClose();
+        handleCartClose();
+    }
 
   return (
     <div className='overlay' 
     style={{
-        transform: !(isMenuOpen || isCartOpen) ? 'translateX(-100%)' : 'translateX(0%)'
-}}></div>
+        transform: !(isMenuOpen || isCartOpen) ? 'translateX(-100%)' : 'translateX(0%)'}}
+    onClick={handleClick}>
+    </div>
   )
 }
 
