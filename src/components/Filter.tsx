@@ -1,8 +1,3 @@
-import { useState } from 'react'
-import Products from '../components/ProductsList'
-import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
-import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import { useIsOpenContext } from '../utilities/contexts/useIsOpenContext';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
@@ -15,7 +10,7 @@ function Filter() {
     <div className="filter-menu" style={{display: isFilterOpen ? 'flex' : 'none'}}>
         <div className="top">
             <div className="close-btn" onClick={ handleFilterClose }>
-                <CloseIcon />
+                <CloseIcon className="icon" />
             </div>
             <p>Filters</p>
         </div>
@@ -45,19 +40,19 @@ function Filter() {
                 
             <div className="body">
                 <div className="red">
-                    <div></div>
+                    <div className="icon"></div>
                     <p>Red</p>
                 </div>
                 <div className="blue">
-                    <div></div>
+                    <div className="icon"></div>
                     <p>Blue</p>
                 </div>
                 <div className="green">
-                    <div></div>
+                    <div className="icon"></div>
                     <p>Green</p>
                 </div>
                 <div className="gray">
-                    <div></div>
+                    <div className="icon"></div>
                     <p>Gray</p>
                 </div>
             </div>
@@ -88,17 +83,22 @@ function Filter() {
 
         <div className="price">
             <p>Price</p>
-            <div className="body">
+            <div className="inputs">
                 <input type="number" name="" id="" />
                 <div></div>
                 <input type="number" name="" id="" />
             </div>
-            <input type="range" name="" id="" />
-            <input type="range" name="" id="" />
+            <div className="ranges">
+                <input type="range" name="" id="" />
+                <div></div>
+                <input type="range" name="" id="" />
+            </div>
         </div>
 
+        <div className="space"></div>
+
         <div className="bottom">
-            <p>Show 55 products</p>
+            <p className="item-num">Show 55 products</p>
             <div className="buttons">
                 <div className="reset-filters">
                     <p>RESET FILTERS</p>

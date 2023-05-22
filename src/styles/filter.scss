@@ -1,31 +1,201 @@
 .filter-menu {
     display: flex;
     flex-direction: column;
-    margin-top: 0;
     height: 100vh;
-    width: 470px;
+    width: 100%;
+    padding: 5px;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 10;
     background-color: #FFF;
+    overflow: scroll;
+
+    .top {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        padding: 20px 0;
+        width: 95%;
+        border-bottom: 1px solid $light-gray;
 
 
+        .close-btn {
+            cursor: pointer;
+            margin-right: 40%;
+
+            .icon {
+                font-size: 24px;
+                color: gray;
+            }
+        }
+
+    }
+
+    .sort-by, .collection {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        padding: 20px 0;
+        width: 95%;
+        border-bottom: 1px solid $light-gray;
+
+        p {
+            margin-bottom: 10px;
+        }
+       div {
+        padding: 10px 0;
+        font-size: 14px;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.5;
+        }
+
+        input {
+            margin-right: 10px;
+            font-size: 50px;
+            cursor: pointer;
+            transform: scale(1.5);
+        }
+        label {
+            cursor: pointer;
+        }
+       }
+    }
+
+    .color {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        padding: 20px 0;
+        width: 95%;
+        border-bottom: 1px solid $light-gray;
+
+        .body {
+            display: flex;
+
+            div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 10px 5px;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 12px;
+    
+                &.red {    
+                    .icon {
+                        background-color: red;
+                        width:30px;
+                        height: 30px;
+                    }
+                }
+                &.blue {    
+                    .icon {
+                        background-color: blue;
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+                &.green {    
+                    .icon {
+                        background-color: green;
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+                &.gray {    
+                    .icon {
+                        background-color: gray;
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+        }
+        
+    }
+
+    .collection {
+
+        div {
+    
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
 
 
+    .price {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        padding: 20px 0;
+        width: 95%;
+        border-bottom: 1px solid $light-gray;
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .inputs {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+
+            input {
+                padding: 8px;
+            }
+
+            div {
+                margin: 0 10px;
+                width: 20px;
+                height: 1px;
+                background-color: $text-color;
+            }
+        }
+
+        .ranges {
+            display: flex;
+            align-items: center;
+
+            input {
+                padding: 8px;
+            }
+
+            div {
+                margin: 0 10px;
+                width: 20px;
+                height: 1px;
+            }
+        }
+    }
+
+    .space {
+        margin: 100px 0;
+    }
 
     .bottom {
         position: fixed;
         bottom: 0;
-        width: 90%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-self: center;
-        padding:  0 0 20px 0;
+        padding:  20px 0;
+        z-index: 10;
+        background-color:#FFF;
 
+        .item-num {
+            margin-left: 5%;
+        }
       
         .buttons {
             display: flex;
+            justify-content: center;
             margin-top: 20px;
 
             div {
@@ -59,5 +229,11 @@
                 }
             }
         }
+    }
+}
+
+@media (min-width: 780px) {
+    .filter-menu {
+        transform: translateX(-100%);
     }
 }
