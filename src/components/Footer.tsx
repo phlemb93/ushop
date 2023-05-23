@@ -2,6 +2,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -18,10 +19,12 @@ function Footer() {
         </div>
         <div className="shop">
             <p>shop</p>
+        
             <div>Sofas</div>
             <div>Armchairs</div>
             <div>Bundles</div>
             <div>Accessories</div>
+            
         </div>
         <div className="connect">
             <p>connect with me</p>

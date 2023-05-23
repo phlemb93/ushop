@@ -10,9 +10,9 @@
         "color": "blue",
         "price": 1600,
         "images": [
-            "src/assets/images/img1.jpg", 
-            "src/assets/images/img2.jpg", 
-            "src/assets/images/img3.jpg"
+            "src/assets/images/sofa.jpg", 
+            "src/assets/images/armchair.jpg", 
+            "src/assets/images/bundles.jpg"
         ]
     },
     {
@@ -23,9 +23,9 @@
         "color": "gray",
         "price": 300,
         "images": [
-            "src/assets/images/img1.jpg", 
-            "src/assets/images/img2.jpg", 
-            "src/assets/images/img3.jpg"
+            "src/assets/images/sofa.jpg", 
+            "src/assets/images/armchair.jpg", 
+            "src/assets/images/bundles.jpg"
         ]
     },
     {
@@ -36,9 +36,9 @@
         "color": "green",
         "price": 6500,
         "images": [
-            "src/assets/images/img1.jpg", 
-            "src/assets/images/img2.jpg", 
-            "src/assets/images/img3.jpg"
+            "src/assets/images/sofa.jpg", 
+            "src/assets/images/armchair.jpg", 
+            "src/assets/images/bundles.jpg"
         ]
     },
     {
@@ -49,9 +49,9 @@
         "color": "blue",
         "price": 900,
         "images": [
-            "src/assets/images/img1.jpg", 
-            "src/assets/images/img2.jpg", 
-            "src/assets/images/img3.jpg"
+            "src/assets/images/sofa.jpg", 
+            "src/assets/images/armchair.jpg", 
+            "src/assets/images/bundles.jpg"
         ]
     },
     {
@@ -62,9 +62,9 @@
         "color": "blue",
         "price": 1300,
         "images": [
-            "src/assets/images/img1.jpg", 
-            "src/assets/images/img2.jpg", 
-            "src/assets/images/img3.jpg"
+            "src/assets/images/sofa.jpg", 
+            "src/assets/images/armchair.jpg", 
+            "src/assets/images/bundles.jpg"
         ]
     },
     {
@@ -75,9 +75,9 @@
         "color": "purple",
         "price": 2000,
         "images": [
-            "src/assets/images/img1.jpg", 
-            "src/assets/images/img2.jpg", 
-            "src/assets/images/img3.jpg"
+            "src/assets/images/sofa.jpg", 
+            "src/assets/images/armchair.jpg", 
+            "src/assets/images/bundles.jpg"
         ]
     },
     {
@@ -88,9 +88,9 @@
         "color": "gray",
         "price": 3500,
         "images": [
-            "src/assets/images/img1.jpg", 
-            "src/assets/images/img2.jpg", 
-            "src/assets/images/img3.jpg"
+            "src/assets/images/sofa.jpg", 
+            "src/assets/images/armchair.jpg", 
+            "src/assets/images/bundles.jpg"
         ]
     },
     {
@@ -101,9 +101,9 @@
         "color": "purple",
         "price": 100,
         "images": [
-            "src/assets/images/img1.jpg", 
-            "src/assets/images/img2.jpg", 
-            "src/assets/images/img3.jpg"
+            "src/assets/images/sofa.jpg", 
+            "src/assets/images/armchair.jpg", 
+            "src/assets/images/bundles.jpg"
         ]
     },
     {
@@ -114,9 +114,9 @@
         "color": "gray",
         "price": 1250,
         "images": [
-            "src/assets/images/img1.jpg", 
-            "src/assets/images/img2.jpg", 
-            "src/assets/images/img3.jpg"
+            "src/assets/images/sofa.jpg", 
+            "src/assets/images/armchair.jpg", 
+            "src/assets/images/bundles.jpg"
         ]
     },
     {
@@ -127,9 +127,9 @@
         "color": "purple",
         "price": 1000,
         "images": [
-            "src/assets/images/img1.jpg", 
-            "src/assets/images/img2.jpg", 
-            "src/assets/images/img3.jpg"
+            "src/assets/images/sofa.jpg", 
+            "src/assets/images/armchair.jpg", 
+            "src/assets/images/bundles.jpg"
         ]
     }
     ]

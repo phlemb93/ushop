@@ -1,6 +1,5 @@
 
-
-const currentFormatter = (value: number) => {
+const currencyFormatter = (value: number) => {
 
     const curr = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP' });
 
@@ -8,4 +7,4 @@ const currentFormatter = (value: number) => {
 
 }
 
-export default currentFormatter;
+export default currencyFormatter;

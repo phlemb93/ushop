@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { useIsOpenContext } from '../utilities/contexts/useIsOpenContext';
 import Products from '../components/ProductsList'
+
+//import icon components from material UI
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import { useIsOpenContext } from '../utilities/contexts/useIsOpenContext';
+
 
 function Store() {
     

@@ -1,0 +1,175 @@
+.item {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 90%;
+    margin: 180px auto 0;
+    border: 1px solid red;
+
+
+    * {
+        color: $text-color;
+    }
+
+    .images {
+        border: 1px solid red;
+        flex: 1;
+    }
+
+    .content {
+        flex: 1;
+        padding: 20px;
+
+        border: 1px solid red;
+
+        .content-top {
+            margin-bottom: 50px;
+
+            h2 {
+                font-size: 40px;
+                font-weight: 500;
+            }
+            p {
+                font-size: 20px;
+            }
+        }
+
+        .details {
+            width: 100%;
+
+            .head {
+                display: flex;
+                justify-content: center;
+                text-align: center;
+
+                p {
+                    background-color: $secondary-color;
+                    padding: 16px;
+                    opacity: 0.5;
+                    flex: 1;
+                    border-radius: 10px 10px 0 0;
+
+                    &:first-child {
+                        margin-right: 5px;
+                    }
+                    
+                    &:hover {
+                        cursor: pointer;
+                        opacity: 1;
+                        text-decoration: underline;
+                    }    
+                }
+            }
+
+            .body {
+                background-color: $secondary-color;
+                padding: 20px;
+
+
+                .fabric {
+                    margin-bottom: 10px;
+
+                    p {
+                        
+                        span {
+                            font-weight: bold;
+                        }
+                    }
+
+                    .options {
+                        padding: 20px 20px 20px 0 ;
+                        display: flex;
+
+                        div {
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50%;
+                            border: none;
+                            margin-right: 20px;
+                        }
+
+                        .blue {
+                            background-color: $midnight-blue;
+                        }
+                        .gray {
+                            background-color: $warm-grey;
+                        }
+                        .green {
+                            background-color: $pine-green;
+                        }
+
+                    }
+
+                    
+                }
+
+                .arms {
+
+                    p {          
+                        span {
+                            font-weight: bold;
+                        }
+                    }
+
+                    .options {
+                        padding: 20px 20px 20px 0;
+                        display: flex;
+
+                        div {
+                         
+                            height: 30px;
+                            background-color: rgba(128, 128, 128, 0.154);
+                            margin-right: 20px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border: 1px solid rgba(128, 128, 128, 0.154);
+                            border-radius: 20px;
+                            padding: 20px;
+                            font-size: 13px;
+                            cursor: pointer;
+
+                            &:hover {
+                                border: 1px solid $text-color;
+                            }
+
+                            & + .included {
+                                width: 100px;
+                            }
+                            & + .not-included {
+                                width: 120px;
+                            }
+                        }
+                    }
+                }
+
+                .display {
+                    width: 100%;
+                    height: 200px;;
+                    background-color: #FFF;
+                    margin: 0 auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 20px;
+                    border-radius: 20px;
+
+                    .top {
+                        width: 100%;
+                        background-color: red;
+                        text-align: center;
+                        p {
+                        
+                        }
+                    }
+                    
+                }
+
+            }
+        }
+
+       
+    }
+
+}

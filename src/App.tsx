@@ -12,6 +12,7 @@ import Store from './pages/Store';
 import { IsOpenProvider } from './utilities/contexts/useIsOpenContext';
 import Filter from './components/Filter';
 import Overlay from './components/Overlay';
+import Product from './pages/ProductDetails';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path='/login' element={<Login /> } />
           <Route path='/create-account' element={<CreateAccount /> } />
           <Route path='/forget-password' element={<ForgetPassword /> } />
+          <Route path='/:id' element={ <Product /> } />
         </Routes>
         <Footer />
       </IsOpenProvider>
