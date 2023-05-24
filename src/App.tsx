@@ -17,24 +17,24 @@ import Product from './pages/ProductDetails';
 function App() {
 
   return (
-      <>
-      <IsOpenProvider>
-        <Overlay />
-        <Filter />
-        <BurgerMenu />
-        <Cart />
-        <NavBar />
-        <Routes>
-          <Route path='/' element={<Home /> } />
-          <Route path='/store' element={<Store /> } />
-          <Route path='/login' element={<Login /> } />
-          <Route path='/create-account' element={<CreateAccount /> } />
-          <Route path='/forget-password' element={<ForgetPassword /> } />
-          <Route path='/:id' element={ <Product /> } />
-        </Routes>
-        <Footer />
-      </IsOpenProvider>
-      </>
+      <div className='app'>
+        <IsOpenProvider>
+          <Overlay />
+          <Filter />
+          <BurgerMenu />
+          <Cart />
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<Home /> } />
+            <Route path='/store' element={<Store /> } />
+            <Route path='/login' element={<Login /> } />
+            <Route path='/create-account' element={<CreateAccount /> } />
+            <Route path='/forget-password' element={<ForgetPassword /> } />
+            <Route path='/:id' element={ <Product /> } />
+          </Routes>
+          <Footer />
+        </IsOpenProvider>
+      </div>
   )
 }
 

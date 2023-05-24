@@ -1,5 +1,5 @@
 
-const currencyFormatter = (value: number) => {
+const currencyFormatter = (value: number | bigint) => {
 
     const curr = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP' });
 
