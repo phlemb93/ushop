@@ -20,7 +20,7 @@ function Products() {
           onMouseLeave={e => ((e.currentTarget.children[0] as HTMLImageElement).src  = item.images[0])} 
           key={item.id} className='product'
           >
-            <img style={{width:'200px', height:'150px'}} src={item.images[0]}  alt={item.title} />
+            <img src={item.images[0]}  alt={item.title} />
             <h1>{item.title}</h1>
             <p>{item.brief}</p>
             <h4>{currencyFormatter(item.price)}</h4>

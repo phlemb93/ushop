@@ -1,29 +1,31 @@
 .products {
     display: flex;
     flex-wrap: wrap;
-    padding: 10px;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        text-decoration: none;
+    }
 
     .product {
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 400px;
-        min-width: 220px;
-        max-width: 350px;
+        height: 450px;
+        width: 300px;
         background-color: $secondary-color;
         border: none;
         border-radius: 20px;
         padding: 20px;
         margin: 10px;
         cursor: pointer;
-
-        * {
-            text-decoration: none;
-            color: $text-color;
-        }
+        color: $text-color;
     
         img {
             margin-bottom: 40px;
+            width: 250px;
+            height: 180px;
         }
     
         h1 {
@@ -39,11 +41,11 @@
         h4 {
             font-size: 18px;
             font-weight: 300;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         button {
             padding: 16px 24px;
-            border-radius: 20px;
+            border-radius: 30px;
             border: none;
             background-color: $text-color;
             color: #FFF;
@@ -53,6 +55,15 @@
             &:hover {
                 background-color: $primary-color;
             }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .products {
+       
+        .product {
+            width: 350px;
         }
     }
 }
