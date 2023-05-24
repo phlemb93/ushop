@@ -52,6 +52,7 @@ const { handleMenuOpen, handleCartOpen} = useIsOpenContext();
             </div>
         </div>
 
+        <div className="divider"></div>
 
         <div className="lower">
             <div className="search">
