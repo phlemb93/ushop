@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom"
 import useUrl from "../utilities/hooks/useUrl";
-import { Item } from "../utilities/types/types";
 import currencyFormatter from "../utilities/currencyFormatter";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 
 function Product() {
@@ -16,6 +15,9 @@ function Product() {
   const [image1, setImage1] = useState(true)
   const [image2, setImage2] = useState(false)
   const [image3, setImage3] = useState(false)
+
+  const dimensionRef = useRef<HTMLDivElement>(null);
+  const optionRef = useRef<HTMLDivElement>(null);
 
   const handleImg1 = () => {
     setImage1(true)
@@ -32,6 +34,14 @@ function Product() {
     setImage2(false)
     setImage3(true)
   }
+  const handleOptionScroll = () => {
+      optionRef.current.scrollIntoView()
+  }
+  const handleDimensionScroll = () => {
+      dimensionRef.current.scrollIntoView()
+  }
+
+
 
   return (
         <div className='item'>
@@ -56,11 +66,11 @@ function Product() {
  
             <div className="details">
               <div className="head">
-                <p>Options</p>
-                <p>Dimensions</p>
+                <p onClick={handleOptionScroll}>Options</p>
+                <p onClick={handleDimensionScroll}>Dimensions</p>
               </div>
 
-              <div className="body">
+              <div className="body" ref={optionRef}>
 
                 <div className="fabric">
                   <p>Fabric: <span>Midnight Blue</span></p>
@@ -81,15 +91,15 @@ function Product() {
 
                 <div className="display">
                   <div className="top">
-                    <p>Only { currencyFormatter(data?.price * 0.8) } with code: <span>BH20</span></p>
+                    <p>Only { currencyFormatter(data.price * 0.8) } with code: <span>BH20</span></p>
                   </div>
-                  <p>Price: { currencyFormatter(data?.price) }</p>
+                  <p>Price: { currencyFormatter(data.price) }</p>
                   <div className="btn">
                     <p>Add to Basket</p>
                   </div>
                 </div>
 
-                <div className="dimension">
+                <div className="dimension" ref={dimensionRef}>
                   <div className="image">
                     <img src="src/assets/images/sofaD.png" alt="sofa-dimension" />
                   </div>
