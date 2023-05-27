@@ -35,10 +35,10 @@ function Product() {
     setImage3(true)
   }
   const handleOptionScroll = () => {
-      optionRef.current.scrollIntoView()
+      optionRef.current?.scrollIntoView()
   }
   const handleDimensionScroll = () => {
-      dimensionRef.current.scrollIntoView()
+      dimensionRef.current?.scrollIntoView()
   }
 
 
@@ -91,9 +91,9 @@ function Product() {
 
                 <div className="display">
                   <div className="top">
-                    <p>Only { currencyFormatter(data.price * 0.8) } with code: <span>BH20</span></p>
+                    <p>Only { currencyFormatter(data?.price! * 0.8) } with code: <span>BH20</span></p>
                   </div>
-                  <p>Price: { currencyFormatter(data.price) }</p>
+                  <p>Price: { currencyFormatter(data?.price!) }</p>
                   <div className="btn">
                     <p>Add to Basket</p>
                   </div>
