@@ -12,6 +12,7 @@ function CreateAccount() {
 
   const { dispatch } = useUserContext();
 
+  //ACTION WHEN FORM IS SUBMITTED
   const handleClick = async () => {
     const user = {
       firstName, lastName, email, password
@@ -62,22 +63,24 @@ function CreateAccount() {
 
         <div className="form">
           <div 
-          className="error" 
-          style={{display: error ? 'block' : 'none'}}
-          >{error}</div>
+            className="error" 
+            style={{display: error ? 'block' : 'none'}}
+          >
+            {error}
+          </div>
 
           <div className="inputs">
             <input 
-            type='text'
-             onChange={(e) => setFirstName(e.target.value)}
-             value={firstName}
-             placeholder="First name"/>
+              type='text'
+              onChange={(e) => setFirstName(e.target.value)}
+              value={firstName}
+              placeholder="First name"/>
 
             <input 
-            type='text'
-            placeholder="Last name" 
-             onChange={(e) => setLastName(e.target.value)}
-             value={lastName}
+              type='text'
+              placeholder="Last name" 
+              onChange={(e) => setLastName(e.target.value)}
+              value={lastName}
              />
 
             <input  

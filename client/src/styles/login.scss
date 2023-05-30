@@ -15,6 +15,13 @@
 
     }
 
+    .error {
+        margin-bottom: 20px;
+        padding: 10px;
+        color: red;
+        border: 1px solid red;
+    }
+
     .inputs {
         display: flex;
         flex-direction: column;
