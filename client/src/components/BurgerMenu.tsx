@@ -1,4 +1,4 @@
-import { useIsOpenContext } from '../utilities/contexts/useIsOpenContext';
+import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import { Link } from 'react-router-dom';
 
 import CloseIcon from '@mui/icons-material/Close';

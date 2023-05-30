@@ -1,5 +1,5 @@
 import CloseIcon from '@mui/icons-material/Close';
-import { useIsOpenContext } from '../utilities/contexts/useIsOpenContext';
+import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 
 function Filter() {

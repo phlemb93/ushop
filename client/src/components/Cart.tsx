@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { useState }  from 'react';
 import CartItems from './CartItems';
 import { Item } from '../utilities/types/types'
-import { useIsOpenContext } from '../utilities/contexts/useIsOpenContext';
+import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 
 
 function Cart() {

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useIsOpenContext } from '../utilities/contexts/useIsOpenContext';
+import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';

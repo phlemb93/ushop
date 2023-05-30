@@ -1,4 +1,4 @@
-import { useIsOpenContext } from "../utilities/contexts/useIsOpenContext"
+import { useIsOpenContext } from "../utilities/contexts/isOpenContext"
 
 
 function Overlay() {

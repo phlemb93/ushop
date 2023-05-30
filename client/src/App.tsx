@@ -9,7 +9,7 @@ import Footer from './components/Footer'
 import BurgerMenu from './components/BurgerMenu'
 import Cart from './components/Cart'
 import Store from './pages/Store';
-import { IsOpenProvider } from './utilities/contexts/useIsOpenContext';
+import { IsOpenProvider } from './utilities/contexts/isOpenContext';
 import Filter from './components/Filter';
 import Overlay from './components/Overlay';
 import Product from './pages/ProductDetails';

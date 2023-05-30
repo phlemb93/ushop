@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useIsOpenContext } from '../utilities/contexts/useIsOpenContext';
+import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import Products from '../components/ProductsList'
 
 //import icon components from material UI
