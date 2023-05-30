@@ -7,12 +7,10 @@ const jwt = require('jsonwebtoken');
 //Registration
 const register_post = async(req, res) => {
 
-    const { firstName, email, password } = req.body;
+    const { firstName, lastName,  email, password } = req.body;
     const userExist = await User.findOne({email})
 
-    console.log(req.body)
-
-    if(!email || !password) {
+    if(!email || !password || !firstName || !lastName) {
         res.status(500).json({error: 'All fields must be filled!'})
         return;
     }
@@ -89,7 +87,7 @@ const login_post = async(req, res) => {
     const token = jwt.sign({ id }, process.env.SECRET_KEY, {expiresIn: '3d'})
 
     try {
-        
+
         const firstName = userExist.firstName;
 
         res.status(200).json({ firstName, email, token })
