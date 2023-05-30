@@ -1,18 +1,18 @@
 import currencyFormatter from '../utilities/currencyFormatter';
 import { Link } from 'react-router-dom';
-import useUrl from '../utilities/hooks/useUrl';
+import useUrlArray from '../utilities/hooks/useUrlArray';
 
 
 function Products() {
 
   const url = "http://127.0.0.1:3000/products";
 
-  const { data, isLoading, error } = useUrl(url);
+  const { data, isLoading, error } = useUrlArray(url);
 
-  return (
+   return (
     <div className='products'>
 
-      {data?.map(item => (
+      {data!.map(item => (
 
         <Link to={`/${item.id}`}>
           <div 

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import useUrl from "../utilities/hooks/useUrl";
+import useUrlSingle from "../utilities/hooks/useUrlSingle";
 import currencyFormatter from "../utilities/currencyFormatter";
 import { useRef, useState } from "react";
 
@@ -10,7 +10,7 @@ function Product() {
 
   const url = `http://127.0.0.1:3000/products/${id}`;
 
-  const { data, isLoading, error} = useUrl(url);
+  const { data, isLoading, error} = useUrlSingle(url);
 
   const [image1, setImage1] = useState(true)
   const [image2, setImage2] = useState(false)

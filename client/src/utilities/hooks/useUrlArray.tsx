@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Item } from "../types/types";
 
-function useUrl(value: string) {
+function useUrlArray(value: string) {
 
-    const [data, setData] = useState<null | Item>(null);
+    const [data, setData] = useState<null | Item[]>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<null | string>(null);
   
@@ -25,4 +25,4 @@ function useUrl(value: string) {
   return { data, isLoading, error }
 }
 
-export default useUrl
+export default useUrlArray
