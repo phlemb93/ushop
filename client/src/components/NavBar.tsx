@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
+import { useUserContext } from '../utilities/contexts/userContext';
 
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
@@ -11,6 +12,8 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 function NavBar() {
 
 const { handleMenuOpen, handleCartOpen} = useIsOpenContext();
+const { state } = useUserContext();
+const { user } = state;
 
   return (
     <div className="navbar">
@@ -34,7 +37,7 @@ const { handleMenuOpen, handleCartOpen} = useIsOpenContext();
             <div className="right">
                
                     <div className="profile">
-                        <Link to='/login'>
+                        <Link to={user ? '/profile' : '/login'}>
                             <PersonOutlineOutlinedIcon className="profile-icon" style={{fontSize: 40}} />
                         </Link>
                     </div>

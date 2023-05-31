@@ -13,6 +13,10 @@ import { IsOpenProvider } from './utilities/contexts/isOpenContext';
 import Filter from './components/Filter';
 import Overlay from './components/Overlay';
 import Product from './pages/ProductDetails';
+import Profile from './pages/Profile';
+
+
+
 
 function App() {
 
@@ -30,6 +34,7 @@ function App() {
             <Route path='/login' element={<Login /> } />
             <Route path='/create-account' element={<CreateAccount /> } />
             <Route path='/forget-password' element={<ForgetPassword /> } />
+            <Route path='/profile' element={<Profile />} />
             <Route path='/:id' element={ <Product /> } />
           </Routes>
           <Footer />
