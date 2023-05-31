@@ -11,22 +11,22 @@ const register_post = async(req, res) => {
     const userExist = await User.findOne({email})
 
     if(!email || !password || !firstName || !lastName) {
-        res.status(500).json({error: 'All fields must be filled!'})
+        res.status(500).json({error: 'All fields must be filled'})
         return;
     }
 
     if(!validator.isEmail(email)) {
-        res.status(500).json({error: 'Please, enter a valid email!'})
+        res.status(500).json({error: 'Please, enter a valid email'})
         return;
     }
 
     if(userExist) {
-        res.status(500).json({error: 'Email already in use!'})
+        res.status(500).json({error: 'Email already in use'})
         return;
     }
 
     if(!validator.isStrongPassword(password)) {
-        res.status(500).json({error: 'Please, enter a strong password!'})
+        res.status(500).json({error: 'Please, enter a strong password'})
         return;
     }
     
@@ -69,7 +69,7 @@ const login_post = async(req, res) => {
     }
 
     if(!userExist) {
-        res.status(500).json({error: 'Incorrect email!'})
+        res.status(500).json({error: 'Incorrect email'})
         return;
     }
     

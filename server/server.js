@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoute = require('./route/authRoute');
+const userRoute = require('./route/userRoute');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
@@ -28,6 +29,7 @@ useUnifiedTopology: true })
    
 //routes
 app.use('/api/auth', authRoute)
+app.use('/api/users', userRoute)
 
 
 
