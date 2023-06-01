@@ -99,9 +99,15 @@ function Profile() {
                 setLockPassword(false);
                 setIsErrorMssg(true)
                 setErrorMssg(data.error)
+                setMssg('')
             }
 
-            setMssg(data.mssg)
+            if(res.status === 200) {
+                setMssg(data.mssg)
+                setIsErrorMssg(false)
+                setErrorMssg('')
+            }
+
 
             if(data) {
                 setShowMssg(true)

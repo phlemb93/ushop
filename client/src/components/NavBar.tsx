@@ -1,19 +1,40 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import { useUserContext } from '../utilities/contexts/userContext';
+import { useState } from 'react';
 
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 
 
 function NavBar() {
 
 const { handleMenuOpen, handleCartOpen} = useIsOpenContext();
-const { state } = useUserContext();
+const { state, userLogout } = useUserContext();
 const { user } = state;
+
+const [toggle, setToggle] = useState<boolean>(false);
+
+const navigate = useNavigate();
+
+
+const handleLogin = () => {
+    navigate('/login'); 
+    setToggle(false);
+}
+const handleLogout = () => {
+    userLogout(); 
+    setToggle(false);
+}
+const handleProfile = () => {
+    navigate('/profile'); 
+    setToggle(false);
+}
 
   return (
     <div className="navbar">
@@ -37,9 +58,36 @@ const { user } = state;
             <div className="right">
                
                     <div className="profile">
-                        <Link to={user ? '/profile' : '/login'}>
-                            <PersonOutlineOutlinedIcon className="profile-icon" style={{fontSize: 40}} />
-                        </Link>
+                        <PersonOutlineOutlinedIcon 
+                        className="profile-icon" 
+                        style={{fontSize: 40, cursor: 'pointer'}} 
+                        onClick={() => setToggle(prevState => !prevState)}
+                        />
+
+                        <div className="drop-down" style={{display: toggle ? 'block' : 'none'}}>
+                            <div className="loggedin" style={{display: user ? 'flex' : 'none'}}>
+                                <div onClick={handleProfile}>
+                                    <SettingsOutlinedIcon 
+                                    style={{color: '#fff'}}
+                                    />
+                                    <p>Settings</p>
+                                </div>
+                                <div onClick={handleLogout}>
+                                    <LogoutOutlinedIcon
+                                    style={{color: '#fff'}}
+                                    />
+                                    <p>Logout</p>
+                                </div>
+                            </div>
+                            <div className="loggedout" style={{display: user ? 'none' : 'flex'}}>
+                                <div  onClick={handleLogin}>
+                                    <LoginOutlinedIcon 
+                                    style={{color: '#fff'}}
+                                    />
+                                    <p>Sign in</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
              
                 
