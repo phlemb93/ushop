@@ -37,27 +37,45 @@ const get_one_user = async (req, res) => {
 const update_one_user = async (req, res) => {
 
     const userId = req.params.id;
-    const { firstName, lastName, isAdmin, password } = req.body;
+    const { firstName, lastName, oldPassword, newPassword } = req.body;
 
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(password, salt);
+        if(oldPassword || newPassword) {
 
-    const updating = {
-        firstName,
-        lastName,
-        isAdmin,
-        password: hash
-    }
+            if(!oldPassword || !newPassword) {
+                res.status(400).json({error: "All fields must be filled"})
+                return
+            }
 
-    try {
+            const user = await User.findById(userId);
+            const hashedPassword = user.password;
 
-        const updated = await User.findByIdAndUpdate(userId, {...updating}, { new: true} );
+            const match = await bcrypt.compare(oldPassword, hashedPassword);
 
-        res.status(200).json(updated);
+            if(!match) {
+                res.status(400).json({error: "Old password is incorrect"})
+                return
+               }
 
-    } catch (error) {
-        res.status(500).json({error: "Server Error"})
-    }
+            const salt = await bcrypt.genSalt(10);
+            const newHash = await bcrypt.hash(newPassword, salt);
+    
+            await User.findByIdAndUpdate(userId, {password: newHash})
+
+            res.status(200).json({mssg: "Password updated successfully"})
+          
+
+        } else {
+        
+            const updating = {
+                firstName,
+                lastName,
+            }
+
+            await User.findByIdAndUpdate(userId, {...updating}, { new: true} );
+
+            res.status(200).json({mssg: "User details updated successfully"})
+
+        }
    
 
 }

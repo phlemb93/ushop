@@ -45,7 +45,7 @@ const register_post = async(req, res) => {
     const token = jwt.sign({ id }, process.env.SECRET_KEY, {expiresIn: '3d'})
 
     try {
-        res.status(200).json({ firstName, email, token })
+        res.status(200).json({ firstName, id, token })
     } catch (error) {
         res.status(500).json(error)
     }
@@ -90,7 +90,7 @@ const login_post = async(req, res) => {
 
         const firstName = userExist.firstName;
 
-        res.status(200).json({ firstName, email, token })
+        res.status(200).json({ firstName, id, token })
     } catch (error) {
         res.status(500).json({error: error.message})
     }
