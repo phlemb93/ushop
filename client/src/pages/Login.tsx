@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useUserContext } from '../utilities/contexts/userContext';
 
 function Login() {
@@ -10,20 +10,22 @@ function Login() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const { dispatch, userLogout } = useUserContext();
+  const navigate = useNavigate();
 
   //ACTION WHEN FORM IS SUBMITTED
   const handleClick = async() => {
 
     setIsLoading(true)
-    const user = { email, password }
+    const user = { email, password };
 
-      const response = await fetch('http://localhost:5000/api/auth/login', {
-        headers: { "Content-Type": "application/json"},
-        body: JSON.stringify(user),
-        method: 'POST'
-      })
+    const response = await fetch('http://localhost:5000/api/auth/login', {
+      headers: { "Content-Type": "application/json"},
+      body: JSON.stringify(user),
+      method: 'POST'
+    })
 
     const data = await response.json();
+
 
     if(response.status === 200) {
 
@@ -34,7 +36,8 @@ function Login() {
 
       localStorage.setItem('user', JSON.stringify(data))
       setError('')
-      setIsLoading(false)
+      setIsLoading(false);
+      navigate('/');
 
     } else {
 

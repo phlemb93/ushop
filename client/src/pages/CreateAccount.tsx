@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useUserContext } from '../utilities/contexts/userContext';
 
 function CreateAccount() {
@@ -11,6 +11,7 @@ function CreateAccount() {
   const [error, setError] = useState<any>(null)
 
   const { dispatch } = useUserContext();
+  const navigate = useNavigate();
 
   //ACTION WHEN FORM IS SUBMITTED
   const handleClick = async () => {
@@ -42,6 +43,8 @@ function CreateAccount() {
       
       //Setting the error display back to null
       setError(null)
+
+      navigate('/login');
 
   } else {
 
