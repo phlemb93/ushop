@@ -1,26 +1,203 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined';
 
 function Profile() {
+
+    const [lockProfile, setLockProfile] = useState(true);
+    const [lockPassword, setLockPassword] = useState(true);  
+
+    const [firstName, setFirstName] = useState<any>('');
+    const [lastName, setLastName] = useState<any>('');
+    const [email, setEmail] = useState<any>('');
+
+    const [oldPassword, setOldPassword] = useState<any>('');
+    const [newPassword, setNewPassword] = useState<any>('');
+
+    const [mssg, setMssg] = useState<any>('');
+    const [errorMssg, setErrorMssg] = useState<any>('');
+    const [isErrorMssg, setIsErrorMssg] = useState<any>(false);
+    const [showMssg, setShowMssg] = useState<any>(false);
+    
+
+
+   const navigate = useNavigate();
+   const { id } = JSON.parse(localStorage.getItem('user'));
+
+
+    //FETCH USER DETAILS WHEN THE BROWSER LOADS
+    useEffect(() => {
+    
+        fetch(`http://localhost:5000/api/users/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            setFirstName(data.firstName)
+            setLastName(data.lastName)
+            setEmail(data.email)
+        }).catch(error => {
+            console.log(error)
+        })
+
+    }, [])
+
+    //EDIT PROFILE BUTTON HANDLING
+    const handleEditProfile = () => {
+        setLockProfile(false);
+    }
+
+    //RESET PASSWORD BUTTON HANDLING
+    const handleResetPassword = () => {
+        setLockPassword(false);
+    }
+
+    //SAVE BUTTON HANDLING
+    const handleSaveProfile = async () => {
+
+        //LOCK PROFILE DETAILS AND PASSWORD FIELDS
+        setLockProfile(true);
+        setLockPassword(true);
+
+        const user = {firstName, lastName};
+        const pass = {oldPassword, newPassword};
+
+        //RUN THIS WHEN THE PROFILE DETAILS SECTION IS UNLOCKED
+       if(!lockProfile) {
+
+            const res = await fetch(`http://localhost:5000/api/users/${id}`, {
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(user),
+                method: 'PUT'
+            })
+    
+            const data = await res.json();
+
+            setMssg(data.mssg)    
+
+            if(data) {
+                setShowMssg(true)
+            }
+        } 
+        
+        
+        //RUN THIS WHEN THE PASSWORD SECTION IS UNLOCKED
+        if(!lockPassword) {
+
+            //PASSWORD SECTION REMAINS UNLOCK IF ONE OF THE FIELDS IS EMPTY
+            if(!oldPassword || !newPassword) {
+                setLockPassword(false);
+            }
+
+            const res = await fetch(`http://localhost:5000/api/users/${id}`, {
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(pass),
+                method: 'PUT'
+            })
+            const data = await res.json();
+
+            //ERROR HANDLING
+            if(res.status !== 200) {
+                setLockPassword(false);
+                setIsErrorMssg(true)
+                setErrorMssg(data.error)
+            }
+
+            setMssg(data.mssg)
+
+            if(data) {
+                setShowMssg(true)
+
+                setTimeout(() => {
+                    setShowMssg(false)
+                }, 2000)
+            }
+        }
+
+    }
+
+    //BACK BUTTON HANDLING
+    const handleBackButton = () => {
+        navigate('/');
+    }
+
+    //CANCEL BUTTON HANDLING
+    const handleCancelClick = () => {
+        setLockPassword(true);
+        setLockProfile(true);
+        setShowMssg(false)
+    }
+
+
   return (
     <div className='my-profile'>
+        <div className="back" onClick={handleBackButton}>
+            <KeyboardBackspaceOutlinedIcon />
+            <p>Back</p>
+        </div>
         <div className="head">
             <h2>Profile Settings</h2>
-            <p>Edit profile</p>
         </div>
 
         <div className="container">
             <div className='form'>
+            <button onClick={handleEditProfile} disabled={!lockPassword}>Edit profile</button>
+
                 <label>First Name</label>
-                <input type="text" disabled={true}/>
+                <input 
+                type="text" 
+                disabled={lockProfile}
+                onChange={(e) => setFirstName(e.target.value)}
+                value={firstName}
+                />
 
                 <label>Last Name</label>
-                <input type="text" disabled={true}/>
-
+                <input 
+                type="text" 
+                disabled={lockProfile}
+                onChange={(e) => setLastName(e.target.value)}
+                value={lastName}
+                />
                 <label>Email Address</label>
-                <input type="text" disabled={true}/>
+                <input 
+                type="text" 
+                disabled={true}
+                placeholder={email}
+                />
 
-                <label>Password</label>
-                <input type="text" disabled={true}/>
+                <div className="divider"></div> 
+
+                <div className="password">
+                    <button onClick={handleResetPassword} disabled={!lockProfile}>Reset password</button>
+
+                    <label>Old Password</label>
+                    <input 
+                    type="password" 
+                    disabled={lockPassword}
+                    placeholder='xxxxxxxxxx'
+                    onChange={(e) => setOldPassword(e.target.value)}
+                    value={oldPassword}
+                    />
+
+                    <label>New Password</label>
+                    <input 
+                    type="password" 
+                    disabled={lockPassword}
+                    placeholder='xxxxxxxxxx'
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    value={newPassword}
+                    />
+
+                </div>
+
+                <p 
+                style={
+                    {
+                        color: isErrorMssg ? 'red' : 'green',
+                        border: isErrorMssg ? '1px dotted red' : '1px dashed green',
+                        display: showMssg ? 'block' : 'none'
+                    }}
+                className="mssg"
+                >{ mssg || errorMssg } </p>
+
             </div>
 
             <div className="delete">
@@ -29,8 +206,8 @@ function Profile() {
             </div>
 
             <div className="buttons">
-                <div className="cancel">Cancel</div>
-                <div className="save">Save</div>
+                <button className="cancel" onClick={handleCancelClick}>Cancel</button>
+                <button className="save" onClick={handleSaveProfile} disabled={lockPassword && lockProfile}>Save</button>
             </div>
         </div>
     </div>

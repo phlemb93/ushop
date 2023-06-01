@@ -5,15 +5,26 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10000;
+    z-index: 100;
     background-color: $secondary-color;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
+    .back {
+        display: flex;
+        align-self:flex-start;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 80px;
+        margin-bottom: 50px;
+        margin-left: 10%;
+        cursor: pointer;
+    }
+
     .head {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         margin: 0 auto 10px;
         width: 80%;
@@ -23,18 +34,10 @@
             font-weight: lighter;
             font-size: 28px;
         }
-
-        p {
-            font-size: 14px;
-            color: blue;
-            cursor: pointer;
-            padding: 5px;
-            margin-right: 5px;
-        }
     }
 
     .container {
-        height: 480px;
+        height: 680px;
         width: 80%;
         max-width: 700px;
         margin: 0 auto;
@@ -55,11 +58,40 @@
                 padding: 12px 0 5px 0;
             }
             input {
-                padding: 10px 0;
+                padding: 10px;
                 
                 &:focus {
                     outline: none;
                 }
+            }
+
+            .divider {
+                margin: 30px auto 15px auto;
+                background-color: $light-gray;
+                height: 1px;
+                width: 80px;
+            }
+
+            .password {
+                display: flex;
+                flex-direction: column;
+            }
+
+            button {
+                font-size: 14px;
+                color: blue;
+                cursor: pointer;
+                padding: 5px 0;
+                border: none;
+                background-color: #fff;
+                width: 120px;
+                text-align: start;
+            }
+
+            .mssg {
+                margin-top: 10px;
+                font-size: 13px;
+                padding: 5px;
             }
 
         }
@@ -84,11 +116,16 @@
             display: flex;
             justify-content: center;
             margin-bottom: 20px;
+
+            a {
+                text-decoration: none;
+            }
             
-            div {
+            button {
                 padding: 10px 20px;
                 width: 150px;
                 text-align: center;
+                border: none;
                 border-radius: 5px;
                 cursor: pointer;
 
