@@ -63,7 +63,6 @@ const update_one_user = async (req, res) => {
 
             res.status(200).json({mssg: "Password updated successfully"})
           
-
         } else {
         
             const updating = {
@@ -75,7 +74,7 @@ const update_one_user = async (req, res) => {
 
             res.status(200).json({mssg: "User details updated successfully"})
 
-        }
+         }
    
 
 }
