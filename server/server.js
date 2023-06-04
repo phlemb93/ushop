@@ -1,9 +1,13 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const authRoute = require('./route/authRoute');
-const userRoute = require('./route/userRoute');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const mongoose = require('mongoose');
+
+const authRoute = require('./route/authRoute');
+const userRoute = require('./route/userRoute');
+const productRoute = require('./route/productRoute');
+const cartRoute = require('./route/cartRoute');
+const orderRoute = require('./route/orderRoute');
 
 //config
 dotenv.config();
@@ -30,6 +34,9 @@ useUnifiedTopology: true })
 //routes
 app.use('/api/auth', authRoute)
 app.use('/api/users', userRoute)
+app.use('/api/products', productRoute)
+app.use('/api/carts', cartRoute)
+app.use('/api/orders', orderRoute)
 
 
 
