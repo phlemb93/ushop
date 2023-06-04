@@ -42,7 +42,9 @@ const register_post = async(req, res) => {
 
     //Token generation
     const id = newUser._id;
-    const token = jwt.sign({ id }, process.env.SECRET_KEY, {expiresIn: '3d'})
+    const isAdmin = newUser.isAdmin;
+
+    const token = jwt.sign({ id, isAdmin }, process.env.SECRET_KEY, {expiresIn: '3d'})
 
     try {
         res.status(200).json({ firstName, id, token })
@@ -59,17 +61,17 @@ const login_post = async(req, res) => {
     const userExist = await User.findOne({email});
 
     if(!email || !password) {
-        res.status(500).json({error: 'All fields must be filled'})
+        res.status(400).json({error: 'All fields must be filled'})
         return;
     }
 
     if(!validator.isEmail(email)) {
-        res.status(500).json({error: 'Please, enter a valid email'})
+        res.status(400).json({error: 'Please, enter a valid email'})
         return;
     }
 
     if(!userExist) {
-        res.status(500).json({error: 'Incorrect email'})
+        res.status(400).json({error: 'Incorrect email'})
         return;
     }
     
@@ -78,13 +80,15 @@ const login_post = async(req, res) => {
     const match = await bcrypt.compare(password, hashedPassword);
 
     if(!match) {
-        res.status(500).json({error: 'Incorrect password'})
+        res.status(400).json({error: 'Incorrect password'})
         return;
     }
 
     //Token generation
     const id = userExist._id;
-    const token = jwt.sign({ id }, process.env.SECRET_KEY, {expiresIn: '3d'})
+    const isAdmin = userExist.isAdmin;
+
+    const token = jwt.sign({ id, isAdmin }, process.env.SECRET_KEY, {expiresIn: '3d'})
 
     try {
 
