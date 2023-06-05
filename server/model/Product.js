@@ -6,11 +6,11 @@ const ProductSchema = new mongoose.Schema(
         type: String,
         required: true
        },
-       cat: {
+       category: {
         type: String,
         required: true
        },
-       desc: {
+       description: {
         type: String,
         required: true
        },
@@ -22,7 +22,7 @@ const ProductSchema = new mongoose.Schema(
         type: String,
         required: true
        },
-       img: [
+       images: [
         { type: String, required: true },
         { type: String },
         { type: String },
