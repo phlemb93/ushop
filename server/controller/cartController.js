@@ -17,23 +17,21 @@ const get_all_carts = async (req, res) => {
 //CREATE USER CART
 const add_one_cart = async (req, res) => {
 
-    try {
-        const userId = req.tokenData.id;
-        const cartExist = await Cart.findOne({ userId });
+        const tokenId = req.tokenData.id;
+        const isAdmin = req.tokenData.isAdmin;
+        const userId = req.body.userId;
 
-        if(cartExist) {
-            const cart = await Cart.findOneAndUpdate({ userId }, { $set: req.body }, { new: true })
-            res.status(200).json(cart);
-
+        if(tokenId === userId || isAdmin) {  
+            try {
+                const cart = await Cart.create(req.body);
+                res.status(200).json(cart);
+            } catch (error) {
+                res.status(500).json(error)
+            }
         } else {
-            const cart = await Cart.create(req.body);
-            res.status(200).json(cart);
+            res.status(400).json("You're not authorized")
         }
-
-    } catch (error) {
-        res.status(500).json(error)
-    }
-}
+}   
 
 //GET USER CART
 const get_one_cart = async (req, res) => {
