@@ -98,8 +98,31 @@ const delete_one_user = async (req, res) => {
     } catch (error) {
         res.status(500).json("Server Error")
     }
-
-  
 }
 
-module.exports = { get_all_users, get_one_user, update_one_user, delete_one_user }
+//GET USERS STATS
+const get_users_stats = async (req, res) => {
+
+    try {
+        const data = await User.aggregate([
+            {
+                $group: {
+                    _id: {
+                        day: { $dayOfMonth: "$createdAt" },
+                        month: { $month: "$createdAt" },
+                        year: { $year: "$createdAt" }
+                    },
+                    users: { $sum: 1 }
+                }
+            }
+        ])
+
+        res.status(200).json(data);
+        
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
+
+module.exports = { get_all_users, get_one_user, update_one_user, delete_one_user, get_users_stats }
