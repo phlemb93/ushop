@@ -6,7 +6,7 @@ const router = require('express').Router();
 
 router.get('/', verifyTokenAndAdmin, get_all_carts);
 router.post('/', verifyTokenAndAuthorization, add_one_cart)
-router.get('/:id', verifyTokenAndAuthorization, get_one_cart );
+router.get('/find/:id', verifyTokenAndAuthorization, get_one_cart );
 router.put('/:id', verifyTokenAndAuthorization, update_one_cart);
 router.delete('/:id', verifyTokenAndAuthorization, delete_one_cart);
 

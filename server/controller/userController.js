@@ -1,43 +1,41 @@
 const User = require('../model/User')
 const bcrypt = require('bcrypt');
 
-//Get all users
+
+
+//GET ALL USERS
 const get_all_users = async (req, res) => {
 
     try {
         const users = await User.find();
-
-        res.status(200).json(users)
-        
+        res.status(200).json(users);
     } catch (error) {
-        res.status(500).json({error: "Server Error"})
+        res.status(500).json(error);
     }
-
 }
 
-//Get single user
+//GET SINGLE USER
 const get_one_user = async (req, res) => {
 
     const userId = req.params.id;
 
     try {
-
         const user = await User.findById(userId);
-
         res.status(200).json(user);
-
-    } catch (error) {
-        
-        res.status(500).json({error: "Server Error"})
+    } catch (error) {  
+        res.status(500).json(error)
     }
-
 }
 
-//Update single user's details
+//UPDATE USER
 const update_one_user = async (req, res) => {
 
+    const tokenId = req.tokenData.id;
+    const isAdmin = req.tokenData.isAdmin;
     const userId = req.params.id;
     const { firstName, lastName, oldPassword, newPassword } = req.body;
+
+    if(tokenId === userId || isAdmin) { 
 
         if(oldPassword || newPassword) {
 
@@ -61,7 +59,7 @@ const update_one_user = async (req, res) => {
     
             await User.findByIdAndUpdate(userId, {password: newHash})
 
-            res.status(200).json({mssg: "Password updated successfully"})
+            res.status(200).json("Password updated successfully")
           
         } else {
         
@@ -72,14 +70,17 @@ const update_one_user = async (req, res) => {
 
             await User.findByIdAndUpdate(userId, {...updating}, { new: true} );
 
-            res.status(200).json({mssg: "User details updated successfully"})
+            res.status(200).json("User details updated successfully")
 
          }
+    } else {
+        res.status(400).json("You're not authorized")
+    }
    
 
 }
 
-//Delete single user
+//DELETE USER
 const delete_one_user = async (req, res) => {
 
     const userId = req.params.id;
@@ -89,13 +90,13 @@ const delete_one_user = async (req, res) => {
         const user = await User.findByIdAndDelete(userId);
 
         if(user) {
-            res.status(200).json({mssg: "User successfully deleted"});
+            res.status(200).json("User successfully deleted");
         } else {
-            res.status(400).json({error: "User doesn't exist"})
+            res.status(400).json("User doesn't exist")
         }
     
     } catch (error) {
-        res.status(500).json({error: "Server Error"})
+        res.status(500).json("Server Error")
     }
 
   

@@ -53,7 +53,7 @@ const update_one_product = async (req, res) => {
 
     try {
         const updatedProduct = await Product.findByIdAndUpdate(productId, req.body, { new:true });
-        res.status(200).json("Product Updated");
+        res.status(200).json(updatedProduct);
         
     } catch (error) {
         res.status(500).json(error);
@@ -66,8 +66,8 @@ const delete_one_product = async (req, res) => {
     const productId = req.params.id;
 
     try {
-        const product = await Product.findByIdAndDelete(productId);
-        res.status(200).json("Product Deleted Successfully");
+        await Product.findByIdAndDelete(productId);
+        res.status(200).json("Product Deleted");
     } catch (error) {
         res.status(500).json(error);
     }

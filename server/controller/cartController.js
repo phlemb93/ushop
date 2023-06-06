@@ -1,11 +1,12 @@
 const Cart = require('../model/Cart');
 
 
+
 //GET ALL CARTS
 const get_all_carts = async (req, res) => {
 
     try {
-        const carts = await Cart.find().sort({createdAt: -1 });
+        const carts = await Cart.find().sort({ createdAt: -1 });
         res.status(200).json(carts)
 
     } catch (error) {
@@ -13,32 +14,36 @@ const get_all_carts = async (req, res) => {
     }
 }
 
-//ADD SINGLE CART
+//CREATE USER CART
 const add_one_cart = async (req, res) => {
 
-    const cartDetails = {...req.body, userId: req.tokenData.id}
-
     try {
-        const cart = await Cart.create(cartDetails);
-        res.status(200).json(cart);
+        const userId = req.tokenData.id;
+        const cartExist = await Cart.findOne({ userId });
+
+        if(cartExist) {
+            const cart = await Cart.findOneAndUpdate({ userId }, { $set: req.body }, { new: true })
+            res.status(200).json(cart);
+
+        } else {
+            const cart = await Cart.create(req.body);
+            res.status(200).json(cart);
+        }
 
     } catch (error) {
         res.status(500).json(error)
     }
-
 }
 
-//GET SINGLE CART
+//GET USER CART
 const get_one_cart = async (req, res) => {
 
-    const id = req.params.id;
+    const userId = req.params.id;
 
     try {
-        const cart = await Cart.find({userId: id});
+        const cart = await Cart.findOne({ userId });
         res.status(200).json(cart);
-
     } catch (error) {
-        
         res.status(500).json(error)
     }
 }
@@ -51,7 +56,6 @@ const update_one_cart = async (req, res) => {
     try {
         const updatedCart = await Cart.findByIdAndUpdate(id, req.body, { new:true });
         res.status(200).json(updatedCart)
-        
     } catch (error) {
         res.status(500).json(error)
     }
@@ -65,7 +69,6 @@ const delete_one_cart = async (req, res) => {
     try {
         await Cart.findByIdAndDelete(id);
         res.status(200).json("Cart Deleted");
-    
     } catch (error) {
         res.status(500).json(error)
     }

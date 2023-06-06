@@ -6,7 +6,7 @@ const verifyTokenAndAuthorization = (req, res, next) => {
     const { authorization } = req.headers;
 
     if(!authorization) {
-        res.status(400).json("You're not authorized")
+        res.status(400).json("You're not authenticated")
     }
     const token = authorization.split(" ")[1];
 
@@ -16,11 +16,9 @@ const verifyTokenAndAuthorization = (req, res, next) => {
             res.status(400).json("Invalid token")
         }
 
-        if(tokenData.id || tokenData.isAdmin) {
+        if(tokenData) {
             req.tokenData = tokenData;
             next();
-        } else {
-            res.status(400).json("Invalid token")
         }
     })
 }
@@ -30,7 +28,7 @@ const verifyTokenAndAdmin = (req, res, next) => {
     const { authorization } = req.headers;
 
     if(!authorization) {
-        res.status(400).json("You're not authorized")
+        res.status(400).json("You're not authenticated")
     }
     const token = authorization.split(" ")[1];
 
@@ -41,10 +39,9 @@ const verifyTokenAndAdmin = (req, res, next) => {
         }
 
         if(tokenData.isAdmin) {
-            req.tokenData = tokenData;
             next();
         } else {
-            res.status(400).json("Only Admin has the permission")
+            res.status(400).json("You're not authorized")
         }
     })
 
