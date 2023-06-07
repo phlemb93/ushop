@@ -96,4 +96,30 @@ const delete_one_order = async (req, res) => {
     }
 }
 
-module.exports = { get_all_orders, add_one_order, get_one_order, get_user_orders, update_one_order, delete_one_order }
+//GET MONTHLY INCOME STATS
+const get_monthly_income = async (req, res) => {
+
+    try {
+        const data = await Order.aggregate([
+            {
+                $group: {
+                    _id: { 
+                        day: { $dayOfMonth: "$createdAt" },
+                        month: { $month: "$createdAt" },
+                        year: { $year: "$createdAt" }
+                    },
+                    totalAmount: { $sum: "$amount" },
+                    numOfOrders: { $sum: 1 }
+                }
+            },
+            {
+                $sort: { totalAmount: -1 }
+            }
+        ])
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
+module.exports = { get_all_orders, add_one_order, get_one_order, get_user_orders, update_one_order, delete_one_order, get_monthly_income }
