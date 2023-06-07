@@ -8,6 +8,7 @@ const userRoute = require('./route/userRoute');
 const productRoute = require('./route/productRoute');
 const cartRoute = require('./route/cartRoute');
 const orderRoute = require('./route/orderRoute');
+const stripeRoute = require('./route/stripeRoute');
 
 //config
 dotenv.config();
@@ -26,7 +27,7 @@ useUnifiedTopology: true })
     console.log("DB is connected");
 
     app.listen(process.env.PORT, () => {
-        console.log("Backend server is running")
+        console.log("Backend server is running on PORT " + process.env.PORT)
     })
 })
 
@@ -37,6 +38,7 @@ app.use('/api/users', userRoute)
 app.use('/api/products', productRoute)
 app.use('/api/carts', cartRoute)
 app.use('/api/orders', orderRoute)
+app.use('/api/checkout',stripeRoute)
 
 
 
