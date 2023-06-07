@@ -3,6 +3,10 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+//config
+const app = express();
+dotenv.config();
+
 const authRoute = require('./route/authRoute');
 const userRoute = require('./route/userRoute');
 const productRoute = require('./route/productRoute');
@@ -10,9 +14,6 @@ const cartRoute = require('./route/cartRoute');
 const orderRoute = require('./route/orderRoute');
 const stripeRoute = require('./route/stripeRoute');
 
-//config
-dotenv.config();
-const app = express();
 
 //middleware
 app.use(cors());
@@ -27,7 +28,7 @@ useUnifiedTopology: true })
     console.log("DB is connected");
 
     app.listen(process.env.PORT, () => {
-        console.log("Backend server is running on PORT " + process.env.PORT)
+        console.log("Server running on PORT " + process.env.PORT)
     })
 })
 
