@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined';
+import axios from 'axios';
 
 function Profile() {
 
@@ -22,23 +23,38 @@ function Profile() {
 
 
    const navigate = useNavigate();
-   const { id } = JSON.parse(localStorage.getItem('user'));
+   const user = JSON.parse(localStorage.getItem('user'));
+    const { id, token } = user;
 
 
     //FETCH USER DETAILS WHEN THE BROWSER LOADS
     useEffect(() => {
-    
-        fetch(`http://localhost:5000/api/users/${id}`)
-        .then(res => res.json())
-        .then(data => {
-            setFirstName(data.firstName)
-            setLastName(data.lastName)
-            setEmail(data.email)
-        }).catch(error => {
-            console.log(error)
-        })
 
-    }, [])
+        const loadData = async () => {
+
+            try {
+                const data = await axios.get(`http://localhost:5000/api/users/${id}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authorization': `Bearer ${token}`
+                    }
+                });
+
+                if(data.status === 200){
+                    const { firstName, lastName, email } = data.data;
+
+                    setFirstName(firstName)
+                    setLastName(lastName)
+                    setEmail(email)
+                } 
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+      loadData();
+
+    }, [user])
 
     //EDIT PROFILE BUTTON HANDLING
     const handleEditProfile = () => {

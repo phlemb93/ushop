@@ -2,7 +2,6 @@ import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import { Link } from 'react-router-dom';
 
 import CloseIcon from '@mui/icons-material/Close';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 
@@ -29,28 +28,28 @@ const { isMenuOpen, handleMenuClose } = useIsOpenContext();
                         <div onClick={ handleMenuClose }>
                             <div className="image img1"></div>
                             {/* <img src='../assets/images/img1.jpg' alt="sofa" /> */}
-                            <a>Sofas</a>
+                            <p>Sofas</p>
                         </div>
                     </Link>
                     <Link to='/store'>
                         <div onClick={ handleMenuClose }>
                             <div className="image img2"></div>
                             {/* <img src="./assets/images/armchair.jpg" alt="armchair" /> */}
-                            <a>Armchairs</a>
+                            <p>Armchairs</p>
                         </div>
                     </Link>
                     <Link to='/store'>
                         <div onClick={ handleMenuClose }>
                             <div className="image img3"></div>
                             {/* <img src="../assets/images/bundles.jpg" alt="bundles" /> */}
-                            <a>Bundles</a>
+                            <p>Bundles</p>
                         </div>
                     </Link>
                     <Link to='/store'>
                         <div onClick={ handleMenuClose }>
                             <div className="image img4"></div>
                             {/* <img src="../assets/images/accessories.jpg" alt="accessories" /> */}
-                            <a>Accessories</a>
+                            <p>Accessories</p>
                         </div>
                     </Link>
                 </div>

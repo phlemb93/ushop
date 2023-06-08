@@ -13,7 +13,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 function NavBar() {
 
-const { handleMenuOpen, handleCartOpen, isProfileOpen, handleProfileToggle, handleProfileClose, handleProfileOpen } = useIsOpenContext();
+const { handleMenuOpen, handleCartOpen, isProfileOpen, handleProfileToggle, handleProfileClose } = useIsOpenContext();
 const { state, userLogout } = useUserContext();
 const { user } = state;
 
@@ -29,6 +29,7 @@ const handleProfileClick = () => {
 const handleLogout = () => {
     userLogout(); 
     handleProfileClose();
+    navigate('/login')
 }
 const handleProfile = () => {
     navigate('/profile'); 
@@ -37,7 +38,6 @@ const handleProfile = () => {
 
 useEffect(() => {
     document.addEventListener('click', (e) => {
-
         const targetElement = divRef.current;
         const firstElement =  e.target;
         const secondElement = e.target.parentElement ;
@@ -45,7 +45,7 @@ useEffect(() => {
 
         if(!(targetElement == firstElement || targetElement == secondElement || targetElement == thirdElement)) {
             handleProfileClose();
-        }
+        } 
     })
 }, [])
 
@@ -80,7 +80,7 @@ useEffect(() => {
 
                         <PersonOutlineOutlinedIcon 
                         className="profile-icon" 
-                        style={{fontSize: 40, cursor: 'pointer', color: user ? '#393939' : '#00968E'}} />
+                        style={{fontSize: 40, cursor: 'pointer', color: user ? '#00968E' : '#393939'}} />
                 
 
                         <div 

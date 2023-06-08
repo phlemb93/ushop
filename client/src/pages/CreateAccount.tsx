@@ -44,7 +44,8 @@ function CreateAccount() {
       //Setting the error display back to null
       setError(null)
 
-      navigate('/login');
+      //Navigate to the homepage upon registration
+      navigate('/');
 
   } else {
 
