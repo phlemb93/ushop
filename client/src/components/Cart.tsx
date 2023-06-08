@@ -178,7 +178,7 @@ function Cart() {
 
   return (
         <div className="cart-container" style={{ transform: isCartOpen ? 'translate(0%)' : 'translate(100%)' }}>
-                <div className="top">
+                <div className="top-header">
                     <p>Basket</p>
                     <div className="close-menu" onClick={handleCartClose}>
                         <ArrowBackIcon />
