@@ -18,12 +18,18 @@ const get_all_users = async (req, res) => {
 const get_one_user = async (req, res) => {
 
     const userId = req.params.id;
+    const tokenId = req.tokenData.id;
+    const isAdmin = req.tokenData.isAdmin;
 
-    try {
-        const user = await User.findById(userId);
-        res.status(200).json(user);
-    } catch (error) {  
-        res.status(500).json(error)
+    if(userId === tokenId || isAdmin) {
+        try {
+            const user = await User.findById(userId);
+            res.status(200).json(user);
+        } catch (error) {  
+            res.status(500).json(error)
+        }
+    } else {
+        res.status(400).json("You're not authorized");
     }
 }
 
@@ -84,19 +90,25 @@ const update_one_user = async (req, res) => {
 const delete_one_user = async (req, res) => {
 
     const userId = req.params.id;
+    const tokenId = req.tokenData.id;
+    const isAdmin = req.tokenData.isAdmin;
 
-    try {
+    if(userId === tokenId || isAdmin) {
+        try {
 
-        const user = await User.findByIdAndDelete(userId);
+            const user = await User.findByIdAndDelete(userId);
 
-        if(user) {
-            res.status(200).json("User successfully deleted");
-        } else {
-            res.status(400).json("User doesn't exist")
+            if(user) {
+                res.status(200).json("User successfully deleted");
+            } else {
+                res.status(400).json("User doesn't exist")
+            }
+        
+        } catch (error) {
+            res.status(500).json("Server Error")
         }
-    
-    } catch (error) {
-        res.status(500).json("Server Error")
+    } else {
+        res.status(400).json("You're not authorized");
     }
 }
 

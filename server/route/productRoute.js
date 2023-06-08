@@ -1,5 +1,5 @@
 const { get_all_products, add_one_product, get_one_product, update_one_product, delete_one_product } = require('../controller/productController');
-const { verifyTokenAndAdmin, verifyTokenAndAuthorization } = require('../utilities/verifyTokenAndAuthorization');
+const { verifyTokenAndAdmin, verifyTokenAndAuthorization } = require('../middleware/verifyTokenAndAuthorization');
 
 const router = require('express').Router();
 

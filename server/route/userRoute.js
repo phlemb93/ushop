@@ -1,5 +1,5 @@
 const { get_all_users, get_one_user, update_one_user, delete_one_user, get_users_stats } = require('../controller/userController')
-const { verifyTokenAndAdmin, verifyTokenAndAuthorization } = require('../utilities/verifyTokenAndAuthorization');
+const { verifyTokenAndAdmin, verifyTokenAndAuthorization } = require('../middleware/verifyTokenAndAuthorization');
 const router = require('express').Router();
 
 
