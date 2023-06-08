@@ -13,6 +13,7 @@ type valuesType = {
     handleFilterOpen: () => void
     handleFilterClose: () => void
     handleProfileClose: () => void
+    handleProfileToggle: () => void
     handleProfileOpen: () => void
 }
 type isOpenProviderProps = {
@@ -50,16 +51,19 @@ const handleFilterClose = () => {
 const handleFilterOpen = () => {
     setIsFilterOpen(true);
 }
+const handleProfileClose = () => {
+    setIsProfileOpen(false);
+}
 const handleProfileOpen = () => {
     setIsProfileOpen(true);
 }
-const handleProfileClose = () => {
-    setIsProfileOpen(true);
+const handleProfileToggle = () => {
+    setIsProfileOpen(prevState => !prevState);
 }
 
 return (
 
-    <IsOpenContext.Provider value={{isMenuOpen, isCartOpen, isFilterOpen, isProfileOpen, handleMenuOpen, handleMenuClose, handleCartOpen, handleCartClose, handleFilterOpen, handleFilterClose, handleProfileOpen, handleProfileClose}}>
+    <IsOpenContext.Provider value={{isMenuOpen, isCartOpen, isFilterOpen, isProfileOpen, handleMenuOpen, handleMenuClose, handleCartOpen, handleCartClose, handleFilterOpen, handleFilterClose, handleProfileToggle, handleProfileClose, handleProfileOpen}}>
 
         { children }
 

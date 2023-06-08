@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import { useUserContext } from '../utilities/contexts/userContext';
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
@@ -9,39 +9,47 @@ import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 
 
 function NavBar() {
 
-const { handleMenuOpen, handleCartOpen} = useIsOpenContext();
+const { handleMenuOpen, handleCartOpen, isProfileOpen, handleProfileToggle, handleProfileClose, handleProfileOpen } = useIsOpenContext();
 const { state, userLogout } = useUserContext();
 const { user } = state;
 
-const [toggle, setToggle] = useState<boolean>(false);
 
 const navigate = useNavigate();
+const divRef = useRef(null);
+
 
 const handleProfileClick = () => {
-    {user ? (
-        setToggle(prevToggle => !prevToggle)
-    ) : (
-        navigate('/login')
-    )}
+    user ? handleProfileToggle() : navigate('/login')
 }
 
-const handleLogin = () => {
-    navigate('/login'); 
-    setToggle(false);
-}
 const handleLogout = () => {
     userLogout(); 
-    setToggle(false);
+    handleProfileClose();
 }
 const handleProfile = () => {
     navigate('/profile'); 
-    setToggle(false);
+    handleProfileClose();
 }
+
+useEffect(() => {
+    document.addEventListener('click', (e) => {
+
+        const targetElement = divRef.current;
+        const firstElement =  e.target;
+        const secondElement = e.target.parentElement ;
+        const thirdElement = e.target.parentElement.parentElement;
+
+        if(!(targetElement == firstElement || targetElement == secondElement || targetElement == thirdElement)) {
+            handleProfileClose();
+        }
+    })
+}, [])
+
+
 
   return (
     <div className="navbar">
@@ -64,16 +72,20 @@ const handleProfile = () => {
 
             <div className="right">
                
-                    <div className="profile">
+                    <div 
+                    className="profile" 
+                    ref={divRef}   
+                    onClick={ handleProfileClick }
+                        >
+
                         <PersonOutlineOutlinedIcon 
                         className="profile-icon" 
-                        style={{fontSize: 40, cursor: 'pointer', color: user ? '#393939' : '#00968E'}} 
-                        onClick={handleProfileClick}
-                        />
+                        style={{fontSize: 40, cursor: 'pointer', color: user ? '#393939' : '#00968E'}} />
+                
 
                         <div 
                         className="drop-down" 
-                        style={{display: toggle ? 'block' : 'none'}}>
+                        style={{display: isProfileOpen ? 'block' : 'none'}}>
                             <div className="loggedin">
 
                                 <div className="name">

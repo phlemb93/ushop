@@ -56,7 +56,7 @@ function Cart() {
             ]
         },
         {
-            "id": 3,
+            "id": 4,
             "title": "the green",
             "category": "bundle",
             "brief": "1.5 Seater Snuggler",
@@ -69,7 +69,7 @@ function Cart() {
             ]
         },
         {
-            "id": 3,
+            "id": 5,
             "title": "the green",
             "category": "bundle",
             "brief": "1.5 Seater Snuggler",
@@ -82,7 +82,7 @@ function Cart() {
             ]
         },
         {
-            "id": 3,
+            "id": 6,
             "title": "the green",
             "category": "bundle",
             "brief": "1.5 Seater Snuggler",
@@ -95,7 +95,7 @@ function Cart() {
             ]
         },
         {
-            "id": 3,
+            "id": 7,
             "title": "the green",
             "category": "bundle",
             "brief": "1.5 Seater Snuggler",
@@ -108,7 +108,7 @@ function Cart() {
             ]
         },
         {
-            "id": 3,
+            "id": 8,
             "title": "the green",
             "category": "bundle",
             "brief": "1.5 Seater Snuggler",
@@ -121,7 +121,7 @@ function Cart() {
             ]
         },
         {
-            "id": 3,
+            "id": 9,
             "title": "the green",
             "category": "bundle",
             "brief": "1.5 Seater Snuggler",
@@ -134,7 +134,7 @@ function Cart() {
             ]
         },
         {
-            "id": 3,
+            "id": 10,
             "title": "the green",
             "category": "bundle",
             "brief": "1.5 Seater Snuggler",
@@ -147,7 +147,7 @@ function Cart() {
             ]
         },
         {
-            "id": 3,
+            "id": 11,
             "title": "the green",
             "category": "bundle",
             "brief": "1.5 Seater Snuggler",
@@ -160,7 +160,7 @@ function Cart() {
             ]
         },
         {
-            "id": 3,
+            "id": 12,
             "title": "the green",
             "category": "bundle",
             "brief": "1.5 Seater Snuggler",
@@ -174,9 +174,6 @@ function Cart() {
         },
     ]
   );
-
-//   transform: translateX(100%);
-// transform: isCartOpen ? 'translate(0%)' : 'translate(100%)'
 
 
   return (
@@ -194,7 +191,7 @@ function Cart() {
                     { cartItems ? (
                         <div className="cart-items">
                         { cartItems.map((item) => (
-                            <CartItems {...item} />
+                            <CartItems {...item} key={item.id}/>
                         )) }
                         </div>
                         ) : (

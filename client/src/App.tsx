@@ -9,7 +9,6 @@ import Footer from './components/Footer'
 import BurgerMenu from './components/BurgerMenu'
 import Cart from './components/Cart'
 import Store from './pages/Store';
-import { IsOpenProvider } from './utilities/contexts/isOpenContext';
 import Filter from './components/Filter';
 import Overlay from './components/Overlay';
 import Product from './pages/ProductDetails';
@@ -17,12 +16,10 @@ import Profile from './pages/Profile';
 
 
 
-
 function App() {
 
   return (
       <div className='app'>
-        <IsOpenProvider>
           <Overlay />
           <Filter />
           <BurgerMenu />
@@ -38,7 +35,6 @@ function App() {
             <Route path='/:id' element={ <Product /> } />
           </Routes>
           <Footer />
-        </IsOpenProvider>
       </div>
   )
 }

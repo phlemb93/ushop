@@ -8,7 +8,7 @@ import currencyFormatter from '../utilities/currencyFormatter'
 const CartItems = ({ ...item }: Item ) => {
 
   return (
-    <div className="cart-item" key={item.id}>
+    <div className="cart-item">
         <div className='image' >
             <img style={{width: '80px', height: '60px' }} src={item.images[0]} alt="" />
         </div>

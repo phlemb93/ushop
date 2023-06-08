@@ -20,7 +20,7 @@ function useUrlSingle(value: string) {
         setError(err)
       });
   
-    }, [value])
+    }, [])
 
   return { data, isLoading, error }
 }
