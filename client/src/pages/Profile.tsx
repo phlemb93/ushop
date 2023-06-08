@@ -151,12 +151,11 @@ function Profile() {
 
   return (
     <div className='my-profile'>
-        <div className="back" onClick={handleBackButton}>
-            <KeyboardBackspaceOutlinedIcon />
-            <p>Back</p>
-        </div>
-        <div className="head">
-            <h2>Profile Settings</h2>
+        <div className="back">
+            <div  onClick={handleBackButton}>
+                <KeyboardBackspaceOutlinedIcon />
+                <p>Back</p>
+            </div>
         </div>
 
         <div className="container">
