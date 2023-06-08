@@ -22,6 +22,13 @@ const [toggle, setToggle] = useState<boolean>(false);
 
 const navigate = useNavigate();
 
+const handleProfileClick = () => {
+    {user ? (
+        setToggle(prevToggle => !prevToggle)
+    ) : (
+        navigate('/login')
+    )}
+}
 
 const handleLogin = () => {
     navigate('/login'); 
@@ -60,32 +67,35 @@ const handleProfile = () => {
                     <div className="profile">
                         <PersonOutlineOutlinedIcon 
                         className="profile-icon" 
-                        style={{fontSize: 40, cursor: 'pointer'}} 
-                        onClick={() => setToggle(prevState => !prevState)}
+                        style={{fontSize: 40, cursor: 'pointer', color: user ? '#393939' : '#00968E'}} 
+                        onClick={handleProfileClick}
                         />
 
-                        <div className="drop-down" style={{display: toggle ? 'block' : 'none'}}>
-                            <div className="loggedin" style={{display: user ? 'flex' : 'none'}}>
-                                <div onClick={handleProfile}>
+                        <div 
+                        className="drop-down" 
+                        style={{display: toggle ? 'block' : 'none'}}>
+                            <div className="loggedin">
+
+                                <div className="name">
+                                    <p>Hi, <span>{user?.firstName}</span></p>
+                                </div>
+
+                                <div className="divider"></div>
+
+                                <div className="icon" onClick={handleProfile}>
                                     <SettingsOutlinedIcon 
-                                    style={{color: '#fff'}}
+                                    style={{color: '#00968E'}}
                                     />
                                     <p>Settings</p>
                                 </div>
-                                <div onClick={handleLogout}>
+
+                                <div className="icon" onClick={handleLogout}>
                                     <LogoutOutlinedIcon
-                                    style={{color: '#fff'}}
+                                    style={{color: '#00968E'}}
                                     />
                                     <p>Logout</p>
                                 </div>
-                            </div>
-                            <div className="loggedout" style={{display: user ? 'none' : 'flex'}}>
-                                <div  onClick={handleLogin}>
-                                    <LoginOutlinedIcon 
-                                    style={{color: '#fff'}}
-                                    />
-                                    <p>Sign in</p>
-                                </div>
+
                             </div>
                         </div>
                     </div>
