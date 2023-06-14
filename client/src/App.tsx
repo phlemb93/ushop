@@ -32,7 +32,7 @@ function App() {
             <Route path='/create-account' element={<CreateAccount /> } />
             <Route path='/forget-password' element={<ForgetPassword /> } />
             <Route path='/profile' element={<Profile />} />
-            <Route path='/:id' element={ <Product /> } />
+            <Route path='/products/:id' element={ <Product /> } />
           </Routes>
           <Footer />
       </div>

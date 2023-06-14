@@ -4,6 +4,7 @@
     align-items: flex-start;
     background-color: $secondary-color;
     padding: 20px;
+    margin: 0 auto;
     overflow: hidden;
 
     .form {
@@ -98,6 +99,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin: 0 auto;
         flex: 1;
         padding: 20px;
         height: 250px;
@@ -204,5 +206,11 @@
             }
 
         }
+    }
+}
+
+@media (min-width: 1400px) {
+    .footer {
+        padding: 2% 10%;
     }
 }

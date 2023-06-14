@@ -6,15 +6,21 @@ import Products from '../components/ProductsList'
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import StoreLoading from '../components/StoreLoading';
+import useUrlArray from '../utilities/hooks/useUrlArray';
 
 
 function Store() {
+
+    const { isLoading } = useUrlArray('http://localhost:5000/api/products')
+
     
     const { handleFilterOpen } = useIsOpenContext();
 
     const [color, setColor] = useState(true);
     const [collection, setCollection] = useState(true);
     const [price, setPrice] = useState(true);
+
 
   return (
     <div className="store">
@@ -27,6 +33,9 @@ function Store() {
                 </div>
             </div>
         </div>
+
+        { isLoading ? <StoreLoading /> :  (
+
         <div className="content">
             <div className="left">
                 <div className="color">
@@ -130,7 +139,7 @@ function Store() {
             <div className="right">
                 <Products />
             </div>
-        </div>
+        </div> )}
     
     </div>
   )

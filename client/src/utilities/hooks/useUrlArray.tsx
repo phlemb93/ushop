@@ -27,22 +27,10 @@ function useUrlArray(value: string) {
       }
 
       makeRequest();
-    }, [])
+    }, [value])
 
     return { data, isLoading, error }
 
 }
 
 export default useUrlArray
-
-// fetch(value)
-//       .then(res => res.json())
-//       .then(response => {
-//         setData(response)
-//         setIsLoading(false)
-//       })
-//       .catch(err => {
-//         setData(null)
-//         setIsLoading(false)
-//         setError(err)
-//       });
