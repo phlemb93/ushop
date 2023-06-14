@@ -88,7 +88,7 @@ const login_post = async(req, res) => {
     const id = userExist._id;
     const isAdmin = userExist.isAdmin;
 
-    const token = jwt.sign({ id, isAdmin }, process.env.SECRET_KEY, {expiresIn: '3d'})
+    const token = jwt.sign({ id, isAdmin }, process.env.SECRET_KEY, { expiresIn: '3d' })
 
     try {
 
@@ -96,7 +96,7 @@ const login_post = async(req, res) => {
 
         res.status(200).json({ firstName, id, token })
     } catch (error) {
-        res.status(500).json({error: error.message})
+        res.status(500).json({ error: error.message })
     }
 
 }

@@ -21,7 +21,7 @@ app.use(express.json());
 
 //connect to DB
 mongoose
-.connect(process.env.DB_URI, { dbName: 'ushop', useNewUrlParser: true,
+.connect(process.env.MONGODB_URI, { dbName: 'ushop', useNewUrlParser: true,
 useUnifiedTopology: true })
 .then(() => {
 
