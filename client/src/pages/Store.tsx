@@ -76,19 +76,19 @@ function Store() {
                     </div>
                     <div className="body" style={{display: collection ? 'flex' : 'none'}}>
                         <div>
-                            <input type="checkbox" name="armchair" id="" />
+                            <input type="checkbox" name="armchair" />
                             <label>Armchair</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="sofa" id="" />
+                            <input type="checkbox" name="sofa" />
                             <label>Sofa</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="bundle" id="" />
+                            <input type="checkbox" name="bundle" />
                             <label>Bundle</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="accessories" id="" />
+                            <input type="checkbox" name="accessories" />
                             <label>Accessories</label>
                         </div>
                     </div>

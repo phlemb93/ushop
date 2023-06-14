@@ -8,13 +8,12 @@ function Product() {
 
   const { id } = useParams();
 
-  const url = `http://127.0.0.1:3000/products/${id}`;
+  const url = `http://localhost:5000/api/products/${id}`;
 
   const { data, isLoading, error} = useUrlSingle(url);
 
   const [image1, setImage1] = useState(true)
   const [image2, setImage2] = useState(false)
-  const [image3, setImage3] = useState(false)
 
   const dimensionRef = useRef<HTMLDivElement>(null);
   const optionRef = useRef<HTMLDivElement>(null);
@@ -22,18 +21,12 @@ function Product() {
   const handleImg1 = () => {
     setImage1(true)
     setImage2(false)
-    setImage3(false)
   }
   const handleImg2 = () => {
     setImage1(false)
     setImage2(true)
-    setImage3(false)
   }
-  const handleImg3 = () => {
-    setImage1(false)
-    setImage2(false)
-    setImage3(true)
-  }
+  
   const handleOptionScroll = () => {
       optionRef.current?.scrollIntoView()
   }
@@ -44,24 +37,22 @@ function Product() {
 
 
   return (
-        <div className='item'>
+        <div className='item' key={data && data._id}>
           <div className="images">
             <div className="main-image">
-              <img src={data?.images[0]} alt={data?.title} style={{display: image1 ? 'block' : 'none'}}/>
-              <img src={data?.images[1]} alt={data?.title} style={{display: image2 ? 'block' : 'none'}} />
-              <img src={data?.images[2]} alt={data?.title} style={{display: image3 ? 'block' : 'none'}}/>
+              <img src={data?.images[0]} alt={data?.title} style={{display: image1 ? 'block' : 'none'}} />
+             { data && data.images.length > 1 && <img src={data?.images[1]} alt={data?.title} style={{display: image2 ? 'block' : 'none'}} />}
             </div>
             <div className="minor-images">
-              <img className="image" src={data?.images[0]} alt={data?.title} onClick={handleImg1} />
-              <img className="image" src={data?.images[1]} alt={data?.title} onClick={handleImg2} />
-              <img className="image" src={data?.images[2]} alt={data?.title} onClick={handleImg3}  />
+              <img className="image" src={data?.images[0]} alt={data?.title} onClick={handleImg1}/>
+              { data && data.images.length > 1 && <img className="image" src={data?.images[1]} alt={data?.title} onClick={handleImg2} /> }
             </div>
           </div>
 
           <div className="content">
             <div className="content-top">
               <h2>{ data?.title }</h2>
-              <p>{ data?.brief }</p>
+              <p>{ data?.description }</p>
             </div>
  
             <div className="details">

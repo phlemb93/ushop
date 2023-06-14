@@ -1,10 +1,10 @@
 
 
 export type Item = {
-    id: number,
+    _id: number,
     title: string,
     category: string,
-    brief: string,
+    description: string,
     color: string,
     price: number,
     images: string []

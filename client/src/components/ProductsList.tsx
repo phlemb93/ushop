@@ -5,24 +5,30 @@ import useUrlArray from '../utilities/hooks/useUrlArray';
 
 function Products() {
 
-  const url = "http://127.0.0.1:3000/products";
+  const url = "http://localhost:5000/api/products";
 
   const { data, isLoading, error } = useUrlArray(url);
 
+console.log(data)
    return (
     <div className='products'>
 
-      {data!.map(item => (
+      {data && data!.map(item => (
 
-        <Link to={`/${item.id}`}>
+        <Link to={`/${item._id}`}>
           <div 
-          onMouseOver={e => ((e.currentTarget.children[0] as HTMLImageElement).src = item.images[1] )} 
-          onMouseLeave={e => ((e.currentTarget.children[0] as HTMLImageElement).src  = item.images[0])} 
-          key={item.id} className='product'
+          onMouseOver={ item.images.length > 1 ? 
+            (e => ((e.currentTarget.children[0] as HTMLImageElement).src = item.images[1]))
+            : (
+              e => ((e.currentTarget.children[0] as HTMLImageElement).src = item.images[0])
+            )} 
+
+          onMouseLeave={ e => ((e.currentTarget.children[0] as HTMLImageElement).src  = item.images[0])} 
+          key={item._id} className='product'
           >
             <img src={item.images[0]}  alt={item.title} />
             <h1>{item.title}</h1>
-            <p>{item.brief}</p>
+            <p>{item.description}</p>
             <h4>{currencyFormatter(item.price)}</h4>
             <button>Add to cart</button>
 
