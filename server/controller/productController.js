@@ -4,11 +4,11 @@ const Product = require('../model/Product');
 //GET ALL PRODUCTS
 const get_all_products = async (req, res) => {
 
-    const Qlimit = +req.query.limit;
+    const Qlimit = req.query.limit;
 
     try { 
         if(Qlimit){
-            const products = await Product.find().sort({createdAt: -1 }).limit(Qlimit);
+            const products = await Product.find().sort({createdAt: -1 }).limit(+Qlimit);
             res.status(200).json(products);
         } else {
             const products = await Product.find().sort({createdAt: -1 });

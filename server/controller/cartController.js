@@ -46,18 +46,19 @@ const get_one_cart = async (req, res) => {
     }
 }
 
-//UPDATE SINGLE CART
+//UPDATE USER CART
 const update_one_cart = async (req, res) => {
 
     const id = req.params.id;
 
     try {
-        const updatedCart = await Cart.findByIdAndUpdate(id, req.body, { new:true });
+        const updatedCart = await Cart.findOneAndUpdate({ userId: id }, req.body , { new:true });
         res.status(200).json(updatedCart)
     } catch (error) {
         res.status(500).json(error)
     }
 }
+
 
 //DELETE SINGLE CART
 const delete_one_cart = async (req, res) => {
