@@ -9,7 +9,7 @@ import { addToCart, decrQuantity, removeProduct } from '../data/cartSlice';
 
 const CartItems = ({ ...item }: Item ) => {
 
-    const { products, quantity, total } = useSelector(state => state.cart)
+    // const { products, quantity, total } = useSelector(state => state.cart)
     const dispatch = useDispatch();
 
   return (

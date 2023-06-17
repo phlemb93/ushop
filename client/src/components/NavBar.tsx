@@ -18,11 +18,14 @@ const { handleMenuOpen, handleCartOpen, isProfileOpen, handleProfileToggle, hand
 const { state, userLogout } = useUserContext();
 const { user } = state;
 
-const cart = useSelector(state => state.cart)
+const { cartItems } = useSelector(state => state.cart)
+
+const quantity = cartItems.reduce((total, item) => {
+    return total += item.quantity;
+}, 0)
 
 const navigate = useNavigate();
 const divRef = useRef(null);
-
 
 const handleProfileClick = () => {
     user ? handleProfileToggle() : navigate('/login')
@@ -50,8 +53,6 @@ useEffect(() => {
         } 
     })
 }, [])
-
-console.log(cart)
 
   return (
     <div className="navbar">
@@ -119,7 +120,7 @@ console.log(cart)
                     </div>
                     <small>Basket</small>
                     <span style={{fontSize: 11}} className="number">
-                        { cart.quantity }
+                        { quantity }
                     </span>
                 </div>
             </div>

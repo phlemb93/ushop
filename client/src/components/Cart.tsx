@@ -16,8 +16,11 @@ function Cart() {
 
     const { isCartOpen, handleCartClose } = useIsOpenContext();
 
-    const { cartItems, total } = useSelector(state => state.cart);
+    const { cartItems } = useSelector(state => state.cart);
 
+    const total = cartItems.reduce((sum, item) => {
+        return sum += item.price * item.quantity;
+    }, 0)
 
   return (
         <div className="cart-container" style={{ transform: isCartOpen ? 'translate(0%)' : 'translate(100%)' }}>
