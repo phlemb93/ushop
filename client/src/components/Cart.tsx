@@ -8,172 +8,15 @@ import { useState }  from 'react';
 import CartItems from './CartItems';
 import { Item } from '../utilities/types/types'
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
+import { useSelector } from 'react-redux';
+import currencyFormatter from '../utilities/currencyFormatter';
 
 
 function Cart() {
 
     const { isCartOpen, handleCartClose } = useIsOpenContext();
 
-  const [cartItems, setCartItems] = useState<null | Item[]>(
-    [
-        {
-            "id": 1,
-            "title": "the rebel",
-            "category": "armchair",
-            "brief": "1.5 Seater Snuggler",
-            "color": "blue",
-            "price": 1600,
-            "images": [
-                "src/assets/images/sofa.jpg", 
-                "src/assets/images/img2.jpg", 
-                "src/assets/images/img3.jpg"
-            ]
-        },
-        {
-            "id": 2,
-            "title": "the white",
-            "category": "accessories",
-            "brief": "1.5 Seater Snuggler",
-            "color": "gray",
-            "price": 300,
-            "images": [
-                "src/assets/images/armchair.jpg", 
-                "src/assets/images/img2.jpg", 
-                "src/assets/images/img3.jpg"
-            ]
-        },
-        {
-            "id": 3,
-            "title": "the green",
-            "category": "bundle",
-            "brief": "1.5 Seater Snuggler",
-            "color": "green",
-            "price": 6500,
-            "images": [
-                "src/assets/images/bundles.jpg", 
-                "src/assets/images/img2.jpg", 
-                "src/assets/images/img3.jpg"
-            ]
-        },
-        {
-            "id": 4,
-            "title": "the green",
-            "category": "bundle",
-            "brief": "1.5 Seater Snuggler",
-            "color": "green",
-            "price": 6500,
-            "images": [
-                "src/assets/images/accessories.jpg", 
-                "src/assets/images/img2.jpg", 
-                "src/assets/images/img3.jpg"
-            ]
-        },
-        {
-            "id": 5,
-            "title": "the green",
-            "category": "bundle",
-            "brief": "1.5 Seater Snuggler",
-            "color": "green",
-            "price": 6500,
-            "images": [
-                "src/assets/images/img1.jpg", 
-                "src/assets/images/img2.jpg", 
-                "src/assets/images/img3.jpg"
-            ]
-        },
-        {
-            "id": 6,
-            "title": "the green",
-            "category": "bundle",
-            "brief": "1.5 Seater Snuggler",
-            "color": "green",
-            "price": 6500,
-            "images": [
-                "src/assets/images/img1.jpg", 
-                "src/assets/images/img2.jpg", 
-                "src/assets/images/img3.jpg"
-            ]
-        },
-        {
-            "id": 7,
-            "title": "the green",
-            "category": "bundle",
-            "brief": "1.5 Seater Snuggler",
-            "color": "green",
-            "price": 6500,
-            "images": [
-                "src/assets/images/sofa.jpg", 
-                "src/assets/images/img2.jpg", 
-                "src/assets/images/img3.jpg"
-            ]
-        },
-        {
-            "id": 8,
-            "title": "the green",
-            "category": "bundle",
-            "brief": "1.5 Seater Snuggler",
-            "color": "green",
-            "price": 6500,
-            "images": [
-                "src/assets/images/img1.jpg", 
-                "src/assets/images/img2.jpg", 
-                "src/assets/images/img3.jpg"
-            ]
-        },
-        {
-            "id": 9,
-            "title": "the green",
-            "category": "bundle",
-            "brief": "1.5 Seater Snuggler",
-            "color": "green",
-            "price": 6500,
-            "images": [
-                "src/assets/images/img1.jpg", 
-                "src/assets/images/img2.jpg", 
-                "src/assets/images/img3.jpg"
-            ]
-        },
-        {
-            "id": 10,
-            "title": "the green",
-            "category": "bundle",
-            "brief": "1.5 Seater Snuggler",
-            "color": "green",
-            "price": 6500,
-            "images": [
-                "src/assets/images/img1.jpg", 
-                "src/assets/images/img2.jpg", 
-                "src/assets/images/img3.jpg"
-            ]
-        },
-        {
-            "id": 11,
-            "title": "the green",
-            "category": "bundle",
-            "brief": "1.5 Seater Snuggler",
-            "color": "green",
-            "price": 6500,
-            "images": [
-                "src/assets/images/img1.jpg", 
-                "src/assets/images/img2.jpg", 
-                "src/assets/images/img3.jpg"
-            ]
-        },
-        {
-            "id": 12,
-            "title": "the green",
-            "category": "bundle",
-            "brief": "1.5 Seater Snuggler",
-            "color": "green",
-            "price": 6500,
-            "images": [
-                "src/assets/images/img1.jpg", 
-                "src/assets/images/img2.jpg", 
-                "src/assets/images/img3.jpg"
-            ]
-        },
-    ]
-  );
+    const { cartItems, total } = useSelector(state => state.cart);
 
 
   return (
@@ -190,8 +33,8 @@ function Cart() {
 
                     { cartItems ? (
                         <div className="cart-items">
-                        { cartItems.map((item) => (
-                            <CartItems {...item} key={item.id}/>
+                        { cartItems.map((item: Item) => (
+                            <CartItems {...item} key={item._id}/>
                         )) }
                         </div>
                         ) : (
@@ -208,7 +51,7 @@ function Cart() {
                 </div>
 
                 <div className="bottom">
-                    <p>Subtotal: <span>$0.00</span></p>
+                    <p>Subtotal: <span>{currencyFormatter(total)}</span></p>
                     <small>Shipping and Taxes will be calculated at the next step</small>
                     <span>Pick delivery date at checkout</span>
                     <div className="btn">

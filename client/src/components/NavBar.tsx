@@ -9,6 +9,7 @@ import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import { useSelector } from 'react-redux';
 
 
 function NavBar() {
@@ -17,6 +18,7 @@ const { handleMenuOpen, handleCartOpen, isProfileOpen, handleProfileToggle, hand
 const { state, userLogout } = useUserContext();
 const { user } = state;
 
+const cart = useSelector(state => state.cart)
 
 const navigate = useNavigate();
 const divRef = useRef(null);
@@ -49,7 +51,7 @@ useEffect(() => {
     })
 }, [])
 
-
+console.log(cart)
 
   return (
     <div className="navbar">
@@ -72,45 +74,43 @@ useEffect(() => {
 
             <div className="right">
                
+                <div 
+                className="profile" 
+                ref={divRef}   
+                onClick={ handleProfileClick } >
+
+                    <PersonOutlineOutlinedIcon 
+                    className="profile-icon" 
+                    style={{fontSize: 40, cursor: 'pointer', color: user ? '#00968E' : '#393939'}} />
+            
                     <div 
-                    className="profile" 
-                    ref={divRef}   
-                    onClick={ handleProfileClick }
-                        >
+                    className="drop-down" 
+                    style={{display: isProfileOpen ? 'block' : 'none'}}>
+                        <div className="loggedin">
 
-                        <PersonOutlineOutlinedIcon 
-                        className="profile-icon" 
-                        style={{fontSize: 40, cursor: 'pointer', color: user ? '#00968E' : '#393939'}} />
-                
-
-                        <div 
-                        className="drop-down" 
-                        style={{display: isProfileOpen ? 'block' : 'none'}}>
-                            <div className="loggedin">
-
-                                <div className="name">
-                                    <p>Hi, <span>{user?.firstName}</span></p>
-                                </div>
-
-                                <div className="divider"></div>
-
-                                <div className="icon" onClick={handleProfile}>
-                                    <SettingsOutlinedIcon 
-                                    style={{color: '#00968E'}}
-                                    />
-                                    <p>Settings</p>
-                                </div>
-
-                                <div className="icon" onClick={handleLogout}>
-                                    <LogoutOutlinedIcon
-                                    style={{color: '#00968E'}}
-                                    />
-                                    <p>Logout</p>
-                                </div>
-
+                            <div className="name">
+                                <p>Hi, <span>{user?.firstName}</span></p>
                             </div>
+
+                            <div className="divider"></div>
+
+                            <div className="icon" onClick={handleProfile}>
+                                <SettingsOutlinedIcon 
+                                style={{color: '#00968E'}}
+                                />
+                                <p>Settings</p>
+                            </div>
+
+                            <div className="icon" onClick={handleLogout}>
+                                <LogoutOutlinedIcon
+                                style={{color: '#00968E'}}
+                                />
+                                <p>Logout</p>
+                            </div>
+
                         </div>
                     </div>
+                </div>
              
                 
                 <div className="cart" onClick={ handleCartOpen }>
@@ -119,7 +119,7 @@ useEffect(() => {
                     </div>
                     <small>Basket</small>
                     <span style={{fontSize: 11}} className="number">
-                        10
+                        { cart.quantity }
                     </span>
                 </div>
             </div>

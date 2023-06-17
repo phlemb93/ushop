@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import useUrlSingle from "../utilities/hooks/useUrlSingle";
 import currencyFormatter from "../utilities/currencyFormatter";
 import { useRef, useState } from "react";
+// import { useCartFunc } from "../utilities/useCartFunc";
 
 
 function Product() {
@@ -10,7 +11,8 @@ function Product() {
 
   const url = `http://localhost:5000/api/products/${id}`;
 
-  const { data, isLoading, error} = useUrlSingle(url);
+  const { data, isLoading } = useUrlSingle(url);
+  // const { incCartItem } = useCartFunc();
 
   const [image1, setImage1] = useState(true)
   const [image2, setImage2] = useState(false)
@@ -92,7 +94,7 @@ function Product() {
 
                 <div className="dimension" ref={dimensionRef}>
                   <div className="image">
-                    <img src="src/assets/images/sofaD.png" alt="sofa-dimension" />
+                    <img src={data?.images[0]} alt="sofa-dimension" />
                   </div>
                   <div className="details">
                     <div>
