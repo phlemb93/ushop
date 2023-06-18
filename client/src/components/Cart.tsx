@@ -3,24 +3,29 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Badge } from '@mui/material';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CartItems from './CartItems';
 import { CartItem, useAppSelector } from '../utilities/types/types'
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import currencyFormatter from '../utilities/currencyFormatter';
-import { useEffect } from 'react';
+
+
 
 
 function Cart() {
 
+    const navigate = useNavigate();
     const { isCartOpen, handleCartClose } = useIsOpenContext();
-
     const { cartItems } = useAppSelector(state => state.cart);
 
     const total = cartItems.reduce((sum:number, item:CartItem) => {
         return sum += item.price * item.quantity;
     }, 0);
 
+    const handleShopAll = () => {
+        navigate('/store');
+        handleCartClose();
+    }
 
     return (
         <div className="cart-container" style={{ transform: isCartOpen ? 'translate(0%)' : 'translate(100%)' }}>
@@ -34,7 +39,7 @@ function Cart() {
 
                 <div className="center">
 
-                    { cartItems ? (
+                    { cartItems.length > 0 ? (
                         <div className="cart-items">
                         { cartItems.map((item: CartItem) => (
                             <CartItems {...item} key={item._id}/>
@@ -47,7 +52,7 @@ function Cart() {
                             </Badge>
                             <p>Your cart is currently empty.</p>
                             <Link to='/store'>
-                                <div>Shop All</div>
+                                <div onClick={handleShopAll}>Shop All</div>
                             </Link>
                         </div>
                     )}
