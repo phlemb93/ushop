@@ -121,7 +121,7 @@ useEffect(() => {
                         <LocalMallOutlinedIcon style={{fontSize: 28}}/>
                     </div>
                     <small>Basket</small>
-                    <span style={{fontSize: 11}} className="number">
+                    <span className="number">
                         { quantity }
                     </span>
                 </div>

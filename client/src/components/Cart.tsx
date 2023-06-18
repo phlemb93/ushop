@@ -8,6 +8,7 @@ import CartItems from './CartItems';
 import { CartItem, useAppSelector } from '../utilities/types/types'
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import currencyFormatter from '../utilities/currencyFormatter';
+import { useEffect } from 'react';
 
 
 function Cart() {
@@ -18,9 +19,10 @@ function Cart() {
 
     const total = cartItems.reduce((sum:number, item:CartItem) => {
         return sum += item.price * item.quantity;
-    }, 0)
+    }, 0);
 
-  return (
+
+    return (
         <div className="cart-container" style={{ transform: isCartOpen ? 'translate(0%)' : 'translate(100%)' }}>
                 <div className="top-header">
                     <p>Basket</p>
@@ -62,7 +64,7 @@ function Cart() {
                 </div>
             
         </div>
-  )
+    )
 }
 
 export default Cart

@@ -23,7 +23,7 @@ type CartItem = {
 }
 
 type CartState = {
-  cartItems: CartItem[]
+  cartItems: CartItem[] | []
 }
 
 
