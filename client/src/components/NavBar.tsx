@@ -9,7 +9,9 @@ import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import { useSelector } from 'react-redux';
+import { CartItem, useAppSelector } from '../utilities/types/types';
+
+
 
 
 function NavBar() {
@@ -18,9 +20,9 @@ const { handleMenuOpen, handleCartOpen, isProfileOpen, handleProfileToggle, hand
 const { state, userLogout } = useUserContext();
 const { user } = state;
 
-const { cartItems } = useSelector(state => state.cart)
+const { cartItems } = useAppSelector(state => state.cart)
 
-const quantity = cartItems.reduce((total, item) => {
+const quantity = cartItems.reduce((total:number, item:CartItem) => {
     return total += item.quantity;
 }, 0)
 
@@ -44,9 +46,9 @@ const handleProfile = () => {
 useEffect(() => {
     document.addEventListener('click', (e) => {
         const targetElement = divRef.current;
-        const firstElement =  e.target;
-        const secondElement = e.target.parentElement ;
-        const thirdElement = e.target.parentElement.parentElement;
+        const firstElement =  e.target as HTMLElement;
+        const secondElement = firstElement.parentElement as HTMLDivElement;
+        const thirdElement = secondElement.parentElement;
 
         if(!(targetElement == firstElement || targetElement == secondElement || targetElement == thirdElement)) {
             handleProfileClose();

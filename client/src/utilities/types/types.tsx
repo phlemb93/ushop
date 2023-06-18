@@ -1,3 +1,5 @@
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
+import { AppDispatch, RootState } from "../../data/store"
 
 type Item = {
   _id: number,
@@ -23,5 +25,9 @@ type CartItem = {
 type CartState = {
   cartItems: CartItem[]
 }
+
+
+export const useAppSelector:TypedUseSelectorHook<RootState> = useSelector;
+export const useAppDispatch = () => useDispatch<AppDispatch>();
   
 export type { Item, CartItem, CartState};

@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { UserContextProvider } from './utilities/contexts/userContext'
 import { IsOpenProvider } from './utilities/contexts/isOpenContext';
 import { Provider } from 'react-redux';
-import store from './data/store';
+import { store } from './data/store';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>

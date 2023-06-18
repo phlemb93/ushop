@@ -4,11 +4,9 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Badge } from '@mui/material';
 
 import { Link } from 'react-router-dom';
-import { useState }  from 'react';
 import CartItems from './CartItems';
-import { Item } from '../utilities/types/types'
+import { CartItem, useAppSelector } from '../utilities/types/types'
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
-import { useSelector } from 'react-redux';
 import currencyFormatter from '../utilities/currencyFormatter';
 
 
@@ -16,9 +14,9 @@ function Cart() {
 
     const { isCartOpen, handleCartClose } = useIsOpenContext();
 
-    const { cartItems } = useSelector(state => state.cart);
+    const { cartItems } = useAppSelector(state => state.cart);
 
-    const total = cartItems.reduce((sum, item) => {
+    const total = cartItems.reduce((sum:number, item:CartItem) => {
         return sum += item.price * item.quantity;
     }, 0)
 
@@ -36,7 +34,7 @@ function Cart() {
 
                     { cartItems ? (
                         <div className="cart-items">
-                        { cartItems.map((item: Item) => (
+                        { cartItems.map((item: CartItem) => (
                             <CartItems {...item} key={item._id}/>
                         )) }
                         </div>

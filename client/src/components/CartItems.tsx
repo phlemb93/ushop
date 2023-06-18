@@ -1,16 +1,14 @@
-import { Item } from '../utilities/types/types'
+import { CartItem, Item, useAppDispatch } from '../utilities/types/types'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import currencyFormatter from '../utilities/currencyFormatter'
-import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, decrQuantity, removeProduct } from '../data/cartSlice';
 
 
-const CartItems = ({ ...item }: Item ) => {
+const CartItems = ({ ...item }: CartItem ) => {
 
-    // const { products, quantity, total } = useSelector(state => state.cart)
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
   return (
     <div className="cart-item">
