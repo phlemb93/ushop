@@ -7,6 +7,8 @@ import EastOutlinedIcon from '@mui/icons-material/EastOutlined';
 import vid from '../assets/videos/chair.mp4'
 
 
+const primaryColor = '#5D425C';
+
 function Main() {
 
   return (
@@ -28,22 +30,22 @@ function Main() {
 
             <div className="lower">
                 <div>
-                    <LocalShippingOutlinedIcon style={{ backgroundColor:'#00968E', color: '#fff', width: '70px', height: '70px', borderRadius: '50%', padding: '10px'}} />
+                    <LocalShippingOutlinedIcon style={{ backgroundColor: primaryColor, color: '#fff', width: '70px', height: '70px', borderRadius: '50%', padding: '10px'}} />
                   <p>free delivery</p>
                   <small>Fast delivery on a day that suits you</small>
                 </div>
                 <div>
-                    <MeetingRoomOutlinedIcon style={{ backgroundColor:'#00968E', color: '#fff', width: '70px', height: '70px', borderRadius: '50%', padding: '10px'}} />
+                    <MeetingRoomOutlinedIcon style={{ backgroundColor: primaryColor, color: '#fff', width: '70px', height: '70px', borderRadius: '50%', padding: '10px'}} />
                     <p>no tight squeezes</p>
                     <small>Fits through any doorway and up any staircase</small>
                 </div>
                 <div>
-                    <VerifiedOutlinedIcon style={{ backgroundColor:'#00968E', color: '#fff', width: '70px', height: '70px', borderRadius: '50%', padding: '10px'}}  />
+                    <VerifiedOutlinedIcon style={{ backgroundColor: primaryColor, color: '#fff', width: '70px', height: '70px', borderRadius: '50%', padding: '10px'}}  />
                     <p>easy to build</p>
                     <small>No tools, just pop it together in minutes</small>
                 </div>
                 <div>
-                    <ChairOutlinedIcon style={{ backgroundColor:'#00968E', color: '#fff', width: '70px', height: '70px', borderRadius: '50%', padding: '10px'}} />
+                    <ChairOutlinedIcon style={{ backgroundColor: primaryColor, color: '#fff', width: '70px', height: '70px', borderRadius: '50%', padding: '10px'}} />
                     <p>add & extend</p>
                     <small>Level-up your seating game whenever you like</small>
                 </div>

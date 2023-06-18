@@ -12,7 +12,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { CartItem, useAppSelector } from '../utilities/types/types';
 
 
-
+const primaryColor = '#5D425C';
 
 function NavBar() {
 
@@ -84,7 +84,7 @@ useEffect(() => {
 
                     <PersonOutlineOutlinedIcon 
                     className="profile-icon" 
-                    style={{fontSize: 40, cursor: 'pointer', color: user ? '#00968E' : '#393939'}} />
+                    style={{fontSize: 40, cursor: 'pointer', color: user ? primaryColor : '#393939'}} />
             
                     <div 
                     className="drop-down" 
@@ -99,14 +99,14 @@ useEffect(() => {
 
                             <div className="icon" onClick={handleProfile}>
                                 <SettingsOutlinedIcon 
-                                style={{color: '#00968E'}}
+                                style={{color: primaryColor}}
                                 />
                                 <p>Settings</p>
                             </div>
 
                             <div className="icon" onClick={handleLogout}>
                                 <LogoutOutlinedIcon
-                                style={{color: '#00968E'}}
+                                style={{color: primaryColor}}
                                 />
                                 <p>Logout</p>
                             </div>
