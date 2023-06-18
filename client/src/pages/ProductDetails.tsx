@@ -2,17 +2,19 @@ import { useParams } from "react-router-dom"
 import useUrlSingle from "../utilities/hooks/useUrlSingle";
 import currencyFormatter from "../utilities/currencyFormatter";
 import { useRef, useState } from "react";
-// import { useCartFunc } from "../utilities/useCartFunc";
-
+import { CartItem, Item, useAppDispatch } from "../utilities/types/types";
+import { addToCart } from "../data/cartSlice";
+import { useIsOpenContext } from "../utilities/contexts/isOpenContext";
 
 function Product() {
 
   const { id } = useParams();
+  const dispatch = useAppDispatch();
+  const { handleCartOpen } = useIsOpenContext();
 
   const url = `http://localhost:5000/api/products/${id}`;
 
-  const { data, isLoading } = useUrlSingle(url);
-  // const { incCartItem } = useCartFunc();
+  const { data } = useUrlSingle(url);
 
   const [image1, setImage1] = useState(true)
   const [image2, setImage2] = useState(false)
@@ -36,6 +38,11 @@ function Product() {
       dimensionRef.current?.scrollIntoView()
   }
 
+  const handleAddToBasket = (item: Item | null) => {
+   item && dispatch(addToCart({...item, quantity: 1}))
+   handleCartOpen();
+   
+  }
 
 
   return (
@@ -88,7 +95,7 @@ function Product() {
                   </div>
                   <p>Price: { currencyFormatter(data?.price!) }</p>
                   <div className="btn">
-                    <p>Add to Basket</p>
+                    <p onClick={() => handleAddToBasket(data)}>Add to Basket</p>
                   </div>
                 </div>
 
