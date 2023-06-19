@@ -23,7 +23,7 @@ function Profile() {
 
 
    const navigate = useNavigate();
-   const user = JSON.parse(localStorage.getItem('user'));
+   const user = JSON.parse(`${localStorage.getItem('user')}`);
     const { id, token } = user;
 
 
@@ -80,7 +80,10 @@ function Profile() {
        if(!lockProfile) {
 
             const res = await fetch(`http://localhost:5000/api/users/${id}`, {
-                headers: {"Content-Type": "application/json"},
+                headers: {
+                    "Content-Type": "application/json",
+                    'authorization': `Bearer ${token}`
+                },
                 body: JSON.stringify(user),
                 method: 'PUT'
             })

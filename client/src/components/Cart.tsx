@@ -8,12 +8,20 @@ import CartItems from './CartItems';
 import { CartItem, useAppSelector } from '../utilities/types/types'
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import currencyFormatter from '../utilities/currencyFormatter';
+import StripeCheckout from 'react-stripe-checkout';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
+type Token = {
+    card: object,
+    id: string
+}
 
-
+const STRIPE_REACT_KEY = 'pk_test_51NGDEJBbnd2GEVM1ZUgXg2TaZv2YvTgceQQmm4lZ8P603UvIq0icOIMP7HCEXqNhZzuiVAwxRmNYu5AGpa6926Dd00ResrvYT7';
 
 function Cart() {
 
+    const [tokenData, setTokenData] = useState({} as Token);
     const navigate = useNavigate();
     const { isCartOpen, handleCartClose } = useIsOpenContext();
     const { cartItems } = useAppSelector(state => state.cart);
@@ -26,6 +34,35 @@ function Cart() {
         navigate('/store');
         handleCartClose();
     }
+
+    const onToken = (token: Token) => {
+        setTokenData(token)
+        console.log(typeof token)
+    }
+    
+
+useEffect(() => {
+
+    try {
+        const makeRequest = async () => {
+            const res = await axios.post('http://localhost:5000/api/checkout/payment', {
+                tokenId: tokenData.id,
+                amount: total * 100
+            })
+
+            if(res.status === 200){
+                console.log(res.data)
+                localStorage.removeItem('cart');
+            }
+        }
+
+        tokenData && makeRequest();
+        
+    } catch (error) {
+        console.log(error)
+    }
+
+},[tokenData])
 
     return (
         <div className="cart-container" style={{ transform: isCartOpen ? 'translate(0%)' : 'translate(100%)' }}>
@@ -62,10 +99,21 @@ function Cart() {
                     <p>Subtotal: <span>{currencyFormatter(total)}</span></p>
                     <small>Shipping and Taxes will be calculated at the next step</small>
                     <span>Pick delivery date at checkout</span>
-                    <div className="btn">
-                        <LockOutlinedIcon />
-                        <p>Secure Checkout</p>
-                    </div>
+                    <StripeCheckout
+                    name='USHOP Store'
+                    token={onToken}
+                    stripeKey={STRIPE_REACT_KEY}
+                    amount={total*100}
+                    currency='GBP'
+                    description='Payment for your upholstery'
+                    shippingAddress
+                    billingAddress
+                    >
+                        <div className="btn">
+                            <LockOutlinedIcon />
+                            <p>Secure Checkout</p>
+                        </div>
+                    </StripeCheckout>
                 </div>
             
         </div>
