@@ -99,21 +99,40 @@ useEffect(() => {
                     <p>Subtotal: <span>{currencyFormatter(total)}</span></p>
                     <small>Shipping and Taxes will be calculated at the next step</small>
                     <span>Pick delivery date at checkout</span>
-                    <StripeCheckout
-                    name='USHOP Store'
-                    token={onToken}
-                    stripeKey={STRIPE_REACT_KEY}
-                    amount={total*100}
-                    currency='GBP'
-                    description='Payment for your upholstery'
-                    shippingAddress
-                    billingAddress
+
+                    <button 
+                    className="btn"
+                    style={{
+                        display: total > 0 ? 'block' : 'none'}}
                     >
-                        <div className="btn">
+                        <StripeCheckout
+                        name='USHOP Store'
+                        token={onToken}
+                        stripeKey={STRIPE_REACT_KEY}
+                        amount={total*100}
+                        currency='GBP'
+                        description='Payment for your upholstery'
+                        shippingAddress
+                        billingAddress
+                        >
+                            <div>
+                                <LockOutlinedIcon />
+                                <p>Secure Checkout</p>
+                            </div>
+                        </StripeCheckout>
+                    </button>
+                    <button 
+                    className="btn" 
+                    style={{
+                        display: total === 0 ? 'block' : 'none',
+                        backgroundColor: 'gray'
+                        }}
+                    >
+                        <div>
                             <LockOutlinedIcon />
                             <p>Secure Checkout</p>
                         </div>
-                    </StripeCheckout>
+                    </button>
                 </div>
             
         </div>
