@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import Products from '../components/ProductsList'
+import StoreSkeleton from '../components/StoreSkeleton';
+import useUrlArray from '../utilities/hooks/useUrlArray';
 
 //import icon components from material UI
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import StoreLoading from '../components/StoreLoading';
-import useUrlArray from '../utilities/hooks/useUrlArray';
+
 
 
 function Store() {
@@ -23,7 +24,11 @@ function Store() {
 
 
   return (
+    <>
+
+    { isLoading ? <StoreSkeleton /> :
     <div className="store">
+ 
         <div className="top">
             <small>Showing <span>530</span> results</small>
             <div className="filter">
@@ -34,9 +39,9 @@ function Store() {
             </div>
         </div>
 
-        { isLoading ? <StoreLoading /> :  (
 
         <div className="content">
+            
             <div className="left">
                 <div className="color">
                     <div className="head">
@@ -57,6 +62,7 @@ function Store() {
                             />
                         </span>
                     </div>
+                   
                     <div className="body" style={{display: color ? 'flex' : 'none'}}>
                         <div className="red"></div>
                         <div className="blue"></div>
@@ -64,6 +70,7 @@ function Store() {
                         <div className="gray"></div>
                     </div>
                 </div>
+               
                 <div className="collection">
                     <div className="head">
                         <p>Collections</p>
@@ -133,15 +140,16 @@ function Store() {
                             <input type="range" name="" id="" />
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> 
+            </div> 
 
             <div className="right">
-                <Products />
+              <Products /> 
             </div>
-        </div> )}
+        </div> 
     
-    </div>
+    </div> }
+    </>
   )
 }
 
