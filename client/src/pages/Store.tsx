@@ -13,14 +13,18 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 function Store() {
 
-    const { isLoading } = useUrlArray('http://localhost:5000/api/products')
+    const { data, isLoading } = useUrlArray('http://localhost:5000/api/products')
 
-    
     const { handleFilterOpen } = useIsOpenContext();
 
     const [color, setColor] = useState(true);
     const [collection, setCollection] = useState(true);
     const [price, setPrice] = useState(true);
+    const [productLimit, setProductLimit] = useState(0);
+
+    const getLimitNum = (value:number) => {
+        setProductLimit(value)
+    }
 
 
   return (
@@ -30,7 +34,7 @@ function Store() {
     <div className="store">
  
         <div className="top">
-            <small>Showing <span>530</span> results</small>
+            <small>Showing <span>{ productLimit }</span> out of <span>{ data.length }</span> results</small>
             <div className="filter">
                 <p>Filters</p>
                 <div className="filter-icon" onClick={ handleFilterOpen }>
@@ -144,7 +148,7 @@ function Store() {
             </div> 
 
             <div className="right">
-              <Products /> 
+              <Products getLimitNum={getLimitNum} /> 
             </div>
         </div> 
     

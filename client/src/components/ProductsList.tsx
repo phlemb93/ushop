@@ -1,21 +1,23 @@
 import currencyFormatter from '../utilities/currencyFormatter';
 import { useNavigate } from 'react-router-dom';
 import useUrlArray from '../utilities/hooks/useUrlArray';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { addToCart } from '../data/cartSlice';
 import { Item, useAppDispatch } from '../utilities/types/types';
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 
 
-function Products() {
+function Products({ getLimitNum }:any ) {
 
   const [limitNum, setLimitNum] = useState(6);
-  const [quantity, setQuantity] = useState(1);
-
+  const [quantity, setQuantity] = useState(1); 
+  
   const url = `http://localhost:5000/api/products?limit=${limitNum}`;
+  
   const { data } = useUrlArray(url);
   const { data: allProducts } = useUrlArray('http://localhost:5000/api/products');
 
+  
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { handleCartOpen } = useIsOpenContext();
@@ -26,11 +28,16 @@ function Products() {
     handleCartOpen();
   }
 
+  useEffect(() => {
+    getLimitNum(limitNum)
+  }, [limitNum])
+
+
    return (
     <>
     <div className='products'>
 
-      {data && data.map(item => (
+      { data && data.map(item => (
 
           <div 
             key={item._id}

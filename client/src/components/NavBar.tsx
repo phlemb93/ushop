@@ -136,10 +136,10 @@ useEffect(() => {
                 <SearchOutlinedIcon className="search-icon" style={{fontSize: 28}} />
             </div>
             <div className="items">
-                <a href="">Sofas</a>
-                <a href="">Armchairs</a>
-                <a href="">Bundles</a>
-                <a href="">Accessories</a>
+                <Link to="/store">Sofas</Link>
+                <Link to="/store">Armchairs</Link>
+                <Link to="/store">Bundles</Link>
+                <Link to="/store">Accessories</Link>
             </div>
         </div>
     </div>
