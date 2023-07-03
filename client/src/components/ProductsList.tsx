@@ -65,8 +65,19 @@ function Products({ getLimitNum }:any ) {
     { data && allProducts && data.length < allProducts.length && <div 
     className="load-more" 
     onClick={() => setLimitNum(prevNum => prevNum + 4)}
-    style={{border: "1px solid red", cursor: 'pointer', padding: 10}}
-    >Load more...</div> }
+    style={{
+      border: "2px solid #5D425C", 
+      display: 'flex',
+      justifyContent: 'center',
+      margin: '50px auto',
+      cursor: 'pointer', 
+      color: '#5D425C',
+      padding: 16,
+      fontWeight: 'bold',
+      width: '80%',
+      maxWidth: '500px'
+    }}
+    >Load more</div> }
     </>
   )
 }
