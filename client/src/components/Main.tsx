@@ -7,7 +7,7 @@ import EastOutlinedIcon from '@mui/icons-material/EastOutlined';
 import vid from '../assets/videos/chair.mp4'
 
 
-const primaryColor = '#5D425C';
+const primaryColor = '#481449';
 
 function Main() {
 

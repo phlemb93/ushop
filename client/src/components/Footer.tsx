@@ -5,6 +5,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Link } from 'react-router-dom';
 
 function Footer() {
+
   return (
     <div className="footer">
         <div className="form">
@@ -30,18 +31,26 @@ function Footer() {
             <p>connect with me</p>
 
             <div className="icons">
-                <div className="github icon">
-                    <GitHubIcon className="github-icon" style={{fontSize: '24px'}} />
-                    <p>Github</p>
-                </div>
-                <div className="linkedin icon">
-                    <LinkedInIcon className="linkedin-icon" style={{fontSize: '24px'}} />
-                    <p>LinkedIn</p>
-                </div>
-                <div className="twitter icon">
-                    <TwitterIcon className="twitter-icon" style={{fontSize: '24px'}} />
-                    <p>Twitter</p>
-                </div>
+                <Link to="https://github.com/phlemb93" target='_blank'>
+                    <div className="github icon">
+                        <GitHubIcon className="github-icon" style={{fontSize: '24px'}} />
+                        <p>Github</p>
+                    </div>
+                </Link>
+
+                <Link to="https://www.linkedin.com/in/oluwafemi-badrudeen/" target='_blank'>
+                    <div className="linkedin icon">
+                        <LinkedInIcon className="linkedin-icon" style={{fontSize: '24px'}} />
+                        <p>LinkedIn</p>
+                    </div>
+                </Link>
+
+                <Link to="https://twitter.com/Phlemb2" target='_blank'>
+                    <div className="twitter icon">
+                        <TwitterIcon className="twitter-icon" style={{fontSize: '24px'}} />
+                        <p>Twitter</p>
+                    </div>
+                </Link>
             </div>
         </div>
     </div>

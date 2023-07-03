@@ -12,7 +12,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { CartItem, useAppSelector } from '../utilities/types/types';
 
 
-const primaryColor = '#5D425C';
+const primaryColor = '#481449';
 
 function NavBar() {
 

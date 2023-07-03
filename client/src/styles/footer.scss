@@ -7,6 +7,15 @@
     margin: 0 auto;
     overflow: hidden;
 
+    a {
+        text-decoration: none;
+        color: $text-color;
+        width: 80%;
+
+        align-self: center;
+
+    }
+
     .form {
         display: flex;
         flex-direction: column;
@@ -104,6 +113,7 @@
         padding: 20px;
         height: 250px;
 
+
         p:first-child{
             width: 80%;
             font-size: 24px;
@@ -160,7 +170,7 @@
     .footer{
         flex-direction: column;
         align-items: center;
-        padding: 20px 0;
+        padding: 20px 0 0 0;
 
         .form{
             width: 100%;

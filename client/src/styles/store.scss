@@ -200,15 +200,15 @@
         }
 
         .load-more {
-            border: 2px solid #5D425C; 
+            border: 2px solid $primary-color; 
             display: flex;
             justify-content: center;
             cursor: pointer; 
-            color: #5D425C;
+            color: $primary-color;
             padding: 16px;
             font-weight: bold;
             width: 80%;
-            max-width: 500px
+            max-width: 650px
         }
     }
 }
