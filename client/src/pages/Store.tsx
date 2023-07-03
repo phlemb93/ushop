@@ -13,7 +13,12 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 function Store() {
 
-    const { data, isLoading } = useUrlArray('http://localhost:5000/api/products')
+    const [limitNum, setLimitNum] = useState(6);
+    
+    const url = `http://localhost:5000/api/products?limit=${limitNum}`;
+    
+    const { data: limitProducts } = useUrlArray(url);
+    const { data: allProducts, isLoading } = useUrlArray('http://localhost:5000/api/products');
 
     const { handleFilterOpen } = useIsOpenContext();
 
@@ -22,10 +27,15 @@ function Store() {
     const [price, setPrice] = useState(true);
     const [productLimit, setProductLimit] = useState(0);
 
-    const getLimitNum = (value:number) => {
-        setProductLimit(value)
-    }
+    // const getLimitNum = (value:number) => {
+    //     setProductLimit(value)
+    // }
 
+    // const incLimit = (setNumLimit:any) => {
+    //     setNumLimit(prevState => {
+
+    //     })
+    // }
 
   return (
     <>
@@ -34,7 +44,7 @@ function Store() {
     <div className="store">
  
         <div className="top">
-            <small>Showing <span>{ productLimit }</span> out of <span>{ data.length }</span> results</small>
+            <small>Showing <span>{ limitProducts?.length }</span> out of <span>{ allProducts?.length }</span> items</small>
             <div className="filter">
                 <p>Filters</p>
                 <div className="filter-icon" onClick={ handleFilterOpen }>
@@ -148,9 +158,25 @@ function Store() {
             </div> 
 
             <div className="right">
-              <Products getLimitNum={getLimitNum} /> 
+              <Products 
+              allProducts={allProducts}
+              limitProducts={limitProducts}
+               /> 
             </div>
+
         </div> 
+
+        <div className="extra">
+            <div className="show-limit">
+                    <small>Showing <span>{ limitProducts?.length }</span> out of <span>{ allProducts?.length }</span> items</small>
+                </div>
+
+            { (allProducts && limitProducts) && limitProducts.length < allProducts.length && <div 
+                className="load-more" 
+                onClick={() => setLimitNum(prevNum => prevNum + 4)}
+                >Load more
+            </div> }
+        </div>
     
     </div> }
     </>

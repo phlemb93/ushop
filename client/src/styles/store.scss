@@ -177,6 +177,40 @@
             flex: 3;
         }
     }
+    .extra {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 20px auto;
+        padding: 16px 0;
+
+        .show-limit {
+            padding: 16px 0;
+
+            small {
+                align-self: flex-end;
+                color: gray;
+                font-size: 12px;
+    
+                span {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .load-more {
+            border: 2px solid #5D425C; 
+            display: flex;
+            justify-content: center;
+            cursor: pointer; 
+            color: #5D425C;
+            padding: 16px;
+            font-weight: bold;
+            width: 80%;
+            max-width: 500px
+        }
+    }
 }
 
 
@@ -189,6 +223,12 @@
 
         .content {
             .left {
+                display: none;
+            }
+        }
+
+        .extra {
+            .show-limit {
                 display: none;
             }
         }

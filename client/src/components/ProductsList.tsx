@@ -1,22 +1,14 @@
 import currencyFormatter from '../utilities/currencyFormatter';
 import { useNavigate } from 'react-router-dom';
-import useUrlArray from '../utilities/hooks/useUrlArray';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { addToCart } from '../data/cartSlice';
 import { Item, useAppDispatch } from '../utilities/types/types';
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 
 
-function Products({ getLimitNum }:any ) {
+function Products({ limitProducts }: any ) {
 
-  const [limitNum, setLimitNum] = useState(6);
   const [quantity, setQuantity] = useState(1); 
-  
-  const url = `http://localhost:5000/api/products?limit=${limitNum}`;
-  
-  const { data } = useUrlArray(url);
-  const { data: allProducts } = useUrlArray('http://localhost:5000/api/products');
-
   
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -28,17 +20,11 @@ function Products({ getLimitNum }:any ) {
     handleCartOpen();
   }
 
-  useEffect(() => {
-    getLimitNum(limitNum)
-  }, [limitNum])
-
-
    return (
     <>
     <div className='products'>
 
-      { data && data.map(item => (
-
+      { limitProducts && limitProducts.map((item: Item) => (
           <div 
             key={item._id}
             onMouseOver={ item.images.length > 1 ? 
@@ -61,23 +47,6 @@ function Products({ getLimitNum }:any ) {
       ))}
 
     </div>
-
-    { data && allProducts && data.length < allProducts.length && <div 
-    className="load-more" 
-    onClick={() => setLimitNum(prevNum => prevNum + 4)}
-    style={{
-      border: "2px solid #5D425C", 
-      display: 'flex',
-      justifyContent: 'center',
-      margin: '50px auto',
-      cursor: 'pointer', 
-      color: '#5D425C',
-      padding: 16,
-      fontWeight: 'bold',
-      width: '80%',
-      maxWidth: '500px'
-    }}
-    >Load more</div> }
     </>
   )
 }
