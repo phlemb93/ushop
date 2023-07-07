@@ -5,15 +5,20 @@ const Product = require('../model/Product');
 const get_all_products = async (req, res) => {
 
     const Qlimit = req.query.limit;
+    const Qcat = req.query.category;
 
     try { 
-        if(Qlimit){
-            const products = await Product.find().sort({createdAt: -1 }).limit(+Qlimit);
-            res.status(200).json(products);
+        
+        if(Qcat) {
+           
+            const filteredProducts = await Product.find({ category: Qcat }, { _id: 0, title: 1, category: 1}).limit(+Qlimit).sort({ createdAt: -1 });
+            res.status(200).json(filteredProducts);
+
         } else {
-            const products = await Product.find().sort({createdAt: -1 });
-            res.status(200).json(products);
-        }  
+
+            const allProducts = await Product.find({}, { _id: 0, title: 1, category: 1}).limit(+Qlimit).sort({ createdAt: -1 });
+            res.status(200).json(allProducts);
+        }
     } catch (error) {
         res.status(500).json(error);
     }
