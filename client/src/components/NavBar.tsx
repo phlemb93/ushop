@@ -10,6 +10,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { CartItem, useAppSelector } from '../utilities/types/types';
+import { useProductsContext } from '../utilities/contexts/productsContext';
 
 
 const primaryColor = '#481449';
@@ -19,6 +20,7 @@ function NavBar() {
 const { handleMenuOpen, handleCartOpen, isProfileOpen, handleProfileToggle, handleProfileClose } = useIsOpenContext();
 const { state, userLogout } = useUserContext();
 const { user } = state;
+const { setNewCat } = useProductsContext();
 
 const { cartItems } = useAppSelector(state => state.cart)
 
@@ -136,10 +138,11 @@ useEffect(() => {
                 <SearchOutlinedIcon className="search-icon" style={{fontSize: 28}} />
             </div>
             <div className="items">
-                <Link to="/store">Sofas</Link>
-                <Link to="/store">Armchairs</Link>
-                <Link to="/store">Bundles</Link>
-                <Link to="/store">Accessories</Link>
+                <Link to="/store" onClick={() => setNewCat('')}>All</Link>
+                <Link to="/store" onClick={() => setNewCat('sofa')}>Sofas</Link>
+                <Link to="/store" onClick={() => setNewCat('armchair')}>Armchairs</Link>
+                <Link to="/store" onClick={() => setNewCat('bundles')}>Bundles</Link>
+                <Link to="/store" onClick={() => setNewCat('accessories')}>Accessories</Link>
             </div>
         </div>
     </div>
