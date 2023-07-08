@@ -7,14 +7,17 @@ import { UserContextProvider } from './utilities/contexts/userContext'
 import { IsOpenProvider } from './utilities/contexts/isOpenContext';
 import { Provider } from 'react-redux';
 import { store } from './data/store';
+import { ProductsContextProvider } from './utilities/contexts/productsContext'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
     <UserContextProvider>
       <IsOpenProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <ProductsContextProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ProductsContextProvider>
       </IsOpenProvider>
     </UserContextProvider>
   </Provider>

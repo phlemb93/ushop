@@ -8,34 +8,19 @@ import useUrlArray from '../utilities/hooks/useUrlArray';
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import { useProductsContext } from '../utilities/contexts/productsContext';
 
 
 
 function Store() {
 
-    const [limitNum, setLimitNum] = useState(6);
-    
-    const url = `http://localhost:5000/api/products?limit=${limitNum}`;
-    
-    const { data: limitProducts } = useUrlArray(url);
-    const { data: allProducts, isLoading } = useUrlArray('http://localhost:5000/api/products');
+    const { allProducts, isLoading, limitProducts, setNewLimit  } = useProductsContext();
 
     const { handleFilterOpen } = useIsOpenContext();
 
     const [color, setColor] = useState(true);
     const [collection, setCollection] = useState(true);
     const [price, setPrice] = useState(true);
-    const [productLimit, setProductLimit] = useState(0);
-
-    // const getLimitNum = (value:number) => {
-    //     setProductLimit(value)
-    // }
-
-    // const incLimit = (setNumLimit:any) => {
-    //     setNumLimit(prevState => {
-
-    //     })
-    // }
 
   return (
     <>
@@ -159,7 +144,6 @@ function Store() {
 
             <div className="right">
               <Products 
-              allProducts={allProducts}
               limitProducts={limitProducts}
                /> 
             </div>
@@ -173,7 +157,7 @@ function Store() {
 
             { (allProducts && limitProducts) && limitProducts.length < allProducts.length && <div 
                 className="load-more" 
-                onClick={() => setLimitNum(prevNum => prevNum + 4)}
+                onClick={ setNewLimit }
                 >Load more
             </div> }
         </div>

@@ -96,7 +96,7 @@ useEffect(() => {
                 </div>
 
                 <div className="bottom">
-                    <p>Subtotal: <span>{currencyFormatter(total)}</span></p>
+                    <p className='sum-total'>Subtotal: <span>{currencyFormatter(total)}</span></p>
                     <small>Shipping and Taxes will be calculated at the next step</small>
                     <span>Pick delivery date at checkout</span>
 
