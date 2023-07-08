@@ -48,10 +48,11 @@
 
             div {
                 display: flex;
-                align-items: center;
+                align-items: flex-end;
                 margin-bottom: 14px;
                 padding: 4px 16px;
                 cursor: pointer;
+                // border: 1px solid red;
                 
                 .image {
                     background-size: contain;
@@ -60,20 +61,31 @@
                     transition: all 0.2s ease-in-out;
                     width: 40px;
                     height: 25px;
+                    margin-top: 10px;
                     margin-right: 20px;
-
                 }
+
                 .img1 {
-                    background-image: url('assets/images/sofa.jpg');
+                    background-image: url('assets/images/img3.jpg');
+                    border-radius: 20px;
                 }
                 .img2 {
+                    background-image: url('assets/images/sofa.jpg');
+                }
+                .img3 {
                     background-image: url('assets/images/armchair.jpg');
                 }
-                .img3{
+                .img4{
                     background-image: url('assets/images/bundles.jpg');
                 }
-                .img4 {
+                .img5 {
                     background-image: url('assets/images/accessories.jpg');
+                }
+
+                p {
+                    align-self: center;
+                    width: 50px;
+                    height: 15px;
                 }
 
 

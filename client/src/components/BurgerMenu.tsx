@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 
 import CloseIcon from '@mui/icons-material/Close';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
+import { useProductsContext } from '../utilities/contexts/productsContext';
 
 
 
 function BurgerMenu() {
 
 const { isMenuOpen, handleMenuClose } = useIsOpenContext();
+const { setNewCat } = useProductsContext();
 
   return (
         <div className="burger-menu" style={{ transform: isMenuOpen ? 'translateX(0%)' : 'translateX(-100%)'}}>
@@ -24,31 +25,33 @@ const { isMenuOpen, handleMenuClose } = useIsOpenContext();
                     </div>
                 </div>
                 <div className="items">
-                    <Link to='/store'>
+                    <Link to='/store' onClick={() => setNewCat('')}>
                         <div onClick={ handleMenuClose }>
                             <div className="image img1"></div>
-                            {/* <img src='../assets/images/img1.jpg' alt="sofa" /> */}
+                            <p>All</p>
+                        </div>
+                    </Link>
+                    <Link to='/store' onClick={() => setNewCat('sofa')}>
+                        <div onClick={ handleMenuClose }>
+                            <div className="image img2"></div>
                             <p>Sofas</p>
                         </div>
                     </Link>
-                    <Link to='/store'>
+                    <Link to='/store' onClick={() => setNewCat('armchair')}>
                         <div onClick={ handleMenuClose }>
-                            <div className="image img2"></div>
-                            {/* <img src="./assets/images/armchair.jpg" alt="armchair" /> */}
+                            <div className="image img3"></div>
                             <p>Armchairs</p>
                         </div>
                     </Link>
-                    <Link to='/store'>
+                    <Link to='/store' onClick={() => setNewCat('bundles')}>
                         <div onClick={ handleMenuClose }>
-                            <div className="image img3"></div>
-                            {/* <img src="../assets/images/bundles.jpg" alt="bundles" /> */}
+                            <div className="image img4"></div>
                             <p>Bundles</p>
                         </div>
                     </Link>
-                    <Link to='/store'>
+                    <Link to='/store' onClick={() => setNewCat('accessories')}>
                         <div onClick={ handleMenuClose }>
-                            <div className="image img4"></div>
-                            {/* <img src="../assets/images/accessories.jpg" alt="accessories" /> */}
+                            <div className="image img5"></div>
                             <p>Accessories</p>
                         </div>
                     </Link>
