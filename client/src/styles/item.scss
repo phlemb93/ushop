@@ -140,8 +140,6 @@
                         }
 
                     }
-
-                    
                 }
 
                 .arms {
@@ -261,25 +259,22 @@
                             border-bottom: 1px solid $text-color;
                         }
                     }
-
                 }
-
             }
         }
-
-       
     }
-
 }
 
-@media (max-width: 986px) {
+
+
+@media (max-width: 754px) {
 
     .item {
         flex-direction: column;
 
         .images {
             margin-bottom: 20px;
-            margin-top: 140vh;
+            margin-top: 160vh;
 
             .minor-images {
                 img {
@@ -293,11 +288,20 @@
     }
 }
 
+@media (max-width: 628px) {
+
+    .item {
+        .images {
+            margin-top: 140vh;
+        }
+    }
+}
+
 @media (max-width: 520px) {
 
     .item {
         .images {
-            margin-top: 100vh;
+            margin-top: 130vh;
         }
     }
 }
