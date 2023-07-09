@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { CartItem, Item, useAppDispatch } from "../utilities/types/types";
 import { addToCart } from "../data/cartSlice";
 import { useIsOpenContext } from "../utilities/contexts/isOpenContext";
+import ProductSkeleton from "../components/ProductSkeleton";
 
 function Product() {
 
@@ -14,7 +15,7 @@ function Product() {
 
   const url = `http://localhost:5000/api/products/${id}`;
 
-  const { data } = useUrlSingle(url);
+  const { data, isLoading } = useUrlSingle(url);
 
   const [image1, setImage1] = useState(true)
   const [image2, setImage2] = useState(false)
@@ -46,6 +47,9 @@ function Product() {
 
 
   return (
+    <>
+      { isLoading ? <ProductSkeleton /> : 
+
         <div className='item' key={data && data._id}>
           <div className="images">
             <div className="main-image">
@@ -125,8 +129,8 @@ function Product() {
               </div>
             </div>
           </div>
-        </div>
-
+        </div> }
+    </>
   )
 }
 
