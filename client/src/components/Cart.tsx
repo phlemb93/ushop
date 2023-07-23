@@ -45,7 +45,7 @@ useEffect(() => {
 
     try {
         const makeRequest = async () => {
-            const res = await axios.post('http://localhost:5000/api/checkout/payment', {
+            const res = await axios.post('https://ushop-mern-api.vercel.app/api/checkout/payment', {
                 tokenId: tokenData.id,
                 amount: total * 100
             })

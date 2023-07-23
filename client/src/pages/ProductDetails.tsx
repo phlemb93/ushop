@@ -13,7 +13,7 @@ function Product() {
   const dispatch = useAppDispatch();
   const { handleCartOpen } = useIsOpenContext();
 
-  const url = `http://localhost:5000/api/products/${id}`;
+  const url = `https://ushop-mern-api.vercel.app/api/products/${id}`;
 
   const { data, isLoading } = useUrlSingle(url);
 
