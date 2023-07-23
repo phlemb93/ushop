@@ -11,12 +11,12 @@ const get_all_products = async (req, res) => {
         
         if(Qcat) {
            
-            const filteredProducts = await Product.find({ category: Qcat }, { _id: 0, title: 1, category: 1}).limit(+Qlimit).sort({ createdAt: -1 });
+            const filteredProducts = await Product.find({ category: Qcat }).limit(+Qlimit).sort({ createdAt: -1 });
             res.status(200).json(filteredProducts);
 
         } else {
 
-            const allProducts = await Product.find({}, { _id: 0, title: 1, category: 1}).limit(+Qlimit).sort({ createdAt: -1 });
+            const allProducts = await Product.find().limit(+Qlimit).sort({ createdAt: -1 });
             res.status(200).json(allProducts);
         }
     } catch (error) {
