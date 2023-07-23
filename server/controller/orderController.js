@@ -1,4 +1,4 @@
-const Order = require('../model/Order');
+const Order = require('../models/Order');
 
 
 //GET ALL ORDERS

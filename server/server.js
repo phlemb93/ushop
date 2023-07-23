@@ -7,12 +7,12 @@ const mongoose = require('mongoose');
 const app = express();
 dotenv.config();
 
-const authRoute = require('./route/authRoute');
-const userRoute = require('./route/userRoute');
-const productRoute = require('./route/productRoute');
-const cartRoute = require('./route/cartRoute');
-const orderRoute = require('./route/orderRoute');
-const stripeRoute = require('./route/stripeRoute');
+const authRoute = require('./routes/authRoute');
+const userRoute = require('./routes/userRoute');
+const productRoute = require('./routes/productRoute');
+const cartRoute = require('./routes/cartRoute');
+const orderRoute = require('./routes/orderRoute');
+const stripeRoute = require('./routes/stripeRoute');
 
 
 //middleware
@@ -35,7 +35,6 @@ useUnifiedTopology: true })
         console.log("Server running on PORT " + process.env.PORT)
     })
 })
-
    
 //routes
 app.use('/api/auth', authRoute)
@@ -46,6 +45,4 @@ app.use('/api/orders', orderRoute)
 app.use('/api/checkout',stripeRoute)
 
 
-
-
-    
+module.exports = app;
