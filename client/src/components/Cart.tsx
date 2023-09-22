@@ -8,14 +8,17 @@ import CartItems from './CartItems';
 import { CartItem, useAppSelector } from '../utilities/types/types'
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import currencyFormatter from '../utilities/currencyFormatter';
-import StripeCheckout from 'react-stripe-checkout';
+import StripeCheckout, { Token } from 'react-stripe-checkout';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-type Token = {
-    card: object,
-    id: string
-}
+// type Token = {
+//     card: object,
+//     id: string
+// }
+
+
+
 
 const STRIPE_REACT_KEY = 'pk_test_51NGDEJBbnd2GEVM1ZUgXg2TaZv2YvTgceQQmm4lZ8P603UvIq0icOIMP7HCEXqNhZzuiVAwxRmNYu5AGpa6926Dd00ResrvYT7';
 
@@ -35,10 +38,10 @@ function Cart() {
         handleCartClose();
     }
 
-    const onToken = (token: Token) => {
-        setTokenData(token)
-        console.log(typeof token)
-    }
+    // const onToken= (token: Token) => {
+    //     setTokenData(token)
+    //     console.log(typeof token)
+    // }
     
 
 useEffect(() => {
@@ -63,6 +66,27 @@ useEffect(() => {
     }
 
 },[tokenData])
+
+type StripeCheckoutOptions = {
+    name: string;
+    token: (token: Token) => void;
+    stripeKey: any;
+    amount: number;
+    currency: string;
+    description: string;
+  };
+
+const stripeCheckoutProps: StripeCheckoutOptions = {
+    name: 'USHOP Store',
+    token: (token: Token) => {
+        setTokenData(token);
+        console.log(typeof token);
+    },
+    stripeKey: { STRIPE_REACT_KEY },
+    amount: total * 100,
+    currency: 'GBP',
+    description: 'Payment for your upholstery',
+}
 
     return (
         <div className="cart-container" style={{ transform: isCartOpen ? 'translate(0%)' : 'translate(100%)' }}>
@@ -105,22 +129,14 @@ useEffect(() => {
                     style={{
                         display: total > 0 ? 'block' : 'none'}}
                     >
-                        <StripeCheckout
-                        name='USHOP Store'
-                        token={onToken}
-                        stripeKey={STRIPE_REACT_KEY}
-                        amount={total*100}
-                        currency='GBP'
-                        description='Payment for your upholstery'
-                        shippingAddress
-                        billingAddress
-                        >
+                        <StripeCheckout {...stripeCheckoutProps}>
                             <div>
                                 <LockOutlinedIcon />
                                 <p>Secure Checkout</p>
                             </div>
                         </StripeCheckout>
                     </button>
+                
                     <button 
                     className="btn" 
                     style={{
