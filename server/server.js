@@ -17,11 +17,12 @@ const stripeRoute = require('./routes/stripeRoute');
 
 //middleware
 app.use(express.json());
-app.use(cors({
-    origin: [],
-    methods:["POST", "GET", "PUT", "DELETE"],
-    credentials: true
-}));
+app.use(cors());
+// app.use(cors({
+//     origin: [],
+//     methods:["POST", "GET", "PUT", "DELETE"],
+//     credentials: true
+// }));
 
 //connect to DB
 mongoose
