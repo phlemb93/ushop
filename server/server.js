@@ -18,23 +18,14 @@ const stripeRoute = require('./routes/stripeRoute');
 //middleware
 app.use(express.json());
 app.use(cors());
-// app.use(cors({
-//     origin: [],
-//     methods:["POST", "GET", "PUT", "DELETE"],
-//     credentials: true
-// }));
+
 
 //connect to DB
 mongoose
 .connect(process.env.MONGODB_URI, { dbName: 'ushop', useNewUrlParser: true,
 useUnifiedTopology: true })
 .then(() => {
-
     console.log("DB is connected");
-
-    app.listen(process.env.PORT, () => {
-        console.log("Server running on PORT " + process.env.PORT)
-    })
 })
    
 //routes
@@ -45,5 +36,6 @@ app.use('/api/carts', cartRoute)
 app.use('/api/orders', orderRoute)
 app.use('/api/checkout',stripeRoute)
 
-
-module.exports = app;
+app.listen(process.env.PORT, () => {
+    console.log("Server running on PORT " + process.env.PORT)
+})
