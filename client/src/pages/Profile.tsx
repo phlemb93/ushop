@@ -33,7 +33,7 @@ function Profile() {
         const loadData = async () => {
 
             try {
-                const data = await axios.get(`https://ushop-mern-api.vercel.app/api/users/${id}`, {
+                const data = await axios.get(`https://ucart-api.onrender.com/api/users/${id}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         'authorization': `Bearer ${token}`
@@ -79,7 +79,7 @@ function Profile() {
         //RUN THIS WHEN THE PROFILE DETAILS SECTION IS UNLOCKED
        if(!lockProfile) {
 
-            const res = await fetch(`https://ushop-mern-api.vercel.app/api/users/${id}`, {
+            const res = await fetch(`https://ucart-api.onrender.com/api/users/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
                     'authorization': `Bearer ${token}`
@@ -106,7 +106,7 @@ function Profile() {
                 setLockPassword(false);
             }
 
-            const res = await fetch(`https://ushop-mern-api.vercel.app/api/users/${id}`, {
+            const res = await fetch(`https://ucart-api.onrender.com/api/users/${id}`, {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(pass),
                 method: 'PUT'

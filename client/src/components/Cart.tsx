@@ -48,7 +48,7 @@ useEffect(() => {
 
     try {
         const makeRequest = async () => {
-            const res = await axios.post('https://ushop-mern-api.vercel.app/api/checkout/payment', {
+            const res = await axios.post('https://ucart-api.onrender.com/api/checkout/payment', {
                 tokenId: tokenData.id,
                 amount: total * 100
             })

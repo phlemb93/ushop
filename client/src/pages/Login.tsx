@@ -18,7 +18,7 @@ function Login() {
     setIsLoading(true)
     const user = { email, password };
 
-    const response = await fetch('https://ushop-mern-api.vercel.app/api/auth/login', {
+    const response = await fetch('https://ucart-api.onrender.com/api/auth/login', {
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify(user),
       method: 'POST'
