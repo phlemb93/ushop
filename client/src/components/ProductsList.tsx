@@ -4,10 +4,12 @@ import { useState } from 'react';
 import { addToCart } from '../data/cartSlice';
 import { Item, useAppDispatch } from '../utilities/types/types';
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
+import { useProductsContext } from '../utilities/contexts/productsContext';
 
 
 function Products({ limitProducts }: any ) {
 
+  const { allProducts, isLoading, setNewLimit  } = useProductsContext();
   const [quantity, setQuantity] = useState(1); 
   
   const navigate = useNavigate();
@@ -46,6 +48,17 @@ function Products({ limitProducts }: any ) {
 
       ))}
 
+        <div className="extra">
+            <div className="show-limit">
+                    <small>Showing <span>{ limitProducts?.length }</span> out of <span>{ allProducts?.length }</span> items</small>
+                </div>
+
+            { (allProducts && limitProducts) && limitProducts.length < allProducts.length && <div 
+                className="load-more" 
+                onClick={ setNewLimit }
+                >Load more
+            </div> }
+        </div>
     </div>
     </>
   )

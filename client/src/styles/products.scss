@@ -61,11 +61,22 @@
     }
 }
 
+@media (max-width: 968px) {
+    .products {
+        width: 100%;
+        border: 1px solid red;
+       
+        .product {
+            width: 90%;
+        }
+    }
+}
 @media (max-width: 768px) {
     .products {
        
-        .product {
-            width: 350px;
-        }
+        // .product {
+        //     max-width: 350px;
+        //     width: 80%;
+        // }
     }
 }

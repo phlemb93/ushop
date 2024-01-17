@@ -14,7 +14,7 @@ import { useProductsContext } from '../utilities/contexts/productsContext';
 
 function Store() {
 
-    const { allProducts, isLoading, limitProducts, setNewLimit  } = useProductsContext();
+    const { allProducts, isLoading, limitProducts } = useProductsContext();
 
     const { handleFilterOpen } = useIsOpenContext();
 
@@ -149,18 +149,6 @@ function Store() {
             </div>
 
         </div> 
-
-        <div className="extra">
-            <div className="show-limit">
-                    <small>Showing <span>{ limitProducts?.length }</span> out of <span>{ allProducts?.length }</span> items</small>
-                </div>
-
-            { (allProducts && limitProducts) && limitProducts.length < allProducts.length && <div 
-                className="load-more" 
-                onClick={ setNewLimit }
-                >Load more
-            </div> }
-        </div>
     
     </div> }
     </>

@@ -1,5 +1,4 @@
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Badge } from '@mui/material';
 
@@ -8,24 +7,21 @@ import CartItems from './CartItems';
 import { CartItem, useAppSelector } from '../utilities/types/types'
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import currencyFormatter from '../utilities/currencyFormatter';
-import StripeCheckout, { Token } from 'react-stripe-checkout';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-
-// type Token = {
-//     card: object,
-//     id: string
-// }
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import CheckoutForm from './CheckoutForm';
 
 
-
-
-const STRIPE_REACT_KEY = 'pk_test_51NGDEJBbnd2GEVM1ZUgXg2TaZv2YvTgceQQmm4lZ8P603UvIq0icOIMP7HCEXqNhZzuiVAwxRmNYu5AGpa6926Dd00ResrvYT7';
 
 function Cart() {
 
-    const [tokenData, setTokenData] = useState({} as Token);
+    const [clientSecret, setClientSecret] = useState('')
+    const [stripePromise, setStripePromise] = useState(null)
+
     const navigate = useNavigate();
+
     const { isCartOpen, handleCartClose } = useIsOpenContext();
     const { cartItems } = useAppSelector(state => state.cart);
 
@@ -38,55 +34,31 @@ function Cart() {
         handleCartClose();
     }
 
-    // const onToken= (token: Token) => {
-    //     setTokenData(token)
-    //     console.log(typeof token)
-    // }
-    
-
-useEffect(() => {
-
-    try {
+    useEffect(() => {
         const makeRequest = async () => {
-            const res = await axios.post('https://ucart-api.onrender.com/api/checkout/payment', {
-                tokenId: tokenData.id,
-                amount: total * 100
-            })
+            const { data } = await axios.get('http://localhost:5000/api/checkout/request-key');
 
-            if(res.status === 200){
-                console.log(res.data)
-                localStorage.removeItem('cart');
-            }
+            setStripePromise(loadStripe(data.clientPK))
         }
 
-        tokenData && makeRequest();
-        
-    } catch (error) {
-        console.log(error)
-    }
+        makeRequest();
 
-},[tokenData])
+    }, [])
 
-type StripeCheckoutOptions = {
-    name: string;
-    token: (token: Token) => void;
-    stripeKey: any;
-    amount: number;
-    currency: string;
-    description: string;
-  };
+    useEffect(() => {
+        const makeRequest = async () => {
+            const { data } = await axios.post('http://localhost:5000/api/checkout/create-payment-intent', {}, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            setClientSecret(data.clientSecret)
+        }
 
-const stripeCheckoutProps: StripeCheckoutOptions = {
-    name: 'USHOP Store',
-    token: (token: Token) => {
-        setTokenData(token);
-        console.log(typeof token);
-    },
-    stripeKey: { STRIPE_REACT_KEY },
-    amount: total * 100,
-    currency: 'GBP',
-    description: 'Payment for your upholstery',
-}
+        makeRequest();
+
+    }, [])
+
 
     return (
         <div className="cart-container" style={{ transform: isCartOpen ? 'translate(0%)' : 'translate(100%)' }}>
@@ -123,36 +95,16 @@ const stripeCheckoutProps: StripeCheckoutOptions = {
                     <p className='sum-total'>Subtotal: <span>{currencyFormatter(total)}</span></p>
                     <small>Shipping and Taxes will be calculated at the next step</small>
                     <span>Pick delivery date at checkout</span>
-
-                    <button 
-                    className="btn"
-                    style={{
-                        display: total > 0 ? 'block' : 'none'}}
-                    >
-                        <StripeCheckout {...stripeCheckoutProps}>
-                            <div>
-                                <LockOutlinedIcon />
-                                <p>Secure Checkout</p>
-                            </div>
-                        </StripeCheckout>
-                    </button>
                 
-                    <button 
-                    className="btn" 
-                    style={{
-                        display: total === 0 ? 'block' : 'none',
-                        backgroundColor: 'gray'
-                        }}
-                    >
-                        <div>
-                            <LockOutlinedIcon />
-                            <p>Secure Checkout</p>
-                        </div>
-                    </button>
+                        { stripePromise && clientSecret && (
+                            <Elements stripe={stripePromise} options={{ clientSecret }}>
+                                <CheckoutForm />
+                            </Elements>  
+                        )}
                 </div>
             
         </div>
     )
 }
 
-export default Cart
+export default Cart;

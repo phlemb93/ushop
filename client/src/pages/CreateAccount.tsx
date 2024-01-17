@@ -20,7 +20,7 @@ function CreateAccount() {
     }
 
   //Sending form data to the backend and getting back a response
-  const response = await fetch('https://ucart-api.onrender.com/api/auth/register', {
+  const response = await fetch('http://localhost:5000/api/auth/register', {
     headers: { "Content-Type": "application/json"},
     method: 'POST',
     body: JSON.stringify(user)

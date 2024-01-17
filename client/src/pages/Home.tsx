@@ -1,4 +1,3 @@
-import Navbar from '../components/NavBar'
 import Main from '../components/Main'
 
 

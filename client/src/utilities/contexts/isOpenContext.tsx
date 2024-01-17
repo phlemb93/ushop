@@ -1,7 +1,7 @@
 import { useContext, createContext, useState } from 'react';
 
 
-type valuesType = {
+type Value = {
     isMenuOpen: boolean
     isCartOpen: boolean
     isFilterOpen: boolean
@@ -19,7 +19,7 @@ type valuesType = {
 type isOpenProviderProps = {
     children: React.ReactNode
 }
-const IsOpenContext = createContext({} as valuesType);
+const IsOpenContext = createContext({} as Value);
 
 //
 export const useIsOpenContext = () => {

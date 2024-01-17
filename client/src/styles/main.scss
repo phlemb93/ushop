@@ -1,6 +1,7 @@
 .main-section {
     max-width: 1700px;
     margin: 110px auto 0;
+    overflow: hidden;
 
     * {
         transition: all 0.5s ease-in;
@@ -24,7 +25,7 @@
 
             .promo {
                 position: absolute;
-                right: 5%;
+                left: 5%;
                 top: 20%;
                 border-radius: 20px;
                 height: 250px;
@@ -277,7 +278,7 @@
 
                 .promo {
                     top: 20px;
-                    left: 15%;
+                    left: 10%;
                 }
             }
 
@@ -287,7 +288,7 @@
                 grid-template-columns: auto auto;
 
                 div {
-                    margin: 20px;
+                    margin: 10px;
                 }
             }
         }

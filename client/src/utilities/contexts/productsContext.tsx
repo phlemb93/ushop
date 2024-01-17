@@ -26,8 +26,8 @@ export const ProductsContextProvider = ({ children }:  ProductsContextProps) => 
     const [limitNum, setLimitNum] = useState(8);
     const [cat, setCat] = useState('')
     
-    const normalUrl = `https://ucart-api.onrender.com/api/products?category=${cat}`;
-    const filteredUrl = `https://ucart-api.onrender.com/api/products?category=${cat}&limit=${limitNum}`;
+    const normalUrl = `http://localhost:5000/api/products?category=${cat}`;
+    const filteredUrl = `http://localhost:5000/api/products?category=${cat}&limit=${limitNum}`;
     
     const { data: allProducts, isLoading } = useUrlArray(normalUrl);
     const { data: limitProducts } = useUrlArray(filteredUrl);

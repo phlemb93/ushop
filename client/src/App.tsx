@@ -13,6 +13,7 @@ import Filter from './components/Filter';
 import Overlay from './components/Overlay';
 import Product from './pages/ProductDetails';
 import Profile from './pages/Profile';
+import PaymentConfirm from './components/PaymentConfirm';
 
 
 
@@ -26,13 +27,14 @@ function App() {
           <Cart />
           <NavBar />
           <Routes>
-            <Route path='/' element={<Home /> } />
-            <Route path='/store' element={<Store /> } />
-            <Route path='/login' element={<Login /> } />
-            <Route path='/create-account' element={<CreateAccount /> } />
-            <Route path='/forget-password' element={<ForgetPassword /> } />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/products/:id' element={ <Product /> } />
+            <Route path='/' element={ <Home /> } />
+            <Route path='store' element={ <Store /> } />
+            <Route path='login' element={ <Login /> } />
+            <Route path='create-account' element={ <CreateAccount /> } />
+            <Route path='forget-password' element={ <ForgetPassword /> } />
+            <Route path='profile' element={ <Profile /> } />
+            <Route path='payment-confirmed' element={ <PaymentConfirm />} />
+            <Route path='products/:id' element={ <Product /> } />
           </Routes>
           <Footer />
       </div>
