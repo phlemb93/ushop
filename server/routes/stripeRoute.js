@@ -1,20 +1,36 @@
 const router = require('express').Router();
-const stripe = require('stripe')(process.env.STRIPE_KEY);
+const stripe = require('stripe')(process.env.STRIPE_SK_KEY);
 
-//POST STRIPE PAYMENT
-router.post('/payment', (req, res) => {
-    stripe.charges.create({
-        source: req.body.tokenId,
-        amount: req.body.amount,
-        currency: "gbp"
-    }, (stripeErr, stripeRes) => {
-        if(stripeRes) {
-            res.status(200).json(stripeRes)
-        }
-        if(stripeErr){
-            res.status(500).json(stripeErr)
-        }
-    })
+//GET PUBLISHABLE KEY TO THE FRONTEND
+router.get('/request-key', async (req, res) => {
+
+    res.status(200).json({ clientPK: process.env.STRIPE_PK_KEY })
+    
+})
+
+
+//POST CREATE PAYMENT
+router.post('/create-payment-intent', async (req, res) => {
+
+    try {
+        const paymentIntent = await stripe.paymentIntents.create({
+            currency: 'gbp',
+            amount: 1000,
+            automatic_payment_methods: {
+                enabled: true,
+            },
+        });
+
+        res.status(200).json({ clientSecret: paymentIntent.client_secret });
+
+    } catch (error) {
+
+        return res.status(400).json({ 
+            error: { 
+                message: error.message, 
+            }
+        })
+    }
     
 })
 

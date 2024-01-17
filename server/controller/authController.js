@@ -91,7 +91,7 @@ const login_post = async(req, res) => {
     const token = jwt.sign({ id, isAdmin }, process.env.SECRET_KEY, { expiresIn: '3d' })
 
     try {
-
+        
         const firstName = userExist.firstName;
 
         res.status(200).json({ firstName, id, token })
