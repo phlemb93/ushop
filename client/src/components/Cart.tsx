@@ -8,12 +8,15 @@ import CartItems from './CartItems';
 import { CartItem, useAppSelector } from '../utilities/types/types'
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import currencyFormatter from '../utilities/currencyFormatter';
+import { useDispatch } from 'react-redux';
+import { clearCart } from '../data/cartSlice';
 
 
 
 function Cart() {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const { isCartOpen, handleCartClose } = useIsOpenContext();
     const { cartItems } = useAppSelector(state => state.cart);
@@ -30,7 +33,7 @@ function Cart() {
     const handleClick = () => {
         navigate('/checkout', { state: { total }})
         handleCartClose();
-        localStorage.removeItem('cart')
+        dispatch({type: clearCart})
     }
 
 
