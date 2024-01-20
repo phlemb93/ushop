@@ -1,4 +1,5 @@
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Badge } from '@mui/material';
 
@@ -7,18 +8,10 @@ import CartItems from './CartItems';
 import { CartItem, useAppSelector } from '../utilities/types/types'
 import { useIsOpenContext } from '../utilities/contexts/isOpenContext';
 import currencyFormatter from '../utilities/currencyFormatter';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
-import CheckoutForm from './CheckoutForm';
 
 
 
 function Cart() {
-
-    const [clientSecret, setClientSecret] = useState('')
-    const [stripePromise, setStripePromise] = useState(null)
 
     const navigate = useNavigate();
 
@@ -34,30 +27,11 @@ function Cart() {
         handleCartClose();
     }
 
-    useEffect(() => {
-        const makeRequest = async () => {
-            const { data } = await axios.get('http://localhost:5000/api/checkout/request-key');
-
-            setStripePromise(loadStripe(data.clientPK))
-        }
-
-        makeRequest();
-
-    }, [])
-
-    useEffect(() => {
-        const makeRequest = async () => {
-            const { data } = await axios.post('http://localhost:5000/api/checkout/create-payment-intent', {}, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            setClientSecret(data.clientSecret)
-        }
-
-        makeRequest();
-
-    }, [])
+    const handleClick = () => {
+        navigate('/checkout', { state: { total }})
+        handleCartClose();
+        localStorage.removeItem('cart')
+    }
 
 
     return (
@@ -95,12 +69,20 @@ function Cart() {
                     <p className='sum-total'>Subtotal: <span>{currencyFormatter(total)}</span></p>
                     <small>Shipping and Taxes will be calculated at the next step</small>
                     <span>Pick delivery date at checkout</span>
-                
-                        { stripePromise && clientSecret && (
-                            <Elements stripe={stripePromise} options={{ clientSecret }}>
-                                <CheckoutForm />
-                            </Elements>  
-                        )}
+
+                    <button 
+                        onClick={handleClick}
+                        className="btn" 
+                        disabled={total <= 0}
+                        style={{
+                            display: 'block',
+                            backgroundColor: total > 0 ? '#481449' : 'gray',
+                            cursor: total > 0 ? 'pointer' : 'not-allowed',
+                            }}
+                        >
+                        <LockOutlinedIcon />
+                        <p>Secure Checkout</p>
+                    </button>
                 </div>
             
         </div>

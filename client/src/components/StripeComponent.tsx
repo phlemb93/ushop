@@ -1,19 +1,16 @@
+
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js"
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
-const CheckoutForm = () => {
+function StripeComponent() {
 
-const [errorMsg, setErrorMsg] = useState(null)
-const [processing, setProcessing] = useState(false)
+    const [errorMsg, setErrorMsg] = useState(null)
+    const [processing, setProcessing] = useState(false)
 
     const stripe = useStripe();
     const elements = useElements();
 
-    const total = 2000;
-
-    useEffect(() => console.log(window.location.origin), [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,30 +33,33 @@ const [processing, setProcessing] = useState(false)
       
           if (result.error) {
             // Show error to your customer (for example, payment details incomplete)
-            setErrorMsg(result.error.message)
+            setErrorMsg(result.error.message);
             console.log(result.error.message);
           } 
           setProcessing(false)
     }
 
-
-  return (
-        <form onSubmit={handleSubmit}>
-            <PaymentElement />
-            <button 
-            className="btn" 
-            disabled={processing}
-            style={{
-                display: 'block',
-                backgroundColor: total > 0 ? '#481449' : 'gray',
-                cursor: !processing ? 'pointer' : 'not-allowed',
-                }}
-            >
-                <LockOutlinedIcon />
-                <p>Secure Checkout</p>
-            </button>
-        </form>
-  )
+    return (
+        <div style={{ 
+            marginTop: 20,
+            marginBottom: 10
+         }}>
+            <form onSubmit={handleSubmit}>
+                <PaymentElement />
+                <button 
+                className="btn" 
+                disabled={processing}
+                style={{ 
+                    marginTop: 10,
+                    width: '100%',
+                    padding: 14
+                 }}
+                >
+                    <p>Pay</p>
+                </button>
+            </form>
+        </div>
+    )
 }
 
-export default CheckoutForm
+export default StripeComponent;

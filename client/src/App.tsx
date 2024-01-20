@@ -13,7 +13,9 @@ import Filter from './components/Filter';
 import Overlay from './components/Overlay';
 import Product from './pages/ProductDetails';
 import Profile from './pages/Profile';
-import PaymentConfirm from './components/PaymentConfirm';
+import PaymentConfirm from './pages/PaymentConfirm';
+import PaymentPage from './components/StripeComponent';
+import CheckoutForm from './pages/Checkout';
 
 
 
@@ -33,6 +35,8 @@ function App() {
             <Route path='create-account' element={ <CreateAccount /> } />
             <Route path='forget-password' element={ <ForgetPassword /> } />
             <Route path='profile' element={ <Profile /> } />
+            <Route path='checkout' element={ <CheckoutForm />} />
+            <Route path='payment-page' element={ <PaymentPage />} />
             <Route path='payment-confirmed' element={ <PaymentConfirm />} />
             <Route path='products/:id' element={ <Product /> } />
           </Routes>
